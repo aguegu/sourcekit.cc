@@ -11,6 +11,10 @@ Sourcekit PiTray Mini is a companion IO board for Raspberry Pi Compute Module (s
 
 It provides an excellent way to bring similar development experience of Raspberry Pi 4B to Compute Module 4. So users could upgrade their system or setup from the standard Raspberry Pi 4B to CM4 seamlessly.
 
+# Layout
+
+![layout](./layout.png)
+
 # Specification
 
 * 1 CM4 socket: suitable for all variants of Compute Module 4
@@ -26,12 +30,13 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * Input power: +5V
 * Dimensions: 85 mm x 56 mm
+* [Mechanical Drawings](PiTray-Mini-Mech.pdf)
 
 # Get started
 
 ## For CM4 without eMMC
 
-1. Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. Refence: [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/)
+1. Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. Refence: [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up)
 
 2. Insert the Micro SD card into the micro SD socket onboard.
 
@@ -71,11 +76,11 @@ For CM4 with eMMC that already filled with OS image, just start with Step 8 for 
 
 * USB devices not working
 
-As described in Section 4.2 on [Compute Module 4 datasheet](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf):
-
 > The USB interface is disabled to save power by default on the CM4. To enable it you need to add `dtoverlay=dwc2,dr_mode=host` to the config.txt file
 
-This `feature` could confuse a lot of people new to Raspberry Pi Compute Module 4, especially when expecting the exact same behavior as standard full-size raspberry pi, and in case that a USB keyboard is the only approach to interact with the operating system.
+As described in Section 4.2 on [Compute Module 4 datasheet](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf).
+
+This `feature` could confuse whoever new to Raspberry Pi Compute Module 4, especially when they expect the exact same behavior as standard full-size raspberry pi, and in case that a USB keyboard is the only approach to interact with the operating system.
 
 To fix that, for CM4 without eMMc, power off CM4, unplug the micro SD card and mounted on a PC with Micro SD card Reader/Writer. Find `config.txt` file in the boot partition of the micro SD card, which looks like a flash drive. Append `config.txt` with the line
 
@@ -85,6 +90,6 @@ dtoverlay=dwc2,dr_mode=host
 
 Save it, close the file, umount the micro SD card and mount it back to PiTray and try again.
 
-For CM4 with eMMC, similar to the way to flashing the operating system image, power off PiTray, switch off `eMMC boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC boot` and try again.
+For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC boot` and try again.
 
 For experienced raspberry pi users, this step could be done right after the OS image is written.
