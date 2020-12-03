@@ -18,7 +18,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 # Specification
 
 * 1 CM4 socket: suitable for all variants of Compute Module 4
-* Standard Raspberry Pi HAT connectors
+* 1 set of standard Raspberry Pi HAT connectors
 * 1 Standard HDMI connector
 * 1 Gigabit Ethernet socket
 * 1 On-board USB 2.0 connector
@@ -26,7 +26,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 * 1 USB Type-C connector for powering and also programming eMMC variants of CM4
 * 1 Boot Mode Switch for programming mode and normal mode
 * 1 RUN botton for easy reset
+* 1 Red Power LED
+* 1 Green Activity LED
 * Same dimensions and mounting holes compared to standard raspberry pi 3B/3B+/4B
+* 2 mounting holes for CM4
+* 4 CM4 corner marks for CM4 position guidance
 
 * Input power: +5V
 * Dimensions: 85 mm x 56 mm
