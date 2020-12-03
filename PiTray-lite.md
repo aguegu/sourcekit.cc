@@ -1,7 +1,7 @@
 Sourcekit PiTray Mini
 ===
 
-Version: 1.0.0
+Version: 1.1.0
 
 Designer: Shenyuan Fang, Weihong Guan
 
@@ -38,11 +38,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 1. Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. Refence: [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up)
 
-2. Insert the Micro SD card into the micro SD socket onboard.
+2. Insert the Micro SD card into the micro SD socket on PiTray.
 
 3. Make sure the `eMMC Boot` switch is at the `ON` position.
 
-4. Mount the CM4 without eMMC on PiTray.
+4. Mount the CM4 without eMMC on PiTray. *CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged*
 
 5. Plug Other devices you may needed such as HDMI, Ethernet, USB (***see below***) Keyboard.
 
@@ -52,11 +52,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 1. Unplug micro SD card from PiTray if any.
 
-2. Mount the CM4 (with eMMC) on PiTray.
+2. Mount the CM4 (with eMMC) on PiTray. *CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged*
 
 3. Make sure the 'eMMC Boot' switch is at the `OFF` position.
 
-4. On PC, launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). [4](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md)
+4. On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). [4](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md)
 
 5. Connect PiTray with USB Type-C cable to the PC.
 
@@ -93,3 +93,5 @@ Save it, close the file, umount the micro SD card and mount it back to PiTray an
 For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC boot` and try again.
 
 For experienced raspberry pi users, this step could be done right after the OS image is written.
+
+For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because its USB is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable it function in host mode.
