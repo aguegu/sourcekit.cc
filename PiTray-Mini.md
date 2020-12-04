@@ -1,4 +1,4 @@
-Sourcekit PiTray Mini
+Sourcekit&reg; PiTray Mini
 ===
 
 Version: 1.1.0
@@ -13,7 +13,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 # Layout
 
-![layout](./layout.png)
+![layout](./PiTray-Mini-Layout.jpg)
 
 # Specification
 
