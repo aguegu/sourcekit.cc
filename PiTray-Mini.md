@@ -40,7 +40,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 ## For CM4 without eMMC
 
-1. Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. Refence: [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up)
+1. Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. (See also [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
 
 2. Insert the Micro SD card into the micro SD socket on PiTray.
 
@@ -60,7 +60,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 3. Make sure the 'eMMC Boot' switch is at the `OFF` position.
 
-4. On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). [4](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md)
+4. On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (See also: [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
 
 5. Connect PiTray with USB Type-C cable to the PC.
 
