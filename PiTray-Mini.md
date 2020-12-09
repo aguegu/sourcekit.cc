@@ -15,20 +15,25 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 ![layout](./PiTray-Mini-Layout.jpg)
 
+# Features
+
+* Compatible with all variants of CM4, no matter whether it uses eMMC or micro SD card
+* Capable to flash operation system image to eMMC on CM4 with regular approaches same as official CMIO board, no extra tools required
+* Same dimensions and mounting holes compared to Modle B Raspberry Pi, such as 3B/3B+/4B
+
 # Specification
 
-* 1 CM4 socket: suitable for all variants of Compute Module 4
+* 1 CM4 socket
 * 1 set of standard Raspberry Pi HAT connectors
 * 1 Standard HDMI connector
 * 1 Gigabit Ethernet socket
-* 1 On-board USB 2.0 connector
+* 1 native USB 2.0 connector
 * 1 SD card socket for CM4 variants without eMMC
 * 1 USB Type-C connector for powering and also programming eMMC variants of CM4
 * 1 Boot Mode Switch for programming mode and normal mode
 * 1 RUN botton for easy reset
 * 1 Red Power LED
 * 1 Green Activity LED
-* Same dimensions and mounting holes compared to standard raspberry pi 3B/3B+/4B
 * 2 mounting holes for CM4
 * 4 CM4 corner marks for CM4 position guidance
 
@@ -50,7 +55,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 5. Plug Other devices you may needed such as HDMI, Ethernet, USB (***see below***) Keyboard.
 
-6. Power PiTray with a 15W USB-C power supply. With the red led on, you are good to go. Enjoy & have fun.
+6. Power PiTray with a 15W USB-C power supply. With the power led on, you are good to go. Enjoy & have fun.
 
 ## For CM4 with eMMC (Programming the eMMC)
 
@@ -64,7 +69,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 5. Connect PiTray with USB Type-C cable to the PC.
 
-6. Then an external disk like flash drive would show up on the PC, write this disk with OS image with Raspberry Pi Imager, Etcher or dd as the step 1 above.
+6. Then an external disk like flash drive, aka USB mass storage, would show up on the PC, write this disk with OS image with Raspberry Pi Imager, Etcher or dd as the step 1 above.
 
 7. After the image is written and the external drive is umounted from PC, disconnect PiTray from the PC.
 
@@ -74,7 +79,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 10. Power PiTray with a 15W USB-C power supply. With the red led on, you are good to go. Enjoy & have fun.
 
-For CM4 with eMMC that already filled with OS image, just start with Step 8 for regular usage.
+For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
 
 # Trouble shooting
 
@@ -98,4 +103,4 @@ For CM4 with eMMC, similar to the process to flash the operating system image, p
 
 For experienced raspberry pi users, this step could be done right after the OS image is written.
 
-For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because its USB is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable it function in host mode.
+For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because its USB is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
