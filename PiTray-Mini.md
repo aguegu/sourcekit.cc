@@ -39,11 +39,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * Input power: +5V
 * Dimensions: 85 mm x 56 mm
-* [Mechanical Drawings](PiTray-Mini-Mech.pdf)
+* [Mechanical Drawings](PiTray-Mini-Mech.pdf ':ignore')
 
 # Get started
 
-## For CM4 without eMMC
+## CM4 without eMMC (Lite)
 
 1. Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. (See also [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
 
@@ -57,7 +57,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 6. Power PiTray with a 15W USB-C power supply. With the power led on, you are good to go. Enjoy & have fun.
 
-## For CM4 with eMMC (Programming the eMMC)
+## CM4 with eMMC (Flashing Guide)
 
 1. Unplug micro SD card from PiTray if any.
 
@@ -89,7 +89,7 @@ For CM4 with eMMC that already filled with OS image, just start from Step 8 for 
 
 As described in Section 4.2 on [Compute Module 4 datasheet](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf).
 
-This `feature` could confuse whoever new to Raspberry Pi Compute Module 4, especially when they expect the exact same behavior as standard full-size raspberry pi, and in case that a USB keyboard is the only approach to interact with the operating system.
+This `feature` could confuse whoever new to Raspberry Pi Compute Module 4, when the exact same behavior as regular Raspberry Pi Model A/B/Zero is expected, especially in case that a USB keyboard is the only approach to interact with the operating system.
 
 To fix that, for CM4 without eMMc, power off CM4, unplug the micro SD card and mounted on a PC with Micro SD card Reader/Writer. Find `config.txt` file in the boot partition of the micro SD card, which looks like a flash drive. Append `config.txt` with the line
 
@@ -103,4 +103,4 @@ For CM4 with eMMC, similar to the process to flash the operating system image, p
 
 For experienced raspberry pi users, this step could be done right after the OS image is written.
 
-For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because its USB is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
+For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because the USB interface is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
