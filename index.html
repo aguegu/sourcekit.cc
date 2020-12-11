@@ -27,6 +27,21 @@
       repo: 'aguegu/sourcekit.cc',
       homepage: 'PiTray-Mini.md',
       search: 'auto',
+      plugins: [
+        function(hook) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            'Copyright &copy; 2020 Fuzhou Sourcekit electronics Ltd. ',
+            '<span>Proudly published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function(html) {
+            return html + footer;
+          });
+        }
+      ]
     };
   </script>
   <!-- Docsify v4 -->
