@@ -1,4 +1,4 @@
-Sourcekit&reg; PiTray Mini
+Sourcekit&reg; PiTray mini
 ===
 
 Version: 1.1.0
@@ -7,13 +7,13 @@ Designer: Shenyuan Fang, Weihong Guan
 
 # Overview
 
-Sourcekit PiTray Mini is a companion IO board for Raspberry Pi Compute Module (sold separately). It is designed for use both as a development system for Compute Module 4 (CM4) and as an embedded board integrated into end products.
+Sourcekit&reg; PiTray mini is a companion IO board for Raspberry Pi Compute Module (sold separately). It is designed for use both as a development system for Compute Module 4 (CM4) and as an embedded board integrated into end products.
 
-It provides an excellent way to bring similar development experience of Raspberry Pi 4B to Compute Module 4. So users could upgrade their system or setup from the standard Raspberry Pi 4B to CM4 seamlessly. With capability to flash OS image to eMMC on CM4, PiTray Mini serves as an budget lite alternative to [Raspberry Pi Compute Module 4 IO Board](https://www.raspberrypi.org/products/compute-module-4-io-board/).
+It provides an excellent way to bring similar development experience of Raspberry Pi 4B to Compute Module 4. So users could upgrade their system or setup from the standard Raspberry Pi 4B to CM4 seamlessly. With capability to flash OS image to eMMC on CM4, PiTray mini serves as an budget lite alternative to [Raspberry Pi Compute Module 4 IO Board](https://www.raspberrypi.org/products/compute-module-4-io-board/).
 
 # Layout
 
-![layout](./PiTray-Mini-Layout.jpg)
+![layout](./PiTray-mini-layout.jpg)
 
 # Features
 
@@ -25,7 +25,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * 1 CM4 socket
 * 1 set of standard Raspberry Pi HAT connectors
-* 1 Standard HDMI connector
+* 1 Standard HDMI 2.0 connector
 * 1 Gigabit Ethernet socket
 * 1 native USB 2.0 connector
 * 1 SD card socket for CM4 variants without eMMC
@@ -39,7 +39,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * Input power: +5V
 * Dimensions: 85 mm x 56 mm
-* [Mechanical Drawings](PiTray-Mini-Mech.pdf ':ignore')
+* [Mechanical Drawings](PiTray-mini-mech.pdf ':ignore')
 
 # Get started
 
