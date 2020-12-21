@@ -63,7 +63,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 2. Mount the CM4 (with eMMC) on PiTray. *CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged*
 
-3. Make sure the 'eMMC Boot' switch is at the `OFF` position.
+3. Make sure the `eMMC Boot` switch is at the `OFF` position.
 
 4. On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (See also: [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
 
@@ -81,7 +81,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
 
-# Trouble shooting
+# Troubleshooting
 
 * USB devices not working
 
@@ -99,7 +99,7 @@ dtoverlay=dwc2,dr_mode=host
 
 Save it, close the file, umount the micro SD card and mount it back to PiTray and try again.
 
-For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC boot` and try again.
+For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC Boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC Boot` and try again.
 
 For experienced raspberry pi users, this step could be done right after the OS image is written.
 
