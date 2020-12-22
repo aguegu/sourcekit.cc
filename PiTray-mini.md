@@ -26,7 +26,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 * 1 CM4 socket
 * 1 set of standard Raspberry Pi HAT connectors
 * 1 Standard HDMI 2.0 connector
-* 1 Gigabit Ethernet socket
+* 1 Gigabit Ethernet RJ45 socket
 * 1 native USB 2.0 connector
 * 1 SD card socket for CM4 variants without eMMC
 * 1 USB Type-C connector for powering and also programming eMMC variants of CM4
