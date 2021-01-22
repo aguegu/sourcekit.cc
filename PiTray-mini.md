@@ -104,3 +104,5 @@ For CM4 with eMMC, similar to the process to flash the operating system image, p
 For experienced raspberry pi users, this step could be done right after the OS image is written.
 
 For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because the USB interface is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
+
+![PiTray mini with Raspberry Compute Module 4 Lite](./PiTray-mini-with-cm4-lite.jpg)
