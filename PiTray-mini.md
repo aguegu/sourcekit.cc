@@ -19,7 +19,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * Compatible with all variants of CM4, no matter whether it uses eMMC or micro SD card
 * Capable to flash operation system image to eMMC on CM4 with regular approaches same as official CMIO board, no extra tools required
-* Same dimensions and mounting holes compared to Modle B Raspberry Pi, such as 3B/3B+/4B
+* Same dimensions and mounting holes compared to Model B Raspberry Pi, such as 3B/3B+/4B
 
 # Specification
 
