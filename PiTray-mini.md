@@ -111,4 +111,8 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 * [Prototype release on @BG5USN](https://twitter.com/BG5USN/status/1328331941536477189)
 * [neat CM4 projects/accessories](https://github.com/geerlingguy/raspberry-pi-pcie-devices/issues/25)
 
+# Where to buy ?
+
+* available for purchase from [DFRobot](https://www.dfrobot.com/) very soon.
+
 ![PiTray mini with Raspberry Compute Module 4 Lite](./PiTray-mini-with-cm4-lite.jpg)
