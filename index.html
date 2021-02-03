@@ -38,7 +38,10 @@
             '</footer>'
           ].join('');
 
-          const shares = `<a href="https://twitter.com/intent/tweet?url=${document.URL}&amp;text=${document.title}" target="_blank" alt="Tweet this pen"><span class="mdi mdi-twitter"></span></a>`;
+          const shares = `
+            <a href="https://twitter.com/intent/tweet?url=${document.URL}&text=${document.title}" target="_blank" alt="Tweet"><span class="mdi mdi-twitter"></span></a>
+            <a href="https://reddit.com/submit?url=${document.URL}&title=${document.title}" target="_blank" alt="Reddit"><span class="mdi mdi-reddit"></span></a>
+          `;
 
           hook.afterEach(function(html) {
             return html + shares + footer;
