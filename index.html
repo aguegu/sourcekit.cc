@@ -31,7 +31,6 @@
       plugins: [
         function(hook) {
           const footer = [
-            '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>',
             '<hr/>',
             '<footer>',
             `Copyright &copy; ${new Date().getFullYear()} Fuzhou Sourcekit electronics Ltd. `,
@@ -39,8 +38,10 @@
             '</footer>'
           ].join('');
 
+          const shares = `<a href="https://twitter.com/intent/tweet?url=${document.URL}&amp;text=${document.title}" target="_blank" alt="Tweet this pen"><span class="mdi mdi-twitter"></span></a>`;
+
           hook.afterEach(function(html) {
-            return html + footer;
+            return html + shares + footer;
           });
         }
       ],
@@ -50,6 +51,5 @@
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
