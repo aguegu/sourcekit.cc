@@ -3,7 +3,7 @@ Sourcekit&reg; PiTray mini
 
 Version: 1.1.0
 
-Designer: Shenyuan Fang, Weihong Guan
+Designer: Shengyuan Fang (方圣源), [Weihong Guan](https://github.com/aguegu/)
 
 # Overview
 
