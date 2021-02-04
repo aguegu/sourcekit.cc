@@ -39,11 +39,11 @@
           ].join('');
 
           const shares = `
-            <a href="https://twitter.com/intent/tweet?url=${document.URL}&text=${document.title}" target="_blank" alt="Tweet"><span class="mdi mdi-twitter" style="color: rgb(29, 161, 242);"></span></a>
-            <a href="https://reddit.com/submit?url=${document.URL}&title=${document.title}" target="_blank" alt="Reddit"><span class="mdi mdi-reddit"></span></a>
-            <a href="https://www.facebook.com/sharer.php?u=${document.URL}" target="_blank" alt="Facebook"><span class="mdi mdi-facebook"></span></a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${document.URL}" target="_blank" alt="LinkedIn"><span class="mdi mdi-linkedin"></span></a>
-            <a href="https://telegram.me/share/url?url=${document.URL}&text=${document.title}" target="_blank" alt="Telegram"><span class="mdi mdi-telegram"></span></a>
+            <a href="https://twitter.com/intent/tweet?url=${document.URL}&text=${document.title}" target="_blank" alt="Tweet"><span class="mdi mdi-twitter" style="color: #1da1f2;"></span></a>
+            <a href="https://reddit.com/submit?url=${document.URL}&title=${document.title}" target="_blank" alt="Reddit"><span class="mdi mdi-reddit" style="color: #ff4500;"></span></a>
+            <a href="https://www.facebook.com/sharer.php?u=${document.URL}" target="_blank" alt="Facebook"><span class="mdi mdi-facebook" style="color: #166fe5;"></span></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${document.URL}" target="_blank" alt="LinkedIn"><span class="mdi mdi-linkedin" style="color: #0a66c2;"></span></a>
+            <a href="https://telegram.me/share/url?url=${document.URL}&text=${document.title}" target="_blank" alt="Telegram"><span class="mdi mdi-telegram" style="color: #0088cc;"></span></a>
           `;
 
           hook.afterEach(function(html) {
