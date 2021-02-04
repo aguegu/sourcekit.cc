@@ -111,6 +111,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 * [Prototype release on @BG5USN](https://twitter.com/BG5USN/status/1328331941536477189)
 * [neat CM4 projects/accessories](https://github.com/geerlingguy/raspberry-pi-pcie-devices/issues/25)
 * [Raspberry Pi CM4 Boards arrive! Waveshare PoE and PiTray mini - Jeff Geering](https://www.youtube.com/watch?v=DKV7wv7NaCY)
+* [Alternative Raspberry Pi Compute Module 4 Carrier Board Offers Familiar Layout - tom's Hardware](https://www.tomshardware.com/news/alternative-raspberry-pi-compute-module-4-carrier-board-offers-familiar-layout)
 
 # Where to buy ?
 
