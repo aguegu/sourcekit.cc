@@ -67,7 +67,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 4. On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (See also: [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
 
-5. Connect PiTray with USB Type-C cable to the PC.
+5. Connect PiTray with a USB-A to USB-C cable to the PC. (a USB-C to USB-C cable may not work)
 
 6. Then an external disk like flash drive, aka USB mass storage, would show up on the PC, write this disk with OS image with Raspberry Pi Imager, Etcher or dd as the step 1 above.
 
