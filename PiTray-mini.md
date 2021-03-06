@@ -7,9 +7,9 @@ Designer: Shengyuan Fang (方圣源), Weihong Guan [<span class="mdi mdi-github"
 
 # Overview
 
-Sourcekit&reg; PiTray mini is a companion IO board for Raspberry Pi Compute Module (sold separately). It is designed for use both as a development system for Compute Module 4 (CM4) and as an embedded board integrated into end products.
+Sourcekit&reg; PiTray mini is a companion IO board for Raspberry Pi Compute Module 4 (sold separately). It is designed for use both as a development system for Compute Module 4 (CM4) and as an embedded board integrated into end products.
 
-It provides an excellent way to bring similar development experience of Raspberry Pi 4B to Compute Module 4. So users could upgrade their system or setup from the standard Raspberry Pi 4B to CM4 seamlessly. With capability to flash OS image to eMMC on CM4, PiTray mini serves as a budget alternative to [Raspberry Pi Compute Module 4 IO Board](https://www.raspberrypi.org/products/compute-module-4-io-board/).
+It provides an excellent way to bring similar development experience of Raspberry Pi 4B to CM4. So users could upgrade their system or setup from the standard Raspberry Pi 4B to CM4 seamlessly. With capability to flash OS image to eMMC on CM4, PiTray mini serves as a budget alternative to [Raspberry Pi Compute Module 4 IO Board](https://www.raspberrypi.org/products/compute-module-4-io-board/).
 
 # Layout
 
@@ -17,8 +17,8 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 # Features
 
-* Compatible with all variants of CM4, no matter whether it uses eMMC or micro SD card
-* Capable to flash operation system image to eMMC on CM4 with regular approaches same as official CMIO board, no extra tools required
+* Compatible with all variants of CM4, no matter whether it uses onboard eMMC or micro SD card
+* Capable to flash operation system image to eMMC on CM4 with regular approaches as same as the official CMIO board, no extra tools required
 * Same dimensions and mounting holes compared to Model B Raspberry Pi, such as 3B/3B+/4B
 
 # Specification
