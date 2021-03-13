@@ -2,7 +2,7 @@
 
 Version: 1.1.0
 
-Designer: Shengyuan Fang (方圣源), Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/)
+Designer: Shengyuan Fang (方圣源), Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN)
 
 # Overview
 
@@ -12,7 +12,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 # Layout
 
-![PiTray mini Layout](./PiTray-mini-layout.jpg)
+![PiTray mini Layout](images/PiTray-mini-layout.jpg)
 
 # Features
 
@@ -114,9 +114,9 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 # Where to buy ?
 
-<a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="./dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
-<a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="./makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch" /></a>
+<a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
+<a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch" /></a>
 
-![PiTray mini with Raspberry Compute Module 4 Lite](./PiTray-mini-with-cm4-lite.jpg)
+![PiTray mini with Raspberry Compute Module 4 Lite](images/PiTray-mini-with-cm4-lite.jpg)
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
