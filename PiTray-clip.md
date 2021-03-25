@@ -13,8 +13,8 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 * Compatible with IEC/EN 60715 Din Rails
 * 304 Stainless Steel PCB Rack with thickness of 1.5 mm
-* Nylon (PA66 30GF) Clip with Spring
-* Include 2 pcs of 304 M2.5x4 blots to fasten PCB
+* Nylon (PA66 30GF) Clip with Spring, easy to mount and unmount
+* Include 2 pcs of 304 Stainless Steel M2.5x4 blots to fasten PCB
 * Brushed Polished Finish and free of rough edges
 * Work for
   * Raspberry Pi 4B/3A+/3B+/3B/2B/1B+/1A/Zero W/Zero
