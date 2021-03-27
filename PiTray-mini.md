@@ -115,6 +115,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 # Where to buy ?
 
 <a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
+<a href="https://www.mouser.com/ProductDetail/DFRobot/DFR0827?qs=DRkmTr78QAQr9inYZfhAoA%3D%3D" target="_blank"><img src="images/mouser.jpg" alt="Buy from Mouser" title="Mouser" /></a>
 <a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch" /></a>
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](images/PiTray-mini-with-cm4-lite.jpg)
