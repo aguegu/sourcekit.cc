@@ -42,9 +42,72 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 - 输入电源: +5V
 - [外形尺寸](PiTray-mini-mech.pdf ":ignore")
 
+# 入门教程
+
+## CM4 without eMMC (Lite)
+
+1.  Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. (See also [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
+
+2.  Insert the Micro SD card into the micro SD socket on PiTray.
+
+3.  Make sure the `eMMC Boot` switch is at the `ON` position.
+
+4.  Mount the CM4 without eMMC on PiTray. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
+
+5.  Plug Other devices you may needed such as HDMI, Ethernet, USB (**_see below_**) Keyboard.
+
+6.  Power PiTray with a 15W USB-C power supply. With the power led on, you are good to go. Enjoy & have fun.
+
+## CM4 with eMMC (Flashing Guide)
+
+1.  Unplug micro SD card from PiTray if any.
+
+2.  Mount the CM4 (with eMMC) on PiTray. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
+
+3.  Make sure the `eMMC Boot` switch is at the `OFF` position.
+
+4.  On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (See also: [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
+
+5.  Connect PiTray with a USB-A to USB-C cable to the PC. (a USB-C to USB-C cable may not work)
+
+6.  Then an external disk like flash drive, aka USB mass storage, would show up on the PC, write this disk with OS image with Raspberry Pi Imager, Etcher or dd as the step 1 above.
+
+7.  After the image is written and the external drive is umounted from PC, disconnect PiTray from the PC.
+
+8.  Turn the `eMMC Boot` switch to `ON`.
+
+9.  Plug Other devices you may needed such as HDMI, Ethernet, USB (**_see below_**) Keyboard.
+
+10. Power PiTray with a 15W USB-C power supply. With the red led on, you are good to go. Enjoy & have fun.
+
+For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
+
+# 故障排查
+
+-   USB devices not working
+
+> The USB interface is disabled to save power by default on the CM4. To enable it you need to add `dtoverlay=dwc2,dr_mode=host` to the config.txt file
+
+As described in Section 4.2 on [Compute Module 4 datasheet](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf).
+
+This `feature` could confuse whoever new to Raspberry Pi Compute Module 4, when the exact same behavior as regular Raspberry Pi Model A/B/Zero is expected, especially in case that a USB keyboard is the only approach to interact with the operating system.
+
+To fix that, for CM4 without eMMc, power off CM4, unplug the micro SD card and mounted on a PC with Micro SD card Reader/Writer. Find `config.txt` file in the boot partition of the micro SD card, which looks like a flash drive. Append `config.txt` with the line
+
+    dtoverlay=dwc2,dr_mode=host
+
+Save it, close the file, umount the micro SD card and mount it back to PiTray and try again.
+
+For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC Boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC Boot` and try again.
+
+For experienced raspberry pi users, this step could be done right after the OS image is written.
+
+For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because the USB interface is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
+
+
 # 讨论与展示
 
--   [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
+-   [论坛 (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
 -   [Prototype release on @BG5USN](https://twitter.com/BG5USN/status/1328331941536477189)
 -   [neat CM4 projects/accessories - Jeff Geering](https://github.com/geerlingguy/raspberry-pi-pcie-devices/issues/25)
 -   [Raspberry Pi CM4 Boards arrive! Waveshare PoE and PiTray mini - Jeff Geering](https://www.youtube.com/watch?v=DKV7wv7NaCY)
