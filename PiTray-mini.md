@@ -80,7 +80,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 10. Power PiTray with a 15W USB-C power supply. With the red led on, you are good to go. Enjoy & have fun.
 
-For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
+* For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
 
 # Troubleshooting
 
@@ -96,7 +96,7 @@ To fix that, for CM4 without eMMc, power off CM4, unplug the micro SD card and m
 
     dtoverlay=dwc2,dr_mode=host
 
-Save it, close the file, umount the micro SD card and mount it back to PiTray and try again.
+Save it, close the file, umount the micro SD card and mount it back to PiTray mini and try again.
 
 For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC Boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC Boot` and try again.
 
@@ -113,7 +113,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 -   [Alternative Raspberry Pi Compute Module 4 Carrier Board Offers Familiar Layout - tom's Hardware](https://www.tomshardware.com/news/alternative-raspberry-pi-compute-module-4-carrier-board-offers-familiar-layout)
 -   [PiTray Mini Is a CM4 Companion IO Board for Industrial Applications - Hackster.io](https://www.hackster.io/news/pitray-mini-is-a-cm4-companion-io-board-for-industrial-applications-c4ba79f90e18)
 -   [RPi CM4 powered PiTray opens at $14.50 as more carriers prep for launch - LinuxGizmos.com](http://linuxgizmos.com/rpi-cm4-powered-pitray-opens-at-14-50-as-more-carriers-prep-for-launch/)
--   [Sourcekit PiTray Mini Review: Brings Ports to Raspberry Pi CM4](https://www.tomshardware.com/reviews/sourcekit-pitray-mini)
+-   [Sourcekit PiTray Mini Review: Brings Ports to Raspberry Pi CM4 - tom's Hardware](https://www.tomshardware.com/reviews/sourcekit-pitray-mini)
 
 # Where to buy ?
 
