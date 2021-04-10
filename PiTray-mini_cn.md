@@ -44,66 +44,67 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 
 # 入门教程
 
-## CM4 without eMMC (Lite)
+## CM4 Lite （无板载 eMMC）
 
-1.  Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. (See also [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
+1.  准备一张已经烧录树莓派兼容操作系统（如 Raspbian，NOOB，Ubuntu等）的 Micro SD 卡；(参考 [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
 
-2.  Insert the Micro SD card into the micro SD socket on PiTray.
+2.  将 Micro SD 卡插入 PiTray mini 的 Micro SD 卡槽；
 
-3.  Make sure the `eMMC Boot` switch is at the `ON` position.
+3.  确认 `eMMC Boot` 开关置于 `ON`；
 
-4.  Mount the CM4 without eMMC on PiTray. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
+4.  将 CM4 安装到 PiTray mini 上。_注意：CM4 的方向应该与板上的 CM4 固定孔，以及轮廓标线，否则上电可能导致 CM4 烧毁_
 
-5.  Plug Other devices you may needed such as HDMI, Ethernet, USB (**_see below_**) Keyboard.
+5.  插入其它外设，如 HDMI, 网线、USB（**参考下文**）键盘等；
 
-6.  Power PiTray with a 15W USB-C power supply. With the power led on, you are good to go. Enjoy & have fun.
+6.  通过一条功率足够15W（5V 3A）的 USB Type-C 数据线为 PiTray mini 供电。当看到红色电源 LED 亮起，绿色 LED 闪烁，表明 CM4 已经正常启动。
 
-## CM4 with eMMC (Flashing Guide)
+## 带板载 eMMC 的 CM4 (烧录指南)
 
-1.  Unplug micro SD card from PiTray if any.
+1.  断开电源，如果 micro SD 卡槽内有卡则将其移除。
 
-2.  Mount the CM4 (with eMMC) on PiTray. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
+2.  将 CM4（含板载 eMMC）安装到 PiTray mini 上。_注意：CM4 的方向应该与板上的 CM4 固定孔，以及轮廓标线，否则上电可能导致 CM4 烧毁_
 
-3.  Make sure the `eMMC Boot` switch is at the `OFF` position.
+3.  确认 `eMMC Boot` 开关置于 `OFF`；
 
-4.  On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (See also: [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
+4.  在电脑上，安装并运行 [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (参考 [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
 
-5.  Connect PiTray with a USB-A to USB-C cable to the PC. (a USB-C to USB-C cable may not work)
+5.  通过一条标准 USB-A 至 USB-C 数据线将 PiTray mini 连接至电脑。(不可使用双头 USB-C 数据线)
 
-6.  Then an external disk like flash drive, aka USB mass storage, would show up on the PC, write this disk with OS image with Raspberry Pi Imager, Etcher or dd as the step 1 above.
+6.  此时，在电脑上可以看到一个新的磁盘外设，像插入优盘或 Micro SD 卡一样，此时可以通过 Raspberry Pi Imager、DD、Etcher 等软件烧录操作系统到该磁盘上；（参考上一节步骤1）
 
-7.  After the image is written and the external drive is umounted from PC, disconnect PiTray from the PC.
+7.  当操作系统烧录完成，可将该磁盘从电脑上移除，并断开 PiTray mini 的电源。
 
-8.  Turn the `eMMC Boot` switch to `ON`.
+8.  将 `eMMC Boot` 开关置于 `ON`；
 
-9.  Plug Other devices you may needed such as HDMI, Ethernet, USB (**_see below_**) Keyboard.
+9.  插入其它外设，如 HDMI, 网线、USB（**参考下文**）键盘等；
 
-10. Power PiTray with a 15W USB-C power supply. With the red led on, you are good to go. Enjoy & have fun.
+10. 通过一条功率足够15W（5V 3A）的 USB Type-C 数据线为 PiTray mini 供电。当看到红色电源 LED 亮起，绿色 LED 闪烁，表明 CM4 已经正常启动。
 
-For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
+* 对于在板载 eMMC 上已经烧录好操作系统的 CM4 来说，直接从第8步开始即可。
 
 # 故障排查
 
--   USB devices not working
+-   USB 外设不工作
 
 > The USB interface is disabled to save power by default on the CM4. To enable it you need to add `dtoverlay=dwc2,dr_mode=host` to the config.txt file
 
-As described in Section 4.2 on [Compute Module 4 datasheet](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf).
+如 [官方文档 Compute Module 4 datasheet](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)第 4.2 节所示，CM4 为了省电，USB接口默认禁用。如需启用则需要在 `/boot/config.txt` 文件内添加 `dtoverlay=dwc2,dr_mode=host` 这一行。
 
-This `feature` could confuse whoever new to Raspberry Pi Compute Module 4, when the exact same behavior as regular Raspberry Pi Model A/B/Zero is expected, especially in case that a USB keyboard is the only approach to interact with the operating system.
+这个`特性`可能会让许多刚刚接触 CM4，并且期待它与常规树莓派标线一致的用户感到很困惑，尤其是当 USB 键盘是唯一操作系统输入设备的时候。
 
-To fix that, for CM4 without eMMc, power off CM4, unplug the micro SD card and mounted on a PC with Micro SD card Reader/Writer. Find `config.txt` file in the boot partition of the micro SD card, which looks like a flash drive. Append `config.txt` with the line
+为了解决这个问题，对于使用 CM4 Lite (不带 eMMC)，先关机，然后将 micro SD 卡通过读卡器重新挂载到电脑上，在 SD 卡的 boot 分区上找到 `config.txt` 文件，并在其末尾添加一行
 
-    dtoverlay=dwc2,dr_mode=host
+```
+dtoverlay=dwc2,dr_mode=host
+```
 
-Save it, close the file, umount the micro SD card and mount it back to PiTray and try again.
+保存并关闭 config.txt 文件。将 Micro SD 卡从电脑上移除，并插回 PiTray mini 重试。
 
-For CM4 with eMMC, similar to the process to flash the operating system image, power off PiTray, switch off `eMMC Boot`, and connect PiTray to a PC with `usbboot` preloaded, then do the editing as above. Finally disconnect PiTray from PC then switch on `eMMC Boot` and try again.
+对于板载 eMMC 的 CM4，与烧写操作系统时候的步骤类似，关机后，将 `eMMC boot` 开关置于 `OFF` 之后，在电脑上运行 usbboot 之后将 PiTray mini 接入，余下步骤与上述一致。当 `config.txt` 文件编辑完成之后，断开 PiTray mini，再将 `eMMC boot` 开关置于 `ON`，最后重新上电重试。
 
-For experienced raspberry pi users, this step could be done right after the OS image is written.
+对于有一定经验的树莓派用户来说，编辑 `config.txt` 文件的工作可在操作系统烧写完成后就进行。
 
-For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because the USB interface is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
-
+对于板载 eMMC 的 CM4，当 `eMMC Boot` 置于 `OFF` 时，操作系统仍可以正常启动。但是此时 USB 外设无法工作，因为此时 CM4 的 USB 接口为`客户机`模式。所以，务必将 `eMMC Boot` 置于 `ON`以保证 USB 接口工作在 `主机`模式。
 
 # 讨论与展示
 

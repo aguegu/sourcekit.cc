@@ -48,11 +48,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 1.  Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. (See also [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
 
-2.  Insert the Micro SD card into the micro SD socket on PiTray.
+2.  Insert the Micro SD card into the micro SD socket on PiTray mini.
 
 3.  Make sure the `eMMC Boot` switch is at the `ON` position.
 
-4.  Mount the CM4 without eMMC on PiTray. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
+4.  Mount the CM4 without eMMC on PiTray mini. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
 
 5.  Plug Other devices you may needed such as HDMI, Ethernet, USB (**_see below_**) Keyboard.
 
@@ -60,7 +60,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 ## CM4 with eMMC (Flashing Guide)
 
-1.  Unplug micro SD card from PiTray if any.
+1.  Power Off. Unplug micro SD card from PiTray if any.
 
 2.  Mount the CM4 (with eMMC) on PiTray. _CAUTION: be careful of the CM4 position, align the CM4 layout corner marks and holes, otherwise CM4 or PiTray would get damaged_
 
@@ -68,11 +68,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 4.  On PC, install and launch [raspberry pi usbboot](https://github.com/raspberrypi/usbboot). (See also: [5](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md))
 
-5.  Connect PiTray with a USB-A to USB-C cable to the PC. (a USB-C to USB-C cable may not work)
+5.  Connect PiTray mini with a USB-A to USB-C cable to the PC. (a USB-C to USB-C cable may not work)
 
 6.  Then an external disk like flash drive, aka USB mass storage, would show up on the PC, write this disk with OS image with Raspberry Pi Imager, Etcher or dd as the step 1 above.
 
-7.  After the image is written and the external drive is umounted from PC, disconnect PiTray from the PC.
+7.  After the image is written and the external drive is umounted from PC, disconnect PiTray mini from the PC.
 
 8.  Turn the `eMMC Boot` switch to `ON`.
 
