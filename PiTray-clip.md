@@ -9,6 +9,16 @@ Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span
 
 Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like Raspberry Pi. Assembled of a 304 Stainless Steel blended plate and nylon clip with spring, it provides a simple, quick, strong and durable Din Rail installation solution suitable for industrial setup, home automation application as well as cluster building.
 
+![PiTray mini Layout](images/clip/clip_4b.jpeg)
+
+![PiTray mini Layout](images/clip/clip_coral.jpeg)
+
+![PiTray mini Layout](images/clip/clip_mini.jpeg)
+
+![PiTray mini Layout](images/clip/clip02.jpeg)
+
+![PiTray mini Layout](images/clip/clip01.jpeg)
+
 # Features
 
 * Compatible with IEC/EN 60715 Din Rails
@@ -23,5 +33,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
   * ASUS Tinker Board 2S/2/T/S  
   * Coral Dev Board
   * Sourcekit PiTray mini
+
+# Instructions
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
