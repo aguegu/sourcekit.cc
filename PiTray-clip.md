@@ -9,15 +9,10 @@ Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span
 
 Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like Raspberry Pi. Assembled of a 304 Stainless Steel blended plate and nylon clip with spring, it provides a simple, quick, strong and durable Din Rail installation solution suitable for industrial setup, home automation application as well as cluster building.
 
-![PiTray mini Layout](images/clip/clip_4b.jpeg)
+![PiTray mini Layout](images/clip/clip04.jpeg)
 
-![PiTray mini Layout](images/clip/clip_coral.jpeg)
+![PiTray mini Layout](images/clip/clip03.jpeg)
 
-![PiTray mini Layout](images/clip/clip_mini.jpeg)
-
-![PiTray mini Layout](images/clip/clip02.jpeg)
-
-![PiTray mini Layout](images/clip/clip01.jpeg)
 
 # Features
 
@@ -35,5 +30,34 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
   * Sourcekit PiTray mini
 
 # Instructions
+
+1. Mount the lower jaw to the Din rail
+
+![PiTray mini Layout](images/clip/step01.jpg)
+
+2. Push up to compress the clip spring to make room for the upper jaw
+
+![PiTray mini Layout](images/clip/step02.jpg)
+
+3. While hoding the up pushing, let the upper jaw mount the Din rail
+
+![PiTray mini Layout](images/clip/step03.jpg)
+
+4. Release the clip spring, so PiTray clip is solid mounted on the Din rail
+
+![PiTray mini Layout](images/clip/step04.jpg)
+
+# Gallery
+
+![PiTray mini Layout](images/clip/clip_4b.jpeg)
+
+![PiTray mini Layout](images/clip/clip_coral.jpeg)
+
+![PiTray mini Layout](images/clip/clip_mini.jpeg)
+
+![PiTray mini Layout](images/clip/clip02.jpeg)
+
+![PiTray mini Layout](images/clip/clip01.jpeg)
+
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
