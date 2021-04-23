@@ -114,7 +114,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 -   [PiTray Mini Is a CM4 Companion IO Board for Industrial Applications - Hackster.io](https://www.hackster.io/news/pitray-mini-is-a-cm4-companion-io-board-for-industrial-applications-c4ba79f90e18)
 -   [RPi CM4 powered PiTray opens at $14.50 as more carriers prep for launch - LinuxGizmos.com](http://linuxgizmos.com/rpi-cm4-powered-pitray-opens-at-14-50-as-more-carriers-prep-for-launch/)
 -   [Sourcekit PiTray Mini Review: Brings Ports to Raspberry Pi CM4 - tom's Hardware](https://www.tomshardware.com/reviews/sourcekit-pitray-mini)
-
+-   [The Ultimate Raspberry Pi Compute Module Carrier Board Comparison - upswift](https://www.upswift.io/post/the-ultimate-raspberry-pi-compute-module-carrier-board-comparison)
 # Where to buy ?
 
 <a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
