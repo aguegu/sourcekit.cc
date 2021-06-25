@@ -131,6 +131,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 # See also
 
-<a href="#/PiTray-clip"><img src="images/clip/step00.jpg" alt="PiTray Clip" style="width: 25%;"/></a>
+<a href="#/PiTray-clip"><img src="images/clip/step00.jpg" alt="PiTray Clip" style="width: 20%;"/></a>
+[Sourcekit PiTray Clip](#/PiTray-clip)
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
