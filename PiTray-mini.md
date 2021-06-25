@@ -129,4 +129,8 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 <a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
 
+# See also
+
+<a href="#/PiTray-clip"><img src="images/clip/step00.jpg" alt="PiTray Clip" style="width: 25%;"/></a>
+
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*

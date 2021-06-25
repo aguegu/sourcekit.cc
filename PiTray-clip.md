@@ -22,12 +22,13 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 * Include 2 pcs of 304 Stainless Steel M2.5x4 blots to fasten PCB
 * Brushed Polished Finish and free of rough edges
 * Work for
-  * Raspberry Pi 4B/3A+/3B+/3B/2B/1B+/1A/Zero W/Zero
-  * PINE64 Rock64/PINE H64 Model B  
-  * Hardkernel ODROID C4/C2/C1+
-  * ASUS Tinker Board 2S/2/T/S  
-  * Coral Dev Board
-  * Sourcekit PiTray mini
+  * Raspberry Pi [4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)/[3A+](https://www.raspberrypi.org/products/raspberry-pi-3-model-a-plus/)/[3B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/)/[3B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)/[2B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/)/[1B+](https://www.raspberrypi.org/products/raspberry-pi-1-model-b-plus/)/[1A+](https://www.raspberrypi.org/products/raspberry-pi-1-model-a-plus/)/[Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)/[Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/)
+  * Nvidia [Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) / [Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/)
+  * PINE64 [Rock64](https://www.pine64.org/devices/single-board-computers/rock64/)/[PINE H64 Model B](https://www.pine64.org/pine-h64-ver-b/)
+  * Hardkernel ODROID [C4](https://www.hardkernel.com/shop/odroid-c4/)
+  * ASUS Tinker Board [2S](https://tinker-board.asus.com/product/tinker-board-2s.html)/[2](https://tinker-board.asus.com/product/tinker-board-2.html)/[Edge T](https://tinker-board.asus.com/product/tinker-edge-t.html)/[S](https://tinker-board.asus.com/product/tinker-board-s.html)/[Edge R](https://tinker-board.asus.com/product/tinker-edge-r.html)/[1](https://tinker-board.asus.com/product/tinker-board.html)  
+  * Coral [Dev Board](https://coral.ai/products/dev-board) / [Dev Board Mini](https://coral.ai/products/dev-board-mini)
+  * [Sourcekit PiTray mini](https://sourcekit.cc/#/PiTray-mini)
 
 # Instructions
 
@@ -37,19 +38,19 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 2. Mount the lower jaw to the Din rail
 
-![Step 1](images/clip/step01.jpg)
+<img src="images/clip/step01.jpg" alt="step1" style="width: 25%;"/>
 
 3. Push up to compress the clip spring to make room for the upper jaw
 
-![Step 2](images/clip/step02.jpg)
+<img src="images/clip/step02.jpg" alt="step2" style="width: 25%;"/>
 
-4. While hoding the up pushing, let the upper jaw mount the Din rail
+4. While hoding the up force, let the upper jaw mount the Din rail
 
-![Step 3](images/clip/step03.jpg)
+<img src="images/clip/step03.jpg" alt="step3" style="width: 25%;"/>
 
 5. Release the clip spring, so PiTray clip is solid mounted on the Din rail
 
-![Step 4](images/clip/step04.jpg)
+<img src="images/clip/step04.jpg" alt="step4" style="width: 25%;"/>
 
 # Gallery
 
