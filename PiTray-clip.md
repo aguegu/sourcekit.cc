@@ -63,5 +63,9 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 ![PiTray clip gallery](images/clip/clip01.jpeg)
 
+# Where to buy ?
+
+<a href="https://www.dfrobot.com/product-2345.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
+
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
