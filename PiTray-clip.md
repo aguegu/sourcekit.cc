@@ -30,6 +30,11 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
   * Coral [Dev Board](https://coral.ai/products/dev-board) / [Dev Board Mini](https://coral.ai/products/dev-board-mini)
   * [Sourcekit PiTray mini](https://sourcekit.cc/#/PiTray-mini)
 
+# Discussion and Showcase
+
+- [DIN Rails make Pi mounting easy! - Jeff Geering](https://www.youtube.com/watch?v=T82rYs9uPLE)
+- [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
+
 # Instructions
 
 1. Mount PCB on PiTray clip with the 2 screws attached
@@ -38,24 +43,19 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 2. Mount the lower jaw to the Din rail
 
-<img src="images/clip/step01.jpg" alt="step1" style="width: 25%;"/>
+<img src="images/clip/step01.jpg" alt="step1" style="width: 20%;"/>
 
 3. Push up to compress the clip spring to make room for the upper jaw
 
-<img src="images/clip/step02.jpg" alt="step2" style="width: 25%;"/>
+<img src="images/clip/step02.jpg" alt="step2" style="width: 20%;"/>
 
 4. While hoding the up force, let the upper jaw mount the Din rail
 
-<img src="images/clip/step03.jpg" alt="step3" style="width: 25%;"/>
+<img src="images/clip/step03.jpg" alt="step3" style="width: 20%;"/>
 
 5. Release the clip spring, so PiTray clip is solid mounted on the Din rail
 
-<img src="images/clip/step04.jpg" alt="step4" style="width: 25%;"/>
-
-# Discussion and Showcase
-
-- [DIN Rails make Pi mounting easy! - Jeff Geering](DIN Rails make Pi mounting easy!)
-- [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
+<img src="images/clip/step04.jpg" alt="step4" style="width: 20%;"/>
 
 # Gallery
 
