@@ -52,6 +52,11 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 <img src="images/clip/step04.jpg" alt="step4" style="width: 25%;"/>
 
+# Discussion and Showcase
+
+- [DIN Rails make Pi mounting easy! - Jeff Geering](DIN Rails make Pi mounting easy!)
+- [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
+
 # Gallery
 
 ![PiTray clip gallery](images/clip/clip_4b.jpeg)
