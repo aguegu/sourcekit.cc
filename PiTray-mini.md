@@ -82,6 +82,10 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
 
+# Guides
+
+* [Hidden Feautre: Connect RTC on i2c0](https://github.com/aguegu/sourcekit.cc/discussions/18)
+
 # Troubleshooting
 
 -   USB devices not working
