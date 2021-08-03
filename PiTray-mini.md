@@ -33,6 +33,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 -   1 USB Type-C connector for powering and also programming eMMC variants of CM4
 -   1 Boot Mode Switch for programming mode and normal mode
 -   1 RUN button for easy reset
+-   1 i2c (i2c0) pads
 -   1 Red Power LED
 -   1 Green Activity LED
 -   2 mounting holes for CM4
