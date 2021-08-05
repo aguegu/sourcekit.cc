@@ -128,4 +128,12 @@ dtoverlay=dwc2,dr_mode=host
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](images/PiTray-mini-with-cm4-lite.jpg)
 
+<a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
+
+# 其它产品
+
+<a href="#/PiTray-clip"><img src="images/clip/step00.jpg" alt="PiTray Clip" style="width: 20%;"/></a>
+
+[Sourcekit PiTray Clip](#/PiTray-clip)
+
 *Raspberry Pi 是属于树莓派基金会的商标*

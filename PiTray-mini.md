@@ -85,7 +85,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 # Guides
 
-* [Hidden Feautre: Connect RTC on i2c0](https://github.com/aguegu/sourcekit.cc/discussions/18)
+* [Hidden Feature: Connect RTC on i2c0](https://github.com/aguegu/sourcekit.cc/discussions/18)
 
 # Troubleshooting
 
@@ -132,7 +132,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](images/PiTray-mini-with-cm4-lite.jpg)
 
-<a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
+<a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
 
 # See also
 
