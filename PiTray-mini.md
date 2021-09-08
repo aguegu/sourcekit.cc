@@ -33,7 +33,6 @@ It provides an excellent way to bring similar development experience of Raspberr
 -   1 USB Type-C connector for powering and also programming eMMC variants of CM4
 -   1 Boot Mode Switch for programming mode and normal mode
 -   1 RUN button for easy reset
--   1 i2c (i2c0) pads
 -   1 Red Power LED
 -   1 Green Activity LED
 -   2 mounting holes for CM4
@@ -85,7 +84,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 # Guides
 
-* [Hidden Feature: Connect RTC on i2c0](https://github.com/aguegu/sourcekit.cc/discussions/18)
+* [Hidden Feautre: Connect RTC on i2c0](https://github.com/aguegu/sourcekit.cc/discussions/18)
 
 # Troubleshooting
 
@@ -121,6 +120,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 -   [Sourcekit PiTray Mini Review: Brings Ports to Raspberry Pi CM4 - tom's Hardware](https://www.tomshardware.com/reviews/sourcekit-pitray-mini)
 -   [The Ultimate Raspberry Pi Compute Module Carrier Board Comparison - upswift](https://www.upswift.io/post/the-ultimate-raspberry-pi-compute-module-carrier-board-comparison)
 -   [Sourcekit PiTray Mini Review -  Your Exclusive Cart](https://www.youtube.com/watch?v=_Fp6vhw5LOo)
+-   [LR_68](https://twitter.com/LR68_)[Case for 3D Print](https://www.thingiverse.com/thing:4946826) [With Fan](https://www.thingiverse.com/thing:4948438)
 
 # Where to buy ?
 
@@ -132,7 +132,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](images/PiTray-mini-with-cm4-lite.jpg)
 
-<a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
+<a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
 
 # See also
 
