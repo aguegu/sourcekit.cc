@@ -71,13 +71,12 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 # Where to buy ?
 
-<a href="https://www.dfrobot.com/product-2345.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
+<a href="https://www.dfrobot.com/product-2345.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot"></a>
 
 <a href="https://www.mouser.com/ProductDetail/DFRobot/FIT0807?qs=pBJMDPsKWf3PJYZ%252BTaHZSA%3D%3D" target="_blank"><img src="images/mouser.jpg" alt="Buy from Mouser" title="Mouser"></a>
 
 <a href="https://www.robotshop.com/en/dfrobot-pitray-clip-din-rail-mount-compatible-w-raspberry-pi-jetson-nano.html" target="_blank"><img src="images/robotshop.webp" alt="Buy from RobotShop" title="RobotShop"></a>
 
-
-<a href="https://core-electronics.com.au/pitray-clip-din-rail-mount-compatible-for-raspberry-pi-and-nvidia-jetson-nano.html" target="_blank"><img src="images/clip/logo.webp" alt="Buy from Core Electronics" title="Core Electronics" /></a>
+<a href="https://core-electronics.com.au/pitray-clip-din-rail-mount-compatible-for-raspberry-pi-and-nvidia-jetson-nano.html" target="_blank"><img src="images/clip/logo.webp" alt="Buy from Core Electronics" title="Core Electronics"></a>
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
