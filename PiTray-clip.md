@@ -79,4 +79,6 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 <a href="https://core-electronics.com.au/pitray-clip-din-rail-mount-compatible-for-raspberry-pi-and-nvidia-jetson-nano.html" target="_blank"><img src="images/clip/logo.webp" alt="Buy from Core Electronics" title="Core Electronics"></a>
 
+<a href="https://www.ruten.com.tw/item/show?22136004201012" target="_blank"><img src="images/ruten.jpg" alt="Buy from Ruten" title="露天拍卖" /></a>
+
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*
