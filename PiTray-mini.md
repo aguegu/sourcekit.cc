@@ -25,7 +25,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 # Specification
 
 -   1 CM4 socket
--   1 set of standard Raspberry Pi HAT connectors
+-   1 set of standard Raspberry Pi HAT conne
 -   1 Standard HDMI 2.0 connector
 -   1 Gigabit Ethernet RJ45 socket
 -   1 native USB 2.0 connector
@@ -124,19 +124,19 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 # Where to buy ?
 
-<a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot" /></a>
-<a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch" /></a>
-<a href="https://thepihut.com/collections/latest-raspberry-pi-products/products/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/thepihub.jpg" alt="Buy from the PiHub" title="thePiHub" /></a>
-<a href="https://www.mouser.com/ProductDetail/DFRobot/DFR0827?qs=DRkmTr78QAQr9inYZfhAoA%3D%3D" target="_blank"><img src="images/mouser.jpg" alt="Buy from Mouser" title="Mouser" /></a>
-<a href="https://raspberrypi.dk/en/product/pitray-mini-carrier-board-for-raspberry-pi-cm4/" target="_blank"><img src="images/Jkollerup.jpg" alt="Buy from raspberrypi.dk" title="raspberrypi.dk" /></a>
+<a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot"></a>
+<a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch"></a>
+<a href="https://thepihut.com/collections/latest-raspberry-pi-products/products/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/thepihub.jpg" alt="Buy from the PiHub" title="thePiHub"></a>
+<a href="https://www.mouser.com/ProductDetail/DFRobot/DFR0827?qs=DRkmTr78QAQr9inYZfhAoA%3D%3D" target="_blank"><img src="images/mouser.jpg" alt="Buy from Mouser" title="Mouser"></a>
+<a href="https://raspberrypi.dk/en/product/pitray-mini-carrier-board-for-raspberry-pi-cm4/" target="_blank"><img src="images/Jkollerup.jpg" alt="Buy from raspberrypi.dk" title="raspberrypi.dk"></a>
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](images/PiTray-mini-with-cm4-lite.jpg)
 
-<a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px" /></a>
+<a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px"></a>
 
 # See also
 
-<a href="#/PiTray-clip"><img src="images/clip/step00.jpg" alt="PiTray Clip" style="width: 20%;"/></a>
+<a href="#/PiTray-clip"><img src="images/clip/step00.jpg" alt="PiTray Clip" style="width: 20%;></a>
 
 [Sourcekit PiTray Clip](#/PiTray-clip)
 

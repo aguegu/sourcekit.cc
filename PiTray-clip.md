@@ -78,6 +78,10 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 <a href="https://www.mouser.com/ProductDetail/DFRobot/FIT0807?qs=pBJMDPsKWf3PJYZ%252BTaHZSA%3D%3D" target="_blank"><img src="images/mouser.jpg" alt="Buy from Mouser" title="Mouser"></a>
 
+<a href="https://www.digikey.be/product-detail/en/dfrobot/FIT0807/1738-FIT0807-ND/14824944" target="_blank"><img src="images/logo_dk.webp" alt="Buy from digikey.be" title="digikey.be"></a>
+
+<a href="https://thepihut.com/products/pitray-clip-din-rail-mount-for-raspberry-pi" target="_blank"><img src="images/thepihub.jpg" alt="Buy from the PiHub" title="thePiHub"></a>
+
 <a href="https://www.robotshop.com/en/dfrobot-pitray-clip-din-rail-mount-compatible-w-raspberry-pi-jetson-nano.html" target="_blank"><img src="images/robotshop.webp" alt="Buy from RobotShop" title="RobotShop"></a>
 
 <a href="https://core-electronics.com.au/pitray-clip-din-rail-mount-compatible-for-raspberry-pi-and-nvidia-jetson-nano.html" target="_blank"><img src="images/CoreEletronics.webp" alt="Buy from Core Electronics" title="Core Electronics"></a>
