@@ -35,6 +35,8 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 - [DIN Rails make Pi mounting easy! - Jeff Geering](https://www.youtube.com/watch?v=T82rYs9uPLE)
 - [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T82rYs9uPLE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Instructions
 
 1. Mount PCB on PiTray clip with the 2 screws attached
@@ -68,6 +70,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 ![PiTray clip gallery](images/clip/clip02.jpeg)
 
 ![PiTray clip gallery](images/clip/clip01.jpeg)
+
 
 # Where to buy ?
 
