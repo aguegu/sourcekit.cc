@@ -121,6 +121,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 -   [The Ultimate Raspberry Pi Compute Module Carrier Board Comparison - upswift](https://www.upswift.io/post/the-ultimate-raspberry-pi-compute-module-carrier-board-comparison)
 -   [Sourcekit PiTray Mini Review -  Your Exclusive Cart](https://www.youtube.com/watch?v=_Fp6vhw5LOo)
 -   [@LR_68](https://twitter.com/LR68_) - [Case for 3D Printing](https://www.thingiverse.com/thing:4946826) / [With Fan](https://www.thingiverse.com/thing:4948438)
+-   [ ElectricBrain - Compute Module 4 based cluster node](https://www.electricbrain.com.au/pages/desktop-blade-center/cm4-cluster-node.php)
 
 # Where to buy ?
 

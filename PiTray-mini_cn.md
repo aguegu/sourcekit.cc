@@ -118,7 +118,7 @@ dtoverlay=dwc2,dr_mode=host
 -   [RPi CM4 powered PiTray opens at $14.50 as more carriers prep for launch - LinuxGizmos.com](http://linuxgizmos.com/rpi-cm4-powered-pitray-opens-at-14-50-as-more-carriers-prep-for-launch/)
 -   [Sourcekit PiTray Mini Review: Brings Ports to Raspberry Pi CM4 - tom's Hardware](https://www.tomshardware.com/reviews/sourcekit-pitray-mini)
 -   [The Ultimate Raspberry Pi Compute Module Carrier Board Comparison - upswift](https://www.upswift.io/post/the-ultimate-raspberry-pi-compute-module-carrier-board-comparison)
-
+-   [ ElectricBrain - Compute Module 4 based cluster node](https://www.electricbrain.com.au/pages/desktop-blade-center/cm4-cluster-node.php)
 # 购买通道
 
 <a href="https://www.dfrobot.com.cn/goods-3035.html" target="_blank"><img src="images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot"></a>
