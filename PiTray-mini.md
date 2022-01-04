@@ -44,7 +44,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 # Compliance
 
-- [RoHS(SGS)](https://rsts.cn.sgs.com/zh-cn/CheckMarkView_cn.asp?id=XMNEC2101876101&key=91CAE44E7642198F5393412DF730D813)
+- [RoHS (issued by SGS)](https://rsts.cn.sgs.com/zh-cn/CheckMarkView_cn.asp?id=XMNEC2101876101&key=91CAE44E7642198F5393412DF730D813)
 
 # Get started
 
