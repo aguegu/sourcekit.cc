@@ -43,6 +43,10 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 - 输入电源: +5V
 - [外形尺寸](PiTray-mini-mech.pdf ":ignore")
 
+# 产品认证
+
+- [RoHS(SGS)](https://rsts.cn.sgs.com/zh-cn/CheckMarkView_cn.asp?id=XMNEC2101876101&key=91CAE44E7642198F5393412DF730D813)
+
 # 入门教程
 
 ## CM4 Lite （无板载 eMMC）

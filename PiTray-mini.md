@@ -42,6 +42,10 @@ It provides an excellent way to bring similar development experience of Raspberr
 -   Dimensions: 85 mm x 56 mm
 -   [PiTray mini Mechanical Drawings](PiTray-mini-mech.pdf ":ignore")
 
+# Compliance
+
+- [RoHS (issued by SGS)](https://rsts.cn.sgs.com/zh-cn/CheckMarkView_cn.asp?id=XMNEC2101876101&key=91CAE44E7642198F5393412DF730D813)
+
 # Get started
 
 ## CM4 without eMMC (Lite)
