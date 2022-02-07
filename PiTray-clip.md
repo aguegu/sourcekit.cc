@@ -3,7 +3,7 @@ Sourcekit&reg; PiTray clip
 
 Version: 1.0.0
 
-Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), Guangcheng Zhan
+Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), Guangcheng Zhan, Lichao Chen[<span class="mdi mdi-youtube" style="color: #000;"></span>](https://space.bilibili.com/10881694)
 
 # Description
 
