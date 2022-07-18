@@ -133,6 +133,9 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 <a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch"></a>
 <a href="https://thepihut.com/collections/latest-raspberry-pi-products/products/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="images/thepihub.jpg" alt="Buy from the PiHub" title="thePiHub"></a>
 <a href="https://www.mouser.com/ProductDetail/DFRobot/DFR0827?qs=DRkmTr78QAQr9inYZfhAoA%3D%3D" target="_blank"><img src="images/mouser.jpg" alt="Buy from Mouser" title="Mouser"></a>
+
+<a href="https://www.digikey.com/en/products/detail/dfrobot/DFR0827/13978517" target="_blank"><img src="images/logo_dk.webp" alt="Buy from digikey.com" title="digikey.com"></a>
+
 <a href="https://raspberrypi.dk/en/product/pitray-mini-carrier-board-for-raspberry-pi-cm4/" target="_blank"><img src="images/Jkollerup.jpg" alt="Buy from raspberrypi.dk" title="raspberrypi.dk"></a>
 <a href="https://core-electronics.com.au/pitray-mini-for-raspberry-pi-compute-module-4.html" target="_blank"><img src="images/CoreEletronics.jpg" alt="Buy from Core Electronics" title="Core Electronics"></a>
 
