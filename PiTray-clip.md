@@ -29,6 +29,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
   * ASUS Tinker Board [2S](https://tinker-board.asus.com/product/tinker-board-2s.html)/[2](https://tinker-board.asus.com/product/tinker-board-2.html)/[Edge T](https://tinker-board.asus.com/product/tinker-edge-t.html)/[S](https://tinker-board.asus.com/product/tinker-board-s.html)/[Edge R](https://tinker-board.asus.com/product/tinker-edge-r.html)/[1](https://tinker-board.asus.com/product/tinker-board.html)  
   * Coral [Dev Board](https://coral.ai/products/dev-board) / [Dev Board Mini](https://coral.ai/products/dev-board-mini)
   * [Sourcekit PiTray mini](https://sourcekit.cc/#/PiTray-mini)
+  * [Intel UP 4000](https://up-board.org/up-4000/)
 
 # Discussion and Showcase
 
