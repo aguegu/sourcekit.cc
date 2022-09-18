@@ -11,7 +11,7 @@ Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings sple
 
 # Safety Precautions
 
-* Keep away from children. Adult guidance is necessary for children when using this product.
+* Keep away from children. Adult guidance is necessary for children using Circus Goggles.
 
 * Do not stare at LEDs when the light is on. It may hurt your eye sight.
 
@@ -19,9 +19,7 @@ Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings sple
 
 * If Circus Goggles come into contact with water, place in a dry location at room temperature, on a soft absorbent towel and allow to dry thoroughly. Do not operate the unit until it is completely free of moisture.
 
-* Do not store charging adaptor where temperatures may exceed 122°F (50°C).
-
-* Use only an appropriate USB power outlet when charging the Circus Goggles. Do not attempt to charge the torch with an adaptor that is not compatible as this could result in a fire, damage to the torch or personal injury.
+* Use only an appropriate USB power outlet or PC USB panel to charge the Circus Goggles.
 
 # Features
 
@@ -35,5 +33,26 @@ Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings sple
 * Route Switch
 * Microphone input as variant
 * Battery Charge Indicator LED
+* Firmeware upgradable online
 
-# Instruction
+# Instructions
+
+* Turn on the power switch. If no LED is light up, the battery could be dead, please charge it with a micro USB cable for a while. Some LED should light up when it is powered by USB cable. The battery is being charged at the same time.
+
+* Tune the 5 Knobs: Division / Color / Brightness / Speed / Pattern or Press the Route Switch Button to the effects you like.
+
+# Tuning Guideline
+
+With all these combination from Knobs and routes, Sourcekit&reg; provides thousands of effects without help from 3rd parties, like an remote control, PC or Mobile Application. Inspired by electronic musical instruments, Sourcekit Designers want Circus Goggles to be a standalone product with simple and budget design. With the entry barriers lowered, kids could have fun with easily and explore the led movement or color pattern on their own.
+
+Just remember to dim the LED when it gets too bright to look into or slow down the speed when it got too flashing.
+
+# Power Consumption
+
+By pressing the Battery Check button down, Circus Goggles would show up a 3 digits voltage meter (about right) of the battery, with which we could calculate how much battery life left.
+
+Battery Voltage = ( RED LED count ) * 1 + ( Green LED Count ) * 0.1 + ( Blue LED Count ) * 0.01 （volt）
+
+The voltage is about 4.20v when fully charged and 3.40v when stop discharging.
+
+With the battery capacity const, the battery life depends on how the LEDs effects arranged. So the less led is on, the closer the color is to primary Color (Red, Green, Blue), the less current it required.
