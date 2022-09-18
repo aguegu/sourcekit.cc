@@ -9,6 +9,10 @@ Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span
 
 Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings splendid animation effects simply by turing the 5 Knobs onboards.
 
+# Layout
+
+![Circus Goggles Layout](images/CircusGoggles/CircusGogglesInstruction.png)
+
 # Safety Precautions
 
 * Keep away from children. Adult guidance is necessary for children using Circus Goggles.
