@@ -64,7 +64,15 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 # Gallery
 
-![PiTray clip gallery](images/clip/clip_4b.jpeg)
+![PiTray clip with Raspberry Pi 5](images/clip/clip_pi5_1.jpg)
+
+![PiTray clip with Raspberry Pi 5 with official active cooler](images/clip/clip_pi5_2.jpg)
+
+![PiTray clip with Raspberry Pi 5 with NVME SSD Hat](images/clip/clip_pi5_3.jpg)
+
+![PiTray clip with Raspberry Pi 5 with active cooler and NVME Hat](images/clip/clip_pi5_4.jpg)
+
+![PiTray clip with Raspberry Pi 4B](images/clip/clip_4b.jpeg)
 
 ![PiTray clip gallery](images/clip/clip_coral.jpeg)
 
