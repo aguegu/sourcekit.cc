@@ -11,7 +11,7 @@ Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings sple
 
 # Layout
 
-![Circus Goggles Layout](images/CircusGoggles/CircusGogglesInstruction.png)
+![Circus Goggles Layout](/images/CircusGoggles/CircusGogglesInstruction.png)
 
 # Safety Precautions
 

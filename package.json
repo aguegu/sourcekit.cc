@@ -1,0 +1,29 @@
+{
+  "name": "sourcekit.cc",
+  "version": "0.1.0",
+  "description": "spa for soucekit.cc",
+  "homepage": "https://github.com/aguegu/sourcekit.cc#readme",
+  "bugs": {
+    "url": "https://github.com/aguegu/sourcekit.cc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aguegu/sourcekit.cc.git"
+  },
+  "license": "ISC",
+  "author": "aGuegu <weihong.guan@gmail.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docsify serve",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^2.0.0-alpha.16"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47"
+  }
+}
