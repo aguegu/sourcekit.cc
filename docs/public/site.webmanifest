@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "sourcekit.cc",
+    "short_name": "sourcekit",
     "icons": [
         {
             "src": "/images/android-chrome-192x192.png",

@@ -7,23 +7,23 @@ Language: English, [简体中文](PiTray-mini_cn)
 
 Designer: Shengyuan Fang (方圣源), Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN)
 
-# Overview
+## Overview
 
 Sourcekit® PiTray mini is a companion IO board for Raspberry Pi Compute Module 4 (sold separately). It is designed for use both as a development system for Compute Module 4 (CM4) and as an embedded board integrated into end products.
 
 It provides an excellent way to bring similar development experience of Raspberry Pi 4B to CM4. So users could upgrade their system or setup from the standard Raspberry Pi 4B to CM4 seamlessly. With capability to flash OS image to eMMC on CM4, PiTray mini serves as a budget alternative to [Raspberry Pi Compute Module 4 IO Board](https://www.raspberrypi.org/products/compute-module-4-io-board/).
 
-# Layout
+## Layout
 
 ![PiTray mini Layout](/images/PiTray-mini-layout.jpg)
 
-# Features
+## Features
 
 -   Compatible with all variants of CM4, no matter whether it uses onboard eMMC or micro SD card
 -   Capable to flash operation system image to eMMC on CM4 with regular approaches as same as the official CMIO board, no extra tools required
 -   Same dimensions and mounting holes compared to Model B Raspberry Pi, such as 3B/3B+/4B
 
-# Specification
+## Specification
 
 -   1 CM4 socket
 -   1 set of standard Raspberry Pi HAT conne
@@ -43,13 +43,13 @@ It provides an excellent way to bring similar development experience of Raspberr
 -   Dimensions: 85 mm x 56 mm
 -   [PiTray mini Mechanical Drawings](PiTray-mini-mech.pdf ":ignore")
 
-# Compliance
+## Compliance
 
 - [RoHS (issued by SGS)](https://rsts.cn.sgs.com/zh-cn/CheckMarkView_cn.asp?id=XMNEC2101876101&key=91CAE44E7642198F5393412DF730D813)
 
-# Get started
+## Get started
 
-## CM4 without eMMC (Lite)
+### CM4 without eMMC (Lite)
 
 1.  Got a micro SD card ready with operating system compatiable with raspberry pi, like NOOB, Raspbian or Ubuntu. (See also [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
 
@@ -63,7 +63,7 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 6.  Power PiTray with a 15W USB-C power supply. With the power led on, you are good to go. Enjoy & have fun.
 
-## CM4 with eMMC (Flashing Guide)
+### CM4 with eMMC (Flashing Guide)
 
 1.  Power Off. Unplug micro SD card from PiTray if any.
 
@@ -87,11 +87,11 @@ It provides an excellent way to bring similar development experience of Raspberr
 
 * For CM4 with eMMC that already filled with OS image, just start from Step 8 for regular usage.
 
-# Guides
+## Guides
 
 * [Hidden Feautre: Connect RTC on i2c0](https://github.com/aguegu/sourcekit.cc/discussions/18)
 
-# Troubleshooting
+## Troubleshooting
 
 -   USB devices not working
 
@@ -113,7 +113,7 @@ For experienced raspberry pi users, this step could be done right after the OS i
 
 For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `OFF`. But in this case USB devices on this USB 2.0 port would not work because the USB interface is running at the guest mode. `eMMC Boot` switch has to be at position `ON` to enable USB function in host mode.
 
-# Discussion and Show Cases
+## Discussion and Show Cases
 
 -   [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
 -   [Prototype release on @BG5USN](https://twitter.com/BG5USN/status/1328331941536477189)
@@ -128,7 +128,7 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 -   [@LR_68](https://twitter.com/LR68_) - [Case for 3D Printing](https://www.thingiverse.com/thing:4946826) / [With Fan](https://www.thingiverse.com/thing:4948438)
 -   [ ElectricBrain - Compute Module 4 based cluster node](https://www.electricbrain.com.au/pages/desktop-blade-center/cm4-cluster-node.php)
 
-# Where to buy ?
+## Where to buy ?
 
 <a href="https://www.dfrobot.com/product-2196.html" target="_blank"><img src="/images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot"></a>
 <a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="/images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch"></a>

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 
+const tagId = 'G-TK6CPWVPRE';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "docs",
@@ -7,6 +8,21 @@ export default defineConfig({
 
   title: "sourcekit.cc",
   description: "Fuzhou Sourcekit Electronics Ltd",
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    [
+      'script',
+      { async: '', src: `https://www.googletagmanager.com/gtag/js?id=${tagId}` }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', ${tagId});`
+    ]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

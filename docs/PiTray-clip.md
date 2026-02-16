@@ -1,11 +1,11 @@
-Sourcekit PiTray clip
+Sourcekit®  PiTray clip
 ===
 
 Version: 1.0.0
 
 Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), Guangcheng Zhan, Lichao Chen [<span class="mdi mdi-youtube" style="color: #1da1f2;"></span>](https://space.bilibili.com/10881694)
 
-# Description
+## Description
 
 Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like Raspberry Pi. Assembled of a 304 Stainless Steel blended plate and nylon clip with spring, it provides a simple, quick, strong and durable Din Rail installation solution suitable for industrial setup, home automation application as well as cluster building.
 
@@ -14,7 +14,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 ![PiTray mini Layout](/images/clip/clip03.jpeg)
 
 
-# Features
+## Features
 
 - Compatible with IEC/EN 60715 Din Rails
 - 304 Stainless Steel PCB Rack with thickness of 1.5 mm
@@ -31,7 +31,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
   * [Sourcekit PiTray mini](https://sourcekit.cc/#/PiTray-mini)
   * [Intel UP 4000](https://up-board.org/up-4000/)
 
-# Discussion and Showcase
+## Discussion and Showcase
 
 - [DIN Rails make Pi mounting easy! - Jeff Geering](https://www.youtube.com/watch?v=T82rYs9uPLE)
 
@@ -40,7 +40,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 - [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
 - [CadQuery model for PiTray Clip - Seth Fischer](https://cq-electronics.readthedocs.io/en/latest/sourcekit/pitray-clip.html)
 
-# Instructions
+## Instructions
 
 1. Mount PCB on PiTray clip with the 2 screws attached
 
@@ -62,7 +62,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 <img src="/images/clip/step04.jpg" alt="step4" style="width: 20%;"/>
 
-# Gallery
+## Gallery
 
 ![PiTray clip with Raspberry Pi 5](/images/clip/clip_pi5_1.jpg)
 
@@ -83,7 +83,7 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 ![PiTray clip gallery](/images/clip/clip01.jpeg)
 
 
-# Where to buy ?
+## Where to buy ?
 
 <a href="https://www.dfrobot.com/product-2345.html" target="_blank"><img src="/images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot"></a>
 
