@@ -1,4 +1,5 @@
-# Sourcekit® PiTray mini
+Sourcekit® PiTray mini
+===
 
 版本：1.1.0
 
@@ -12,17 +13,17 @@ Sourcekit® PiTray mini是专为搭建搭建树莓派（Raspberry Pi, RPi）第4
 
 PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能实现从 4B 到 CM4 平台无缝升级。它提供直接对 CM4 板载 eMMC 烧录的支持，所以也能作为经济简易的[官方 CMIO 板](https://www.raspberrypi.org/products/compute-module-4-io-board/)的替代选择。
 
-# 平面图
+## 平面图
 
 ![PiTray mini Layout](/images/PiTray-mini-layout.jpg)
 
-# 特点
+## 特点
 
 -   兼容所有类型的 CM4，无论其是否使用板载 eMMC 或是外置 Micro SD 卡作为主存储设备；
 -   支持对 CM4 板载 eMMC 的烧录（方法和官方教程相同），而且可以一键切换，更加方便易用；
 -   具备和 B 型树莓派（3B/3B+/4B）同样的外形轮廓和定位孔；
 
-# 接口及规格
+## 接口及规格
 
 - 1个 CM4 接口
 - 1个树莓派标准 HAT 接口
@@ -43,13 +44,13 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 - 输入电源: +5V
 - [外形尺寸](PiTray-mini-mech.pdf ":ignore")
 
-# 产品认证
+## 产品认证
 
 - [RoHS(SGS)](https://rsts.cn.sgs.com/zh-cn/CheckMarkView_cn.asp?id=XMNEC2101876101&key=91CAE44E7642198F5393412DF730D813)
 
-# 入门教程
+## 入门教程
 
-## CM4 Lite （无板载 eMMC）
+### CM4 Lite （无板载 eMMC）
 
 1.  准备一张已经烧录树莓派兼容操作系统（如 Raspbian，NOOB，Ubuntu等）的 Micro SD 卡；(参考 [1](https://www.raspberrypi.org/software/) [2](https://www.raspberrypi.org/software/operating-systems/) [3](https://www.raspberrypi.org/documentation/installation/installing-images/) [4](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up))
 
@@ -63,7 +64,7 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 
 6.  通过一条功率足够15W（5V 3A）的 USB Type-C 数据线为 PiTray mini 供电。当看到红色电源 LED 亮起，绿色 LED 闪烁，表明 CM4 已经正常启动。
 
-## 带板载 eMMC 的 CM4 (烧录指南)
+### 带板载 eMMC 的 CM4 (烧录指南)
 
 1.  断开电源，如果 micro SD 卡槽内有卡则将其移除。
 
@@ -87,7 +88,7 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 
 * 对于在板载 eMMC 上已经烧录好操作系统的 CM4 来说，直接从第8步开始即可。
 
-# 故障排查
+## 故障排查
 
 -   USB 外设不工作
 
@@ -111,7 +112,7 @@ dtoverlay=dwc2,dr_mode=host
 
 对于板载 eMMC 的 CM4，当 `eMMC Boot` 置于 `OFF` 时，操作系统仍可以正常启动。但是此时 USB 外设无法工作，因为此时 CM4 的 USB 接口为`客户机`模式。所以，务必将 `eMMC Boot` 置于 `ON`以保证 USB 接口工作在 `主机`模式。
 
-# 讨论与展示
+## 讨论与展示
 
 -   [论坛 (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
 -   [Prototype release on @BG5USN](https://twitter.com/BG5USN/status/1328331941536477189)
@@ -123,7 +124,7 @@ dtoverlay=dwc2,dr_mode=host
 -   [Sourcekit PiTray Mini Review: Brings Ports to Raspberry Pi CM4 - tom's Hardware](https://www.tomshardware.com/reviews/sourcekit-pitray-mini)
 -   [The Ultimate Raspberry Pi Compute Module Carrier Board Comparison - upswift](https://www.upswift.io/post/the-ultimate-raspberry-pi-compute-module-carrier-board-comparison)
 -   [ ElectricBrain - Compute Module 4 based cluster node](https://www.electricbrain.com.au/pages/desktop-blade-center/cm4-cluster-node.php)
-# 购买通道
+## 购买通道
 
 <a href="https://www.dfrobot.com.cn/goods-3035.html" target="_blank"><img src="/images/dfrobot.jpg" alt="Buy from DFRobot" title="DFRobot"></a>
 <a href="https://www.maker-shop.ch/pitray-mini-for-raspberry-pi-compute-module-4" target="_blank"><img src="/images/makershop-ch.jpg" alt="Buy from maker-shop.ch" title="MakerShop.ch"></a>
@@ -137,11 +138,5 @@ dtoverlay=dwc2,dr_mode=host
 ![PiTray mini with Raspberry Compute Module 4 Lite](/images/PiTray-mini-with-cm4-lite.jpg)
 
 <a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="/images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px"></a>
-
-# 其它产品
-
-<a href="#/PiTray-clip"><img src="/images/clip/step00.jpg" alt="PiTray Clip" style="width: 20%;"></a>
-
-[Sourcekit PiTray Clip](#/PiTray-clip)
 
 *Raspberry Pi 是属于树莓派基金会的商标*

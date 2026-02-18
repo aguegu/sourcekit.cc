@@ -5,15 +5,15 @@ Version: 1.0.0 (3842)
 
 Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), Shengyuan Fang (方圣源)
 
-# Overview
+## Overview
 
 Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings splendid animation effects simply by turing the 5 Knobs onboards.
 
-# Layout
+## Layout
 
 ![Circus Goggles Layout](/images/CircusGoggles/CircusGogglesInstruction.png)
 
-# Safety Precautions
+## Safety Precautions
 
 * Keep away from children. Adult guidance is necessary for children using Circus Goggles.
 
@@ -25,7 +25,7 @@ Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings sple
 
 * Use only an appropriate USB power outlet or PC USB panel to charge the Circus Goggles.
 
-# Features
+## Features
 
 * 32 WS2812 RGB LED shaped in 2 full circles
 * 5 knobs to adjust animations
@@ -39,13 +39,13 @@ Sourcekit&reg; Circus Goggles are RGB LED goggles with 32 Pixels. It brings sple
 * Battery Charge Indicator LED
 * Firmeware upgradable online
 
-# Instructions
+## Instructions
 
 * Turn on the power switch. If no LED is light up, the battery could be dead, please charge it with a micro USB cable for a while. Some LED should light up when it is powered by USB cable. The battery is being charged at the same time.
 
 * Tune the 5 Knobs, Section / Color / Brightness / Speed / Pattern, and press the Route Switch Button to the effects you like.
 
-# Tuning Guideline
+## Tuning Guideline
 
 With all these combination from Knobs and routes, Sourcekit&reg; provides thousands of effects without help from 3rd parties, like an remote control, PC or Mobile Application. Inspired by electronic musical instruments, Sourcekit Designers want Circus Goggles to be a standalone product with simple and budget design. With the entry barriers lowered, kids could have fun with easily and explore the led movement or color pattern on their own.
 
@@ -67,7 +67,7 @@ Color / Brightness and Speed Knobs work straight forwards.
 
 `Route Selection Button` has 4 routes in current firmware. `Route` is the way how these 32 LEDs organized in sequel. It would make the animations look totally different from the default Route.
 
-# Power Consumption
+## Power Consumption
 
 By pressing the Battery Check button down, Circus Goggles would show up a 3 digits voltage meter (about right) of the battery, with which we could calculate how much battery life left.
 

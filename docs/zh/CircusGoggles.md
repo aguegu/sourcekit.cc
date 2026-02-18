@@ -5,15 +5,15 @@ Sourcekit&reg; Circus Goggles
 
 设计师: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), Shengyuan Fang (方圣源)
 
-# 概述
+## 概述
 
-Sourcekit&reg; Circus Goggles 是一款具有 32 像素的 RGB LED 护目镜。只需转动板上的 5 个旋钮，即可带来绚丽的动画效果。
+Sourcekit&reg; Circus Goggles 是一款具有 32 像素的 RGB LED 装饰玩具。只需转动板上的 5 个旋钮，即可带来绚丽的动画效果。
 
-# 布局
+## 布局
 
 ![Circus Goggles 布局](/images/CircusGoggles/CircusGogglesInstruction.png)
 
-# 安全注意事项
+## 安全注意事项
 
 * 远离儿童。儿童使用 Circus Goggles 需要成人指导。
 * 灯光亮起时不要直视 LED。可能会伤害您的视力。
@@ -21,7 +21,7 @@ Sourcekit&reg; Circus Goggles 是一款具有 32 像素的 RGB LED 护目镜。�
 * 如果 Circus Goggles 接触水，请将其放在室温下的干燥位置，放在柔软的吸水毛巾上，让其彻底干燥。在完全无水分之前不要操作设备。
 * 仅使用适当的 USB 电源插座或 PC USB 面板为 Circus Goggles 充电。
 
-# 特性
+## 特性
 
 * 32 个 WS2812 RGB LED 排列成 2 个完整的圆圈
 * 5 个旋钮可调节动画效果
@@ -35,12 +35,12 @@ Sourcekit&reg; Circus Goggles 是一款具有 32 像素的 RGB LED 护目镜。�
 * 电池充电指示灯 LED
 * 可在线升级固件
 
-# 使用说明
+## 使用说明
 
 * 打开电源开关。如果没有 LED 亮起，电池可能已耗尽，请使用 micro USB 电缆充电一段时间。通过 USB 电缆供电时，一些 LED 应该会亮起。电池同时正在充电。
 * 调节 5 个旋钮：部分/颜色/亮度/速度/图案，然后按下路径切换按钮选择您喜欢的效果。
 
-# 调节指南
+## 调节指南
 
 通过旋钮和路径的所有这些组合，Sourcekit&reg; 提供了数千种效果，无需第三方帮助，如遥控器、PC 或移动应用程序。受电子乐器的启发，Sourcekit 设计师希望 Circus Goggles 成为一款具有简单和经济设计的独立产品。随着入门门槛的降低，孩子们可以轻松享受乐趣，并自行探索 LED 运动或颜色图案。
 
@@ -59,7 +59,7 @@ Sourcekit&reg; Circus Goggles 是一款具有 32 像素的 RGB LED 护目镜。�
 
 `路径选择按钮`在当前固件中有 4 条路径。`路径`是这 32 个 LED 按顺序组织的方式。它会使动画看起来与默认路径完全不同。
 
-# 功耗
+## 功耗
 
 按下电池检查按钮，Circus Goggles 会显示电池的 3 位电压表（大致正确），通过它可以计算剩余电池寿命。
 

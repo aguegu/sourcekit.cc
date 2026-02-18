@@ -24,7 +24,7 @@ export default defineConfig({
             items: [
               { text: 'PiTray clip', link: '/PiTray-clip' },
               { text: 'PiTray mini', link: '/PiTray-mini' },
-              { text: 'CircusGoggles', link: '/CircusGoggles' },
+              // { text: 'Circus Goggles', link: '/CircusGoggles' },
             ]
           }
         ],
