@@ -68,11 +68,15 @@ sourcekit.cc/
 │   │   ├── images/         # Product images and logos
 │   │   ├── CNAME           # Custom domain configuration
 │   │   └── *.pdf           # Product documentation PDFs
-│   ├── index.md            # Homepage
-│   ├── PiTray-mini.md      # PiTray mini product documentation
-│   ├── PiTray-mini_cn.md   # Chinese version
-│   ├── PiTray-clip.md      # PiTray clip product documentation
-│   └── CircusGoggles.md    # CircusGoggles product documentation
+│   ├── index.md            # English homepage
+│   ├── PiTray-mini.md      # PiTray mini product documentation (English)
+│   ├── PiTray-clip.md      # PiTray clip product documentation (English)
+│   ├── CircusGoggles.md    # CircusGoggles product documentation (English)
+│   └── zh/                 # Chinese documentation
+│       ├── index.md        # Chinese homepage
+│       ├── PiTray-mini.md  # PiTray mini 产品文档 (中文)
+│       ├── PiTray-clip.md  # PiTray clip 产品文档 (中文)
+│       └── CircusGoggles.md # CircusGoggles 产品文档 (中文)
 
 ├── package.json            # Project dependencies and scripts
 ├── package-lock.json       # Dependency lock file
@@ -158,10 +162,12 @@ Each product documentation follows this pattern:
 6. **Troubleshooting** - Common issues and solutions
 7. **Distributors** - Where to buy with logos and links
 
-### Multi-language Support
-- English documentation: `ProductName.md`
-- Chinese documentation: `ProductName_cn.md`
-- Language selector links in documentation headers
+### Internationalization (i18n) Support
+- **English documentation**: Root directory files (`docs/ProductName.md`)
+- **Chinese documentation**: Language-specific directory (`docs/zh/ProductName.md`)
+- **Language switcher**: Built-in VitePress language selector in navigation
+- **Locale-specific configuration**: Separate navigation, sidebar, and metadata for each language
+- **Automatic routing**: `/` for English, `/zh/` for Chinese
 
 ### Static Assets Management
 - Product images in `docs/public/images/`
@@ -172,15 +178,15 @@ Each product documentation follows this pattern:
 
 ### Adding a New Product
 ```bash
-# 1. Create documentation file
+# 1. Create English documentation file
 touch docs/NewProduct.md
 
-# 2. Create Chinese version (optional)
-touch docs/NewProduct_cn.md
+# 2. Create Chinese version
+touch docs/zh/NewProduct.md
 
-# 3. Add product images to public/images/
-# 4. Update .vitepress/config.js sidebar
-# 5. Test locally: npm run docs:dev
+# 3. Add product images to docs/public/images/
+# 4. Update .vitepress/config.js sidebar for both languages
+# 5. Test locally: npm run dev
 ```
 
 ### Updating Distributor Links
