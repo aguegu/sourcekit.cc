@@ -15,7 +15,7 @@ PiTray mini 提供了接近原生树莓派 4B 的开发体验，希望用户能�
 
 ## 平面图
 
-![PiTray mini Layout](/images/PiTray-mini-layout.jpg)
+![PiTray mini Layout](/images/PiTray-mini/PiTray-mini-layout.jpg)
 
 ## 特点
 
@@ -135,7 +135,7 @@ dtoverlay=dwc2,dr_mode=host
 
 <a href="https://core-electronics.com.au/pitray-mini-for-raspberry-pi-compute-module-4.html" target="_blank"><img src="/images/CoreEletronics.jpg" alt="Buy from Core Electronics" title="Core Electronics"></a>
 
-![PiTray mini with Raspberry Compute Module 4 Lite](/images/PiTray-mini-with-cm4-lite.jpg)
+![PiTray mini with Raspberry Compute Module 4 Lite](/images/PiTray-mini/PiTray-mini-with-cm4-lite.jpg)
 
 <a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="/images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px"></a>
 
