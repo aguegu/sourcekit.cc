@@ -14,7 +14,7 @@ hero:
 features:
   # - title: MeshMass
   #   details: Customizable Remote Control Kits
-  - title: PiTray Clip
+  - title: PiTray clip
     details: Mount Single board computers on DIN rails
     link: /PiTray-clip
   - title: PiTray mini

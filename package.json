@@ -1,7 +1,7 @@
 {
   "name": "sourcekit.cc",
   "version": "0.1.0",
-  "description": "spa for soucekit.cc",
+  "description": "Static documentation site for sourcekit.cc built with VitePress",
   "homepage": "https://github.com/aguegu/sourcekit.cc#readme",
   "bugs": {
     "url": "https://github.com/aguegu/sourcekit.cc/issues"
@@ -13,12 +13,10 @@
   "license": "ISC",
   "author": "aGuegu <weihong.guan@gmail.com>",
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "dev": "docsify serve",
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   },
   "devDependencies": {
     "vitepress": "^2.0.0-alpha.16"

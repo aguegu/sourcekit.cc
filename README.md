@@ -1,4 +1,6 @@
-sourcekit.cc
-===
+# Sourcekit.cc
 
-[PiTray Mini](PiTray-Mini.md)
+Static documentation site built with VitePress.
+
+## Development
+
