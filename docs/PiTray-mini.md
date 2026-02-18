@@ -3,8 +3,6 @@ Sourcekit® PiTray mini
 
 Version: 1.1.0
 
-Language: English, [简体中文](PiTray-mini_cn)
-
 Designer: Shengyuan Fang (方圣源), Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN)
 
 ## Overview

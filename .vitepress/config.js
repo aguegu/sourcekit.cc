@@ -93,31 +93,10 @@ export default defineConfig({
     ]
   ],
 
-
-
-
-
-
-
   themeConfig: {
     search: {
       provider: 'local'
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // Language switcher in navbar
     localeLinks: {
