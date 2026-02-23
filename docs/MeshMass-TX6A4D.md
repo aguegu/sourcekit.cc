@@ -17,7 +17,7 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 - **Dual Joysticks**: Two dual-axis joysticks providing 4 analog input channels
 - **Rotary Knobs**: 2 knobs providing 2 analog input channels, programmable for throttle, speed or parameter adjustment
 - **Programmable Buttons**: 4 shoulder buttons for custom functions
-- **OLED Display Interface**: Supports 128x64 SPI OLED showing battery voltage and signal strength
+- **OLED Display Interface**: 6-pin SH1.0 connector supports 128x64 SPI OLED (sold separately) showing battery voltage, signal strength, and raw input values
 - **Type-C Charging**: Built-in charging circuit for 1S LiPo battery
 - **Antenna Options**: Onboard PCB antenna + IPEX-1 socket for external 2.4GHz antenna
 - **Lost Connection Alarm**: Buzzer alerts when connection to receiver is lost
@@ -71,7 +71,8 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 
 | Component | Description |
 |-----------|-------------|
-| Screen Interface | SPI, supports 128x64 OLED (Sold separated) |
+| Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately with cable) |
+| Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately with cable), also provides serial console output for debugging |
 | Display Shows | Battery voltage, Wireless signal strength, Raw input values |
 | Buzzer | Lost connection alarm |
 
