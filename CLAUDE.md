@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the documentation website for Sourcekit Electronics Ltd, built with VitePress. It documents hardware products (PiTray clip, PiTray mini) in English and Simplified Chinese. Circus Goggles is deprecated.
+This is the documentation website for Sourcekit Electronics Ltd, built with VitePress. It documents hardware products (PiTray clip, PiTray mini, MeshMass remote control kits) in English and Simplified Chinese. Circus Goggles is deprecated.
 
 ## Commands
 
@@ -35,7 +35,7 @@ There are no test or lint commands.
 
 ## i18n Convention
 
-Every content page must exist in both `docs/` (English) and `docs/zh/` (Chinese). Navigation and sidebar labels are duplicated per locale in `config.js`.
+Content pages should exist in both `docs/` (English) and `docs/zh/` (Chinese) for consistency. Navigation and sidebar labels are duplicated per locale in `config.js`. New products may be added in English first, with Chinese translations following.
 
 **Note:** Circus Goggles is deprecated and hidden from all locale navigations.
 

@@ -12,8 +12,9 @@ hero:
       link: https://meshmass.com
 
 features:
-  # - title: MeshMass
-  #   details: 可定制的遥控套件
+  - title: MeshMass TX6A4D
+    details: 可编程遥控发射器，带双摇杆和旋钮
+    link: /zh/MeshMass-TX6A4D
   - title: PiTray clip
     details: 在 DIN 导轨上安装单板计算机
     link: /zh/PiTray-clip

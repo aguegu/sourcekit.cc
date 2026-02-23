@@ -12,8 +12,9 @@ hero:
       link: https://meshmass.com
 
 features:
-  # - title: MeshMass
-  #   details: Customizable Remote Control Kits
+  - title: MeshMass TX6A4D
+    details: Programmable RC transmitter with dual joysticks and knobs
+    link: /MeshMass-TX6A4D
   - title: PiTray clip
     details: Mount Single board computers on DIN rails
     link: /PiTray-clip
