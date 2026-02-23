@@ -96,6 +96,65 @@ Programming is done through a web browser using the MeshMass USB flashing dongle
 
 > **Note**: The TX6A4D USB-C port is for charging only. Firmware flashing requires the separate USB dongle.
 
+## Firmware Scaffold
+
+The TX6A4D runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. Key aspects of the firmware scaffold include:
+
+### Channel System
+The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver:
+- Channels 0-5: Typically mapped to analog inputs (joysticks, knobs)
+- Channels 6-15: Available for custom mapping (buttons, logic, mixing)
+
+### Default Application Code
+The scaffold provides a simple API for reading inputs and setting channels. Here's the default application code template:
+
+```c
+#include "app.h"
+
+void loop() {
+  // Map all 6 analog inputs to channels 0-5
+  setChannel(0, getStick(0));
+  setChannel(1, getStick(1));
+  setChannel(2, getStick(2));
+  setChannel(3, getStick(3));
+  setChannel(4, getStick(4));
+  setChannel(5, getStick(5));
+
+  // Use buttons 0 and 1 to increment/decrement channel 6
+  if (getButton(0) && getChannel(6) < 127) {
+    setChannel(6, getChannel(6) + 1);
+  }
+
+  if (getButton(1) && getChannel(6) > -127) {
+    setChannel(6, getChannel(6) - 1);
+  }
+
+  // Use buttons 2 and 3 to increment/decrement channel 7
+  if (getButton(2) && getChannel(7) < 127) {
+    setChannel(7, getChannel(7) + 1);
+  }
+
+  if (getButton(3) && getChannel(7) > -127) {
+    setChannel(7, getChannel(7) - 1);
+  }
+}
+```
+
+### API Functions
+- `getStick(n)`: Returns signed byte value (-128 to 127) from analog input `n` (0-5)
+- `getButton(n)`: Returns boolean state of digital button `n` (0-3)
+- `getChannel(n)`: Returns current value of channel `n` (0-15)
+- `setChannel(n, value)`: Sets channel `n` to `value` (-128 to 127)
+
+### Firmware-Managed Features
+The scaffold handles several system functions automatically:
+- **OLED Display**: Shows battery voltage, wireless signal strength, and raw input values
+- **Buzzer**: Provides lost connection alarms and system feedback
+- **Wireless Communication**: Manages 2.4GHz packet transmission with auto-hopping
+- **Battery Management**: Monitors voltage and provides low-battery warnings
+
+This separation allows users to focus on application logic (channel mapping) while the firmware handles hardware complexities.
+
 ## System Architecture
 
 The MeshMass system separates concerns between transmitter and receiver:

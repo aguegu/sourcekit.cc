@@ -96,6 +96,65 @@ TX6A4D可通过[MeshMass在线平台](https://meshmass.com)进行编程。用户
 
 > **注意**: TX6A4D的USB-C端口仅用于充电。固件烧录需要单独的USB烧录器。
 
+## 固件框架
+
+TX6A4D运行预构建的固件框架，该框架处理底层硬件操作，同时为应用编程提供简单的API。固件框架的关键方面包括：
+
+### 通道系统
+固件定义了16个有符号字节（-128至127）作为无线通道。这些通道构成发射器和接收器之间的通信桥梁：
+- 通道 0-5：通常映射到模拟输入（摇杆、旋钮）
+- 通道 6-15：可用于自定义映射（按钮、逻辑、混合）
+
+### 默认应用程序代码
+框架提供简单的API用于读取输入和设置通道。以下是默认的应用程序代码模板：
+
+```c
+#include "app.h"
+
+void loop() {
+  // 将所有6个模拟输入映射到通道0-5
+  setChannel(0, getStick(0));
+  setChannel(1, getStick(1));
+  setChannel(2, getStick(2));
+  setChannel(3, getStick(3));
+  setChannel(4, getStick(4));
+  setChannel(5, getStick(5));
+
+  // 使用按钮0和1递增/递减通道6
+  if (getButton(0) && getChannel(6) < 127) {
+    setChannel(6, getChannel(6) + 1);
+  }
+
+  if (getButton(1) && getChannel(6) > -127) {
+    setChannel(6, getChannel(6) - 1);
+  }
+
+  // 使用按钮2和3递增/递减通道7
+  if (getButton(2) && getChannel(7) < 127) {
+    setChannel(7, getChannel(7) + 1);
+  }
+
+  if (getButton(3) && getChannel(7) > -127) {
+    setChannel(7, getChannel(7) - 1);
+  }
+}
+```
+
+### API 函数
+- `getStick(n)`：返回模拟输入 `n` (0-5) 的有符号字节值 (-128 到 127)
+- `getButton(n)`：返回数字按钮 `n` (0-3) 的布尔状态
+- `getChannel(n)`：返回通道 `n` (0-15) 的当前值
+- `setChannel(n, value)`：将通道 `n` 设置为 `value` (-128 到 127)
+
+### 固件管理的功能
+框架自动处理多个系统功能：
+- **OLED显示**：显示电池电压、无线信号强度和原始输入值
+- **蜂鸣器**：提供连接丢失警报和系统反馈
+- **无线通信**：管理2.4GHz数据包传输与自动跳频
+- **电池管理**：监测电压并提供低电量警告
+
+这种分离让用户能够专注于应用逻辑（通道映射），而固件处理硬件复杂性。
+
 ## 系统架构
 
 MeshMass系统将发射器和接收器的关注点分离：
