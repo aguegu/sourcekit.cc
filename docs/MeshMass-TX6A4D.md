@@ -118,8 +118,8 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 | 1     | STK1      | Right Joystick Y-axis   | Up/down movement of right stick           |
 | 2     | STK2      | Left Joystick Y-axis    | Up/down movement of left stick            |
 | 3     | STK3      | Left Joystick X-axis    | Left/right movement of left stick         |
-| 4     | STK4      | Knob 1 (left)           | Rotary knob, typically for throttle       |
-| 5     | STK5      | Knob 2 (right)          | Rotary knob, typically for parameter      |
+| 4     | STK4      | Knob Left               | Rotary knob, typically for throttle       |
+| 5     | STK5      | Knob Right              | Rotary knob, typically for parameter      |
 
 **Digital Input Mapping** (via `getButton(n)`):
 | Index | PCB Label | Physical Input          | Description                               |
@@ -128,7 +128,7 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 | 1     | BTN1      | Button 1 (left middle)  | Programmable shoulder button              |
 | 2     | BTN2      | Button 2 (right middle) | Programmable shoulder button              |
 | 3     | BTN3      | Button 3 (right edge)   | Programmable shoulder button + right joystick press |
-| -     | -         | Pairing Button          | System button (firmware-controlled)       |
+| -     | PAIR      | Pairing Button          | System button (firmware-controlled)       |
 
 **Note:** Joystick press buttons are connected in parallel with shoulder buttons:
 - **Left Joystick Press**: Activates `getButton(0)` (same as Button 0 / left edge button)
