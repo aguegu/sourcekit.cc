@@ -2,9 +2,7 @@
 
 版本: 1.0.0
 
-Language: [English](/MeshMass-TX6A4D), 简体中文
-
-设计人: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN)
+设计人: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), 方圣源，陈东浩
 
 ## 概述
 
@@ -125,7 +123,7 @@ meshmass.com上提供示例应用和代码模板，适用于：
 
 ## 购买渠道
 
-即将推出。目前仅提供批量采购（仅PCB）。
+- [淘宝 - 猥琐老虎遥控玩物](https://dti9o8bd7lkwm7d4o9slcd2h6apezgn.taobao.com)
 
 ## 相关产品
 

@@ -2,7 +2,7 @@
 
 Version: 1.0.0
 
-Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN)
+Designer: Weihong Guan [<span class="mdi mdi-github" style="color: #000;"></span>](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;"></span>](https://twitter.com/BG5USN), Shengyuan Fang, Donghao Chen
 
 ## Overview
 
@@ -123,7 +123,7 @@ Sample applications and code templates are available on meshmass.com for:
 
 ## Where to Buy
 
-Coming soon. Currently available in batch quantities (PCB only).
+- [Taobao - cdhchaoren](https://dti9o8bd7lkwm7d4o9slcd2h6apezgn.taobao.com)
 
 ## Related Products
 
