@@ -20,6 +20,13 @@ export default defineConfig({
         ],
         sidebar: [
           {
+            text: 'MeshMass',
+            items: [
+              { text: 'TX6A4D Transmitter', link: '/MeshMass-TX6A4D' },
+              { text: 'RX4M4S Receiver', link: '/MeshMass-RX4M4S' },
+            ]
+          },
+          {
             text: 'Hardware',
             items: [
               { text: 'PiTray clip', link: '/PiTray-clip' },
