@@ -15,7 +15,7 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 ## Features
 
 - **Dual Joysticks**: Two dual-axis joysticks providing 4 analog input channels
-- **Rotary Knobs**: 2 knobs for throttle, speed, or parameter adjustment
+- **Rotary Knobs**: 2 knobs providing 2 analog input channels, programmable for throttle, speed or parameter adjustment
 - **Programmable Buttons**: 4 shoulder buttons for custom functions
 - **OLED Display Interface**: Supports 128x64 SPI OLED showing battery voltage and signal strength
 - **Type-C Charging**: Built-in charging circuit for 1S LiPo battery
@@ -46,8 +46,8 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 
 | Type | Count | Description |
 |------|-------|-------------|
-| Analog (ADC) | 6 | 4 from joysticks, 2 from knobs |
-| Digital | 4 | 4 programmable shoulder buttons |
+| **A**nalog | 6 | 4 from joysticks, 2 from knobs |
+| **D**igital | 4 | 4 programmable shoulder buttons |
 | System | 1 | Pairing button (firmware-controlled) |
 
 ### Power
@@ -71,8 +71,8 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 
 | Component | Description |
 |-----------|-------------|
-| Screen Interface | SPI, supports 128x64 OLED |
-| Display Shows | Battery voltage, signal strength |
+| Screen Interface | SPI, supports 128x64 OLED (Sold separated) |
+| Display Shows | Battery voltage, Wireless signal strength, Raw input values |
 | Buzzer | Lost connection alarm |
 
 ### Connectivity
