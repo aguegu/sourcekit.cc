@@ -23,11 +23,21 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 
 ### Microcontroller
 
+The RX4M4S is powered by the same WCH CH571F microcontroller as the TX6A4D transmitter, ensuring full protocol compatibility and optimized performance.
+
 | Component | Specification |
 |-----------|---------------|
-| MCU | WCH CH571F |
-| Architecture | RISC-V with BLE |
+| MCU | WCH CH571F (part of CH57x series) |
+| Architecture | 32-bit RISC-V (QingKe V3A core) |
+| CPU Speed | 48 MHz (typical) |
+| Memory | 32KB SRAM, 256KB Flash |
 | Wireless | 2.4GHz proprietary protocol (raw PHY layer for minimum latency) |
+| ADC | 12-bit, 8 channels |
+| GPIO | Multiple configurable I/O pins |
+| PWM | Hardware PWM outputs (used for servo control) |
+| Peripherals | SPI, UART |
+
+The CH571F's hardware PWM capabilities are particularly important for the RX4M4S, enabling precise servo control with minimal CPU overhead. Like the TX6A4D, the receiver utilizes the raw 2.4GHz physical layer for minimum latency in real-time control applications.
 
 ### Outputs
 
@@ -59,6 +69,8 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 | Wireless | 2.4GHz auto-hopping (BLE PHY layer only, no GATT) |
 | Protocol | Proprietary low-latency RC protocol |
 | Pairing | Bind with TX6A4D via pairing procedure |
+| Antenna | Onboard PCB antenna |
+| Range | ~40 meters in open field (onboard PCB antennas) |
 
 ## Programming
 
@@ -99,6 +111,10 @@ Sample applications and code templates are available on meshmass.com for:
 - **Dump Truck**: 1 370 motor + 1 N20 motor + 1 servo
 - **Excavator**: Multiple servos and motors for articulated control
 - Custom RC vehicles
+- Small scale RC airplanes and drones
+- Sandbox models and dioramas
+- STEM education projects
+- Custom robotics and automation
 
 ## Pairing
 

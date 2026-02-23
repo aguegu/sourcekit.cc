@@ -19,19 +19,28 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 - **Programmable Buttons**: 4 shoulder buttons for custom functions
 - **OLED Display Interface**: Supports 128x64 SPI OLED showing battery voltage and signal strength
 - **Type-C Charging**: Built-in charging circuit for 1S LiPo battery
-- **External Antenna Connector**: IPEX-1 socket for 2.4GHz antenna
+- **Antenna Options**: Onboard PCB antenna + IPEX-1 socket for external 2.4GHz antenna
 - **Lost Connection Alarm**: Buzzer alerts when connection to receiver is lost
-- **M3 Mounting**: 4 mounting holes for secure installation
+- **M2.5 Mounting**: 4 mounting holes for secure installation
 
 ## Specification
 
 ### Microcontroller
 
+The TX6A4D is powered by the WCH CH571F microcontroller from Nanjing WCH. This chip provides the core processing and wireless communication capabilities.
+
 | Component | Specification |
 |-----------|---------------|
-| MCU | WCH CH571F |
-| Architecture | RISC-V with BLE |
+| MCU | WCH CH571F (part of CH57x series) |
+| Architecture | 32-bit RISC-V (QingKe V3A core) |
+| CPU Speed | 48 MHz (typical) |
+| Memory | 32KB SRAM, 256KB Flash |
 | Wireless | 2.4GHz proprietary protocol (raw PHY layer for minimum latency) |
+| ADC | 12-bit, 8 channels (6 used for joysticks/knobs) |
+| GPIO | Multiple configurable I/O pins |
+| Peripherals | SPI, UART |
+
+The CH571F's RISC-V architecture provides efficient processing while the integrated 2.4GHz radio enables reliable wireless communication. The TX6A4D utilizes the raw 2.4GHz physical layer for minimum latency in real-time control applications.
 
 ### Inputs
 
@@ -55,7 +64,7 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 | Specification | Value |
 |---------------|-------|
 | Dimensions | 100mm x 50mm |
-| Mounting | 4x M3 holes |
+| Mounting | 4x M2.5 holes |
 | Weight | TBD |
 
 ### Display & Feedback
@@ -71,8 +80,8 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 | Feature | Description |
 |---------|-------------|
 | Wireless | 2.4GHz auto-hopping (BLE PHY layer only, no GATT) |
-| Antenna | IPEX-1 connector for external 2.4GHz antenna |
-| Range | Depends on antenna selection |
+| Antenna | Onboard PCB antenna + IPEX-1 connector for external 2.4GHz antenna |
+| Range | ~40 meters in open field (onboard PCB antennas), extends with external antenna |
 
 ## Programming
 
@@ -103,6 +112,10 @@ Sample applications and code templates are available on meshmass.com for:
 - RC cars and trucks
 - Cranes and manipulators
 - Custom 3D printed vehicles
+- Small scale RC airplanes and drones
+- Sandbox models and dioramas
+- STEM education projects
+- Custom robotics and automation
 
 ## Discussion and Show Cases
 

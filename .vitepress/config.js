@@ -27,7 +27,7 @@ export default defineConfig({
             ]
           },
           {
-            text: 'Hardware',
+            text: 'PiTray',
             items: [
               { text: 'PiTray clip', link: '/PiTray-clip' },
               { text: 'PiTray mini', link: '/PiTray-mini' },
@@ -60,11 +60,17 @@ export default defineConfig({
         ],
         sidebar: [
           {
-            text: '硬件产品',
+            text: 'MeshMass',
+            items: [
+              { text: 'TX6A4D 发射器', link: '/zh/MeshMass-TX6A4D' },
+            ]
+          },
+          {
+            text: 'PiTray',
             items: [
               { text: 'PiTray clip', link: '/zh/PiTray-clip' },
               { text: 'PiTray mini', link: '/zh/PiTray-mini' },
-              // { text: 'CircusGoggles', link: '/zh/CircusGoggles' },  // deprecated 
+              // { text: 'CircusGoggles', link: '/zh/CircusGoggles' },  // deprecated
             ]
           }
         ],
