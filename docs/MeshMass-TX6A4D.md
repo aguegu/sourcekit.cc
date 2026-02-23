@@ -51,8 +51,8 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 | System | 1 | Pairing button (firmware-controlled) |
 
 **Note:** Each joystick includes a built-in press button:
-- **Left Joystick Press**: Connected in parallel with left edge button (Button 1, `getButton(0)`)
-- **Right Joystick Press**: Connected in parallel with right edge button (Button 4, `getButton(3)`) |
+- **Left Joystick Press**: Connected in parallel with left edge button (Button 0 / BTN0, `getButton(0)`)
+- **Right Joystick Press**: Connected in parallel with right edge button (Button 3 / BTN3, `getButton(3)`) |
 
 ### Power
 
@@ -109,28 +109,30 @@ The firmware defines 16 signed bytes (-127 to 127) as wireless channels. These c
 - Channels 0-5: Typically mapped to analog inputs (joysticks, knobs)
 - Channels 6-15: Available for custom mapping (buttons, logic, mixing)
 
+**PCB Labels:** The PCB is labeled with STK0-STK5 for analog inputs and BTN0-BTN3 for digital buttons, corresponding directly to API indices.
+
 **Analog Input Mapping** (via `getStick(n)`):
-| Index | Physical Input          | Description                               |
-|-------|-------------------------|-------------------------------------------|
-| 0     | Right Joystick X-axis   | Left/right movement of right stick        |
-| 1     | Right Joystick Y-axis   | Up/down movement of right stick           |
-| 2     | Left Joystick Y-axis    | Up/down movement of left stick            |
-| 3     | Left Joystick X-axis    | Left/right movement of left stick         |
-| 4     | Knob 1 (left)           | Rotary knob, typically for throttle       |
-| 5     | Knob 2 (right)          | Rotary knob, typically for parameter      |
+| Index | PCB Label | Physical Input          | Description                               |
+|-------|-----------|-------------------------|-------------------------------------------|
+| 0     | STK0      | Right Joystick X-axis   | Left/right movement of right stick        |
+| 1     | STK1      | Right Joystick Y-axis   | Up/down movement of right stick           |
+| 2     | STK2      | Left Joystick Y-axis    | Up/down movement of left stick            |
+| 3     | STK3      | Left Joystick X-axis    | Left/right movement of left stick         |
+| 4     | STK4      | Knob 1 (left)           | Rotary knob, typically for throttle       |
+| 5     | STK5      | Knob 2 (right)          | Rotary knob, typically for parameter      |
 
 **Digital Input Mapping** (via `getButton(n)`):
-| Index | Physical Input          | Description                               |
-|-------|-------------------------|-------------------------------------------|
-| 0     | Button 1 (left edge)    | Programmable shoulder button + left joystick press |
-| 1     | Button 2 (left middle)  | Programmable shoulder button              |
-| 2     | Button 3 (right middle) | Programmable shoulder button              |
-| 3     | Button 4 (right edge)   | Programmable shoulder button + right joystick press |
-| -     | Pairing Button          | System button (firmware-controlled)       |
+| Index | PCB Label | Physical Input          | Description                               |
+|-------|-----------|-------------------------|-------------------------------------------|
+| 0     | BTN0      | Button 0 (left edge)    | Programmable shoulder button + left joystick press |
+| 1     | BTN1      | Button 1 (left middle)  | Programmable shoulder button              |
+| 2     | BTN2      | Button 2 (right middle) | Programmable shoulder button              |
+| 3     | BTN3      | Button 3 (right edge)   | Programmable shoulder button + right joystick press |
+| -     | -         | Pairing Button          | System button (firmware-controlled)       |
 
 **Note:** Joystick press buttons are connected in parallel with shoulder buttons:
-- **Left Joystick Press**: Activates `getButton(0)` (same as left edge button)
-- **Right Joystick Press**: Activates `getButton(3)` (same as right edge button) |
+- **Left Joystick Press**: Activates `getButton(0)` (same as Button 0 / left edge button)
+- **Right Joystick Press**: Activates `getButton(3)` (same as Button 3 / right edge button) |
 
 ### Default Application Code
 The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques:
