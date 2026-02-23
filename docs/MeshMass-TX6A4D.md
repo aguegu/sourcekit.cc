@@ -101,50 +101,128 @@ Programming is done through a web browser using the MeshMass USB flashing dongle
 The TX6A4D runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. Key aspects of the firmware scaffold include:
 
 ### Channel System
-The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver:
+The firmware defines 16 signed bytes (-127 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver. The value -128 is avoided by firmware to enable clean direction reversal (-127 to 127 provides symmetric range):
 - Channels 0-5: Typically mapped to analog inputs (joysticks, knobs)
 - Channels 6-15: Available for custom mapping (buttons, logic, mixing)
 
+**Analog Input Mapping** (via `getStick(n)`):
+| Index | Physical Input          | Description                               |
+|-------|-------------------------|-------------------------------------------|
+| 0     | Right Joystick X-axis   | Left/right movement of right stick        |
+| 1     | Right Joystick Y-axis   | Up/down movement of right stick           |
+| 2     | Left Joystick Y-axis    | Up/down movement of left stick            |
+| 3     | Left Joystick X-axis    | Left/right movement of left stick         |
+| 4     | Knob 1 (left)           | Rotary knob, typically for throttle       |
+| 5     | Knob 2 (right)          | Rotary knob, typically for parameter      |
+
+**Digital Input Mapping** (via `getButton(n)`):
+| Index | Physical Input          | Description                               |
+|-------|-------------------------|-------------------------------------------|
+| 0     | Button 1 (left edge)    | Programmable shoulder button              |
+| 1     | Button 2 (left middle)  | Programmable shoulder button              |
+| 2     | Button 3 (right middle) | Programmable shoulder button              |
+| 3     | Button 4 (right edge)   | Programmable shoulder button              |
+| -     | Pairing Button          | System button (firmware-controlled)       |
+
 ### Default Application Code
-The scaffold provides a simple API for reading inputs and setting channels. Here's the default application code template:
+The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques:
 
 ```c
 #include "app.h"
 
-void loop() {
-  // Map all 6 analog inputs to channels 0-5
-  setChannel(0, getStick(0));
-  setChannel(1, getStick(1));
-  setChannel(2, getStick(2));
-  setChannel(3, getStick(3));
-  setChannel(4, getStick(4));
-  setChannel(5, getStick(5));
+// Variables that persist between loop() calls should be declared globally
+// or as static inside loop() (using 'static' keyword)
+static int button2_was_pressed = 0;  // Tracks button 2 press state
 
-  // Use buttons 0 and 1 to increment/decrement channel 6
+void loop() {
+  // --- Basic Input Mapping Examples ---
+
+  // Example 1: Direct mapping - stick 0 controls channel 0
+  // Stick values range from -127 (full left/down) to 127 (full right/up)
+  setChannel(0, getStick(0));
+
+  // Example 2: Reversed mapping - stick 1 controls channel 1 with inverted direction
+  // Useful for motors that need opposite rotation direction
+  setChannel(1, -getStick(1));
+
+  // Example 3: Scaled mapping - stick 2 controls channel 2 with halved sensitivity
+  // Divide by 2 to reduce sensitivity for fine control applications
+  setChannel(2, getStick(2) / 2);
+
+  // Example 4: Mixed control - use stick 3 for auxiliary control
+  setChannel(3, getStick(3));
+
+  // Example 5: Deadzone handling - ignore small stick movements near center
+  // Prevents unintended movements from joystick drift
+  if (abs(getStick(4)) > 10) {
+    setChannel(4, getStick(4));
+  } else {
+    setChannel(4, 0);  // Center position when stick is near middle
+  }
+
+  // --- Button Control Examples ---
+
+  // Example 6: Button-controlled increment/decrement
+  // Button 0 increases channel 6, Button 1 decreases it (range-limited)
   if (getButton(0) && getChannel(6) < 127) {
     setChannel(6, getChannel(6) + 1);
   }
-
   if (getButton(1) && getChannel(6) > -127) {
     setChannel(6, getChannel(6) - 1);
   }
 
-  // Use buttons 2 and 3 to increment/decrement channel 7
-  if (getButton(2) && getChannel(7) < 127) {
-    setChannel(7, getChannel(7) + 1);
+  // Example 7: Button latch - toggle channel 7 on button press
+  // Pressing button 2 toggles channel 7 between positive and negative values
+  if (getButton(2) && !button2_was_pressed) {
+    setChannel(7, -getChannel(7));  // Toggle between positive and negative
+    button2_was_pressed = 1;        // Mark button as pressed
+  }
+  if (!getButton(2)) {
+    button2_was_pressed = 0;        // Reset when button released
   }
 
-  if (getButton(3) && getChannel(7) > -127) {
-    setChannel(7, getChannel(7) - 1);
+  // --- Advanced Mixing Examples ---
+
+  // Example 8: Complex mixing - combine multiple inputs for tank steering
+  // Right and left vertical stick averaging for differential drive vehicles
+  setChannel(8, (getStick(1) + getStick(2)) / 2);
+
+  // Example 9: Exponential response for fine control
+  // Square the stick value (preserving sign) for non-linear response
+  int stick_val = getStick(5);
+  int sign = (stick_val > 0) ? 1 : ((stick_val < 0) ? -1 : 0);
+  setChannel(9, (stick_val * stick_val * sign) / 127);
+
+  // Example 10: Dual-button safety latch - requires two buttons pressed
+  // Button 3 acts as safety, must be held while button 2 triggers action
+  if (getButton(3) && getButton(2)) {
+    setChannel(10, 127);  // Full forward when safety + trigger pressed
+  } else {
+    setChannel(10, 0);    // Stop otherwise
   }
 }
 ```
 
 ### API Functions
-- `getStick(n)`: Returns signed byte value (-128 to 127) from analog input `n` (0-5)
-- `getButton(n)`: Returns boolean state of digital button `n` (0-3)
+- `getStick(n)`: Returns signed byte value (-127 to 127) from analog input `n` (0-5). Value -128 is avoided by firmware to enable clean direction reversal.
+- `getButton(n)`: Returns integer value 0 (not pressed) or 1 (pressed) for digital button `n` (0-3)
 - `getChannel(n)`: Returns current value of channel `n` (0-15)
-- `setChannel(n, value)`: Sets channel `n` to `value` (-128 to 127)
+- `setChannel(n, value)`: Sets channel `n` to `value` (-127 to 127)
+
+**State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
+
+**Standard Library**: Common C standard library functions like `abs()` are available for mathematical operations.
+
+The API enables flexible mappings:
+- **Direct mapping**: `setChannel(0, getStick(0))`
+- **Reversed direction**: `setChannel(1, -getStick(1))`
+- **Scaled sensitivity**: `setChannel(2, getStick(2) / 2)`
+- **Deadzone handling**: Conditionally set channels based on input thresholds
+- **Button latch**: Toggle channels on button presses using state variables
+- **Button increment/decrement**: Adjust channel values with button presses
+- **Exponential response**: Non-linear mapping for fine control (e.g., `(stick*stick)/127`)
+- **Dual-button safety**: Require multiple buttons pressed simultaneously for safety-critical functions
+- **Complex mixing**: Combine multiple inputs with mathematical operations
 
 ### Firmware-Managed Features
 The scaffold handles several system functions automatically:
