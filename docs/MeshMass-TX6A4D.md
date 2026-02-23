@@ -105,7 +105,7 @@ Programming is done through a web browser using the MeshMass USB flashing dongle
 The TX6A4D runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. Key aspects of the firmware scaffold include:
 
 ### Channel System
-The firmware defines 16 signed bytes (-127 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver. The value -128 is avoided by firmware to enable clean direction reversal (-127 to 127 provides symmetric range):
+The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver. The value -128 is avoided by `getStick()` outputs to enable clean direction reversal in joystick inputs, but channels can be set to -128 for special purposes (e.g., braking in motor control):
 - Channels 0-5: Typically mapped to analog inputs (joysticks, knobs)
 - Channels 6-15: Available for custom mapping (buttons, logic, mixing)
 
@@ -217,7 +217,7 @@ void loop() {
 - `getStick(n)`: Returns signed byte value (-127 to 127) from analog input `n` (0-5). Value -128 is avoided by firmware to enable clean direction reversal.
 - `getButton(n)`: Returns integer value 0 (not pressed) or 1 (pressed) for digital button `n` (0-3)
 - `getChannel(n)`: Returns current value of channel `n` (0-15)
-- `setChannel(n, value)`: Sets channel `n` to `value` (-127 to 127)
+- `setChannel(n, value)`: Sets channel `n` to `value` (-128 to 127). Note: While `getStick()` avoids -128 to enable clean direction reversal, `setChannel()` can use -128 for special purposes like braking in motor control.
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
 
