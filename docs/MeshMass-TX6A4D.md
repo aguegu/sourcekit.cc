@@ -16,7 +16,7 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 
 - **Dual Joysticks**: Two dual-axis joysticks providing 4 analog input channels
 - **Rotary Knobs**: 2 knobs providing 2 analog input channels, programmable for throttle, speed or parameter adjustment
-- **Programmable Buttons**: 4 shoulder buttons for custom functions
+- **Programmable Buttons**: 4 shoulder buttons + 2 joystick press buttons for custom functions
 - **OLED Display Interface**: 6-pin SH1.0 connector supports 128x64 SPI OLED (sold separately) showing battery voltage, signal strength, and raw input values
 - **Type-C Charging**: Built-in charging circuit for 1S LiPo battery
 - **Antenna Options**: Onboard PCB antenna + IPEX-1 socket for external 2.4GHz antenna
@@ -47,8 +47,12 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 | Type | Count | Description |
 |------|-------|-------------|
 | **A**nalog | 6 | 4 from joysticks, 2 from knobs |
-| **D**igital | 4 | 4 programmable shoulder buttons |
+| **D**igital | 4 | 4 programmable shoulder buttons + 2 joystick press buttons (parallel-connected) |
 | System | 1 | Pairing button (firmware-controlled) |
+
+**Note:** Each joystick includes a built-in press button:
+- **Left Joystick Press**: Connected in parallel with left edge button (Button 1, `getButton(0)`)
+- **Right Joystick Press**: Connected in parallel with right edge button (Button 4, `getButton(3)`) |
 
 ### Power
 
@@ -118,11 +122,15 @@ The firmware defines 16 signed bytes (-127 to 127) as wireless channels. These c
 **Digital Input Mapping** (via `getButton(n)`):
 | Index | Physical Input          | Description                               |
 |-------|-------------------------|-------------------------------------------|
-| 0     | Button 1 (left edge)    | Programmable shoulder button              |
+| 0     | Button 1 (left edge)    | Programmable shoulder button + left joystick press |
 | 1     | Button 2 (left middle)  | Programmable shoulder button              |
 | 2     | Button 3 (right middle) | Programmable shoulder button              |
-| 3     | Button 4 (right edge)   | Programmable shoulder button              |
+| 3     | Button 4 (right edge)   | Programmable shoulder button + right joystick press |
 | -     | Pairing Button          | System button (firmware-controlled)       |
+
+**Note:** Joystick press buttons are connected in parallel with shoulder buttons:
+- **Left Joystick Press**: Activates `getButton(0)` (same as left edge button)
+- **Right Joystick Press**: Activates `getButton(3)` (same as right edge button) |
 
 ### Default Application Code
 The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques:
