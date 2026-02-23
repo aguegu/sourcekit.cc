@@ -1,5 +1,4 @@
-Sourcekit®  PiTray clip
-===
+# Sourcekit® PiTray clip
 
 Version: 1.0.0
 
@@ -48,19 +47,19 @@ Sourcekit&reg; PiTray clip is a Din Rail mounter for Single Board Computers like
 
 2. Mount the lower jaw to the Din rail
 
-<img src="/images/clip/step01.jpg" alt="step1" style="width: 20%;"/>
+![step 1](/images/clip/step01.jpg)
 
 3. Push up to compress the clip spring to make room for the upper jaw
 
-<img src="/images/clip/step02.jpg" alt="step2" style="width: 20%;"/>
+![step 2](/images/clip/step02.jpg)
 
 4. While hoding the up force, let the upper jaw mount the Din rail
 
-<img src="/images/clip/step03.jpg" alt="step3" style="width: 20%;"/>
+![step 3](/images/clip/step03.jpg)
 
 5. Release the clip spring, so PiTray clip is solid mounted on the Din rail
 
-<img src="/images/clip/step04.jpg" alt="step4" style="width: 20%;"/>
+![step 4](/images/clip/step04.jpg)
 
 ## Gallery
 

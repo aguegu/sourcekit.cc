@@ -1,5 +1,4 @@
-Sourcekit® PiTray mini
-===
+# Sourcekit® PiTray mini
 
 版本：1.1.0
 
@@ -137,6 +136,6 @@ dtoverlay=dwc2,dr_mode=host
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](/images/PiTray-mini/PiTray-mini-with-cm4-lite.jpg)
 
-<a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="/images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px"></a>
+<a href="sourcekit_pitraymini_cert.pdf" target="_blank"><img src="/images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi"></a>
 
 *Raspberry Pi 是属于树莓派基金会的商标*

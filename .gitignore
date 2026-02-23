@@ -2,3 +2,4 @@ rsc/
 node_modules/
 .vitepress/dist
 .vitepress/cache
+.claude.sh

@@ -1,5 +1,4 @@
-Sourcekit® PiTray clip
-===
+# Sourcekit® PiTray clip
 
 版本: 1.0.0
 
@@ -47,19 +46,19 @@ Sourcekit&reg; PiTray clip 是一款用于树莓派等单板计算机的 DIN 导
 
 2. 将下颚安装在 DIN 导轨上
 
-<img src="/images/clip/step01.jpg" alt="步骤1" style="width: 20%;"/>
+![步骤 1](/images/clip/step01.jpg)
 
 3. 向上推以压缩夹子弹簧，为上颚腾出空间
 
-<img src="/images/clip/step02.jpg" alt="步骤2" style="width: 20%;"/>
+![步骤 2](/images/clip/step02.jpg)
 
 4. 保持向上的力，让上颚安装在 DIN 导轨上
 
-<img src="/images/clip/step03.jpg" alt="步骤3" style="width: 20%;"/>
+![步骤 3](/images/clip/step03.jpg)
 
 5. 释放夹子弹簧，PiTray clip 就牢固地安装在 DIN 导轨上了
 
-<img src="/images/clip/step04.jpg" alt="步骤4" style="width: 20%;"/>
+![步骤 4](/images/clip/step04.jpg)
 
 ## 图库
 

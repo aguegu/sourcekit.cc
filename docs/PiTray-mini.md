@@ -1,5 +1,4 @@
-Sourcekit® PiTray mini
-===
+# Sourcekit® PiTray mini
 
 Version: 1.1.0
 
@@ -140,6 +139,6 @@ For CM4 without eMMC, the OS would launch fine even with `eMMC Boot` switch at `
 
 ![PiTray mini with Raspberry Compute Module 4 Lite](/images/PiTray-mini/PiTray-mini-with-cm4-lite.jpg)
 
-<a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="/images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi" width="320px"></a>
+<a href="https://www.raspberrypi.org/trademark-rules/" target="_blank"><img src="/images/Powered-by-Raspberry-Pi.png" alt="Powered by Raspberry Pi" title="Powered By Rasyberry Pi"></a>
 
 *Raspberry Pi is a trademark of the Raspberry Pi Foundation*

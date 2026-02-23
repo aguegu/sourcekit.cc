@@ -24,7 +24,7 @@ export default defineConfig({
             items: [
               { text: 'PiTray clip', link: '/PiTray-clip' },
               { text: 'PiTray mini', link: '/PiTray-mini' },
-              // { text: 'Circus Goggles', link: '/CircusGoggles' },
+              // { text: 'Circus Goggles', link: '/CircusGoggles' }, // deprecated product
             ]
           }
         ],
@@ -57,7 +57,7 @@ export default defineConfig({
             items: [
               { text: 'PiTray clip', link: '/zh/PiTray-clip' },
               { text: 'PiTray mini', link: '/zh/PiTray-mini' },
-              { text: 'CircusGoggles', link: '/zh/CircusGoggles' },
+              // { text: 'CircusGoggles', link: '/zh/CircusGoggles' },  // deprecated 
             ]
           }
         ],
