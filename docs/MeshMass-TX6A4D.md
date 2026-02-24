@@ -90,6 +90,45 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 | Antenna | Onboard PCB antenna + IPEX-1 connector for external 2.4GHz antenna |
 | Range | ~40 meters in open field (onboard PCB antennas), extends with external antenna |
 
+## Pairing
+
+MeshMass TX6A4D uses a secure one-to-one pairing system to establish exclusive wireless connections between transmitter and receiver modules. The pairing system ensures reliable communication and prevents interference from other nearby devices.
+
+### EEPROM Storage
+
+Pairing information is stored in **EEPROM** (Electrically Erasable Programmable Read-Only Memory), a non-volatile memory that retains data even when power is removed. Once a TX6A4D transmitter is paired with an RX4M4S receiver, their connection information persists across power cycles and reboots. This means you don't need to re-pair devices every time you use them—the established connection is automatically restored when both devices are powered on.
+
+### One-to-One Exclusive Pairing
+
+MeshMass pairing is **bi-directional and exclusive**:
+- When a transmitter pairs with a new receiver, it loses access to any previously paired receiver
+- When a receiver pairs with a new transmitter, its previous transmitter can no longer control it
+
+This one-to-one relationship ensures that each transmitter controls exactly one receiver at a time, and each receiver responds to exactly one transmitter. If you need to control multiple receivers simultaneously, you'll need multiple transmitter modules.
+
+### Pairing Process
+
+To pair a TX6A4D transmitter with an RX4M4S receiver:
+
+1. **Enter pairing mode on the first device**:
+   - Press and hold the **Pair button** for **more than 5 seconds**
+   - The OLED screen will indicate pairing mode (typically showing "PAIRING" or similar message)
+
+2. **Enter pairing mode on the second device**:
+   - While the first device is in pairing mode, press and hold the **Pair button** on the second device
+   - This device will also enter pairing mode with appropriate screen indication
+
+3. **Automatic identity exchange**:
+   - When both devices are in pairing mode and within wireless range, they automatically exchange identification information
+   - This process typically completes within a few seconds
+
+4. **Return to normal operation**:
+   - Both devices automatically exit pairing mode and return to normal operation
+   - The OLED displays revert to showing input values and channel data
+   - The devices are now paired and ready for use
+
+**Note:** The pairing button is labeled "PAIR" on the PCB and is separate from the programmable shoulder buttons (BTN0-BTN3). It's controlled by the firmware and cannot be reprogrammed for other functions.
+
 ## Programming
 
 The TX6A4D is programmable via the [MeshMass online platform](https://meshmass.com). Users can:
