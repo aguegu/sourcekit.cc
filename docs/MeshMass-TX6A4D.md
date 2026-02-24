@@ -254,6 +254,8 @@ The scaffold provides a simple API for reading inputs and setting channels. User
 
 **Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos. This consistent timing ensures smooth control updates.
 
+**Firmware Cycle Details:** Before each `loop()` call, the firmware automatically refreshes all analog inputs (joysticks, knobs) and digital inputs (buttons), storing their latest values in memory. The `getStick()` and `getButton()` functions simply return these pre-fetched values. During `loop()`, `setChannel()` updates values in a 16-byte transmission frame buffer. Channels not explicitly set retain their previous values. After `loop()` completes, the entire frame buffer (all 16 int8_t channel values) is broadcast wirelessly.
+
 **Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
 
 ```c
