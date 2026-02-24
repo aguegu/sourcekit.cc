@@ -275,6 +275,7 @@ Sample applications and code templates are available on meshmass.com for:
 ## Discussion and Show Cases
 
 - [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
+- [bilibili - CDHCHAOREN - Programmable RC module](https://space.bilibili.com/24674093/lists/6826437)
 
 ## Where to Buy
 

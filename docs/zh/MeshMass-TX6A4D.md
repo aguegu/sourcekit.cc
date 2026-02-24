@@ -265,6 +265,7 @@ meshmass.com上提供示例应用和代码模板，适用于：
 ## 讨论与展示
 
 - [论坛（由GitHub Discussion提供支持）](https://github.com/aguegu/sourcekit.cc/discussions)
+- [bilibili - 猥琐老虎 - 合集-可编程遥控模块](https://space.bilibili.com/24674093/lists/6826437)
 
 ## 购买渠道
 
