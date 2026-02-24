@@ -134,15 +134,17 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 - **Left Joystick Press**: Activates `getButton(0)` (same as Button 0 / left edge button)
 - **Right Joystick Press**: Activates `getButton(3)` (same as Button 3 / right edge button) |
 
-### Default Application Code
-The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques:
+### Application Code Examples
+The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques using proper stdint.h types:
 
 ```c
 #include "app.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 // Variables that persist between loop() calls should be declared globally
 // or as static inside loop() (using 'static' keyword)
-static int button2_was_pressed = 0;  // Tracks button 2 press state
+static bool button2_was_pressed = false;  // Tracks button 2 press state
 
 void loop() {
   // --- Basic Input Mapping Examples ---
@@ -185,10 +187,10 @@ void loop() {
   // Pressing button 2 toggles channel 7 between positive and negative values
   if (getButton(2) && !button2_was_pressed) {
     setChannel(7, -getChannel(7));  // Toggle between positive and negative
-    button2_was_pressed = 1;        // Mark button as pressed
+    button2_was_pressed = true;     // Mark button as pressed
   }
   if (!getButton(2)) {
-    button2_was_pressed = 0;        // Reset when button released
+    button2_was_pressed = false;    // Reset when button released
   }
 
   // --- Advanced Mixing Examples ---
@@ -199,8 +201,8 @@ void loop() {
 
   // Example 9: Exponential response for fine control
   // Square the stick value (preserving sign) for non-linear response
-  int stick_val = getStick(5);
-  int sign = (stick_val > 0) ? 1 : ((stick_val < 0) ? -1 : 0);
+  int8_t stick_val = getStick(5);
+  int8_t sign = (stick_val > 0) ? 1 : ((stick_val < 0) ? -1 : 0);
   setChannel(9, (stick_val * stick_val * sign) / 127);
 
   // Example 10: Dual-button safety latch - requires two buttons pressed
@@ -214,10 +216,10 @@ void loop() {
 ```
 
 ### API Functions
-- `getStick(n)`: Returns signed byte value (-127 to 127) from analog input `n` (0-5). Value -128 is avoided by firmware to enable clean direction reversal.
-- `getButton(n)`: Returns integer value 0 (not pressed) or 1 (pressed) for digital button `n` (0-3)
-- `getChannel(n)`: Returns current value of channel `n` (0-15)
-- `setChannel(n, value)`: Sets channel `n` to `value` (-128 to 127). Note: While `getStick()` avoids -128 to enable clean direction reversal, `setChannel()` can use -128 for special purposes like braking in motor control.
+- `int8_t getStick(uint8_t n)`: Returns signed 8-bit value (-127 to 127) from analog input `n` (0-5). Value -128 is avoided by firmware to enable clean direction reversal.
+- `bool getButton(uint8_t n)`: Returns boolean value `false` (not pressed) or `true` (pressed) for digital button `n` (0-3)
+- `int8_t getChannel(uint8_t n)`: Returns current signed 8-bit value of channel `n` (0-15)
+- `void setChannel(uint8_t n, int8_t value)`: Sets channel `n` to `value` (-128 to 127). Note: While `getStick()` avoids -128 to enable clean direction reversal, `setChannel()` can use -128 for special purposes like braking in motor control.
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
 

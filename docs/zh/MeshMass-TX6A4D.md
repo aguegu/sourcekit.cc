@@ -134,15 +134,17 @@ TX6A4D运行预构建的固件框架，该框架处理底层硬件操作，同�
 - **左摇杆按压**：激活 `getButton(0)`（与按钮0 / 左侧边缘按钮相同）
 - **右摇杆按压**：激活 `getButton(3)`（与按钮3 / 右侧边缘按钮相同） |
 
-### 默认应用程序代码
-框架提供简单的API用于读取输入和设置通道。用户可以完全灵活地映射输入到通道，实现复杂的控制行为。以下是一个展示各种映射技术的示例：
+### 应用程序代码示例
+框架提供简单的API用于读取输入和设置通道。用户可以完全灵活地映射输入到通道，实现复杂的控制行为。以下是一个展示各种映射技术的示例，使用标准的stdint.h类型：
 
 ```c
 #include "app.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 // 需要在loop()调用之间保持值的变量应声明为全局变量
 // 或在loop()内部使用'static'关键字声明
-static int button2_was_pressed = 0;  // 跟踪按钮2按下状态
+static bool button2_was_pressed = false;  // 跟踪按钮2按下状态
 
 void loop() {
   // 示例1: 直接映射 - 摇杆0控制通道0
@@ -175,10 +177,10 @@ void loop() {
   // 示例7: 按钮锁存 - 在按钮按下时切换通道7
   if (getButton(2) && !button2_was_pressed) {
     setChannel(7, -getChannel(7)); // 在正负值之间切换
-    button2_was_pressed = 1;
+    button2_was_pressed = true;    // 标记按钮为按下状态
   }
   if (!getButton(2)) {
-    button2_was_pressed = 0;
+    button2_was_pressed = false;   // 按钮释放时重置
   }
 
   // 示例8: 复杂混合 - 组合多个输入用于坦克转向
@@ -189,8 +191,8 @@ void loop() {
 
   // 示例9: 指数响应用于精细控制
   // 平方摇杆值（保留符号）实现非线性响应
-  int stick_val = getStick(5);
-  int sign = (stick_val > 0) ? 1 : ((stick_val < 0) ? -1 : 0);
+  int8_t stick_val = getStick(5);
+  int8_t sign = (stick_val > 0) ? 1 : ((stick_val < 0) ? -1 : 0);
   setChannel(9, (stick_val * stick_val * sign) / 127);
 
   // 示例10: 双按钮安全锁存 - 需要两个按钮同时按下
@@ -204,10 +206,10 @@ void loop() {
 ```
 
 ### API 函数
-- `getStick(n)`：返回模拟输入 `n` (0-5) 的有符号字节值 (-127 到 127)。值-128被固件避免使用，以实现清洁的方向反转。
-- `getButton(n)`：返回数字按钮 `n` (0-3) 的整数值 0（未按下）或 1（按下）
-- `getChannel(n)`：返回通道 `n` (0-15) 的当前值
-- `setChannel(n, value)`：将通道 `n` 设置为 `value` (-128 到 127)。注意：虽然`getStick()`避免使用-128以实现清洁的方向反转，但`setChannel()`可以使用-128用于特殊用途，如电机控制中的刹车。
+- `int8_t getStick(uint8_t n)`：返回模拟输入 `n` (0-5) 的有符号8位值 (-127 到 127)。值-128被固件避免使用，以实现清洁的方向反转。
+- `bool getButton(uint8_t n)`：返回布尔值 `false`（未按下）或 `true`（按下）用于数字按钮 `n` (0-3)
+- `int8_t getChannel(uint8_t n)`：返回通道 `n` (0-15) 的当前有符号8位值
+- `void setChannel(uint8_t n, int8_t value)`：将通道 `n` 设置为 `value` (-128 到 127)。注意：虽然`getStick()`避免使用-128以实现清洁的方向反转，但`setChannel()`可以使用-128用于特殊用途，如电机控制中的刹车。
 
 **状态持久性**：需要在 `loop()` 调用之间保持值的变量应声明为 `static` 在 `loop()` 内部或作为全局变量在函数外部声明。
 
