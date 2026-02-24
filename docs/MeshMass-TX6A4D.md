@@ -139,6 +139,8 @@ The scaffold provides a simple API for reading inputs and setting channels. User
 
 **Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos. This consistent timing ensures smooth control updates.
 
+**Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
+
 ```c
 #include "app.h"
 #include <stdbool.h>
@@ -222,6 +224,7 @@ void loop() {
 - `bool getButton(uint8_t n)`: Returns boolean value `false` (not pressed) or `true` (pressed) for digital button `n` (0-3)
 - `int8_t getChannel(uint8_t n)`: Returns current signed 8-bit value of channel `n` (0-15)
 - `void setChannel(uint8_t n, int8_t value)`: Sets channel `n` to `value` (-128 to 127). Note: While `getStick()` avoids -128 to enable clean direction reversal, `setChannel()` can use -128 for special purposes like braking in motor control.
+- `void loop()`: Application main loop function called every 20ms (50Hz). Implement this function to define your control logic.
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
 
