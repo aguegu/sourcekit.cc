@@ -137,14 +137,14 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 ### Application Code Examples
 The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques using proper stdint.h types:
 
+**Note:** The `app.h` header file already includes `<stdbool.h>` and `<stdint.h>` headers, so you don't need to include them in your application code. On meshmass.com, you can view the `app.h` file for reference, but it's not recommended to edit it.
+
 **Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos. This consistent timing ensures smooth control updates.
 
 **Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
 
 ```c
 #include "app.h"
-#include <stdbool.h>
-#include <stdint.h>
 
 // Variables that persist between loop() calls should be declared globally
 // or as static inside loop() (using 'static' keyword)
