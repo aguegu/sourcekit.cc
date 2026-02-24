@@ -80,6 +80,8 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 | Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; All 16 channel values (-128 to 127) on RX4M4S |
 | Buzzer | Lost connection alarm |
 
+**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. Students can directly see how their code translates physical inputs to numerical outputs. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
+
 ### Connectivity
 
 | Feature | Description |
@@ -354,7 +356,7 @@ The API enables flexible mappings:
 
 ### Firmware-Managed Features
 The scaffold handles several system functions automatically:
-- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays all 16 channel values (-128 to 127) for complete system inspection.
+- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays all 16 channel values (-128 to 127) for complete system inspection. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
 - **Buzzer**: Provides lost connection alarms and system feedback
 - **Wireless Communication**: Manages 2.4GHz packet transmission with auto-hopping
 - **Battery Management**: Monitors voltage and provides low-battery warnings
