@@ -137,6 +137,8 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 ### Application Code Examples
 The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques using proper stdint.h types:
 
+**Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos. This consistent timing ensures smooth control updates.
+
 ```c
 #include "app.h"
 #include <stdbool.h>
