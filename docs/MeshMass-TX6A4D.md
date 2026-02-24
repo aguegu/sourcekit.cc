@@ -76,8 +76,8 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 | Component | Description |
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately with cable) |
-| Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately with cable), also provides serial console output for debugging |
-| Display Shows | Battery voltage, Wireless signal strength, Raw input values |
+| Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately with cable), also provides serial console output (OLED display recommended for visual debugging) |
+| Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; All 16 channel values (-128 to 127) on RX4M4S |
 | Buzzer | Lost connection alarm |
 
 ### Connectivity
@@ -131,7 +131,7 @@ Traditional RC control solutions fall into two categories with significant drawb
 | **Learning Curve** | Steep (electronics + software) | Moderate (complex menus) | Gentle (simple C API) |
 | **Flexibility** | High (but requires expertise) | Limited (predefined options) | Focused on RC control (code-based mapping) |
 | **Setup Time** | Hours to days | Minutes to hours | Minutes |
-| **Debugging** | Complex (hardware + software) | Limited (system menus) | Simple (serial output) |
+| **Debugging** | Complex (hardware + software) | Limited (system menus) | Visual debugging via OLED (inputs & channels) |
 | **Custom Behaviors** | Possible with expertise | Limited or impossible | Highly programmable mapping for RC scenarios |
 
 ### STEM Education Benefits
@@ -169,6 +169,7 @@ void loop() {
 **Immediate Physical Feedback**
 - Code changes → Immediate vehicle response
 - Debug by watching the vehicle move
+- **Visual debugging**: Watch input and channel values update on OLED displays in real-time (even without motors/servos attached)
 - Learn programming through cause-and-effect
 - No abstraction layers between code and physical motion
 
@@ -353,7 +354,7 @@ The API enables flexible mappings:
 
 ### Firmware-Managed Features
 The scaffold handles several system functions automatically:
-- **OLED Display**: Shows battery voltage, wireless signal strength, and raw input values
+- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays all 16 channel values (-128 to 127) for complete system inspection.
 - **Buzzer**: Provides lost connection alarms and system feedback
 - **Wireless Communication**: Manages 2.4GHz packet transmission with auto-hopping
 - **Battery Management**: Monitors voltage and provides low-battery warnings
