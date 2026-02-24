@@ -118,7 +118,7 @@ Traditional RC control solutions fall into two categories with significant drawb
 
 **MeshMass TX6A4D: The Best of Both Worlds**
 - **Simple**: Write clean C code with a minimal API
-- **Powerful**: Full programming flexibility without hardware complexity
+- **Powerful**: Programming flexibility for RC control without hardware complexity
 - **Affordable**: Professional-grade control at hobbyist prices
 - **Accessible**: Web-based editor, no complex toolchain installation
 - **Example-Driven**: Comprehensive library of working code examples and tutorials for common use cases
@@ -129,10 +129,10 @@ Traditional RC control solutions fall into two categories with significant drawb
 |---------|---------------------------|--------------------------|-----------------|
 | **Price** | Moderate ($50-100 + components) | High ($200-500+) | Affordable |
 | **Learning Curve** | Steep (electronics + software) | Moderate (complex menus) | Gentle (simple C API) |
-| **Flexibility** | High (but requires expertise) | Limited (predefined options) | High (full code control) |
+| **Flexibility** | High (but requires expertise) | Limited (predefined options) | Focused on RC control (code-based mapping) |
 | **Setup Time** | Hours to days | Minutes to hours | Minutes |
 | **Debugging** | Complex (hardware + software) | Limited (system menus) | Simple (serial output) |
-| **Custom Behaviors** | Possible with expertise | Limited or impossible | Fully programmable |
+| **Custom Behaviors** | Possible with expertise | Limited or impossible | Highly programmable mapping for RC scenarios |
 
 ### STEM Education Benefits
 
