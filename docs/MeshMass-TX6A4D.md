@@ -129,6 +129,8 @@ To pair a TX6A4D transmitter with an RX4M4S receiver:
 
 **Note:** The pairing button is labeled "PAIR" on the PCB and is separate from the programmable shoulder buttons (BTN0-BTN3). It's controlled by the firmware and cannot be reprogrammed for other functions.
 
+**Aborting Pairing:** If a device is in pairing mode, pressing the Pair button again will abort the pairing process. Since no new pairing information gets stored, the previous pairing record remains intact and will continue to be used when the device returns to normal mode.
+
 ## Programming
 
 The TX6A4D is programmable via the [MeshMass online platform](https://meshmass.com). Users can:
