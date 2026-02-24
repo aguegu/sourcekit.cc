@@ -137,6 +137,8 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 ### Application Code Examples
 The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques using proper stdint.h types:
 
+**Architecture Note:** The code on TX6A4D only controls the mapping from physical inputs (joysticks, knobs, buttons) to wireless channels. How these channel values are interpreted and reflected on the receiver module (RX) or vehicle is determined by the application code running on the RX modules.
+
 **Note:** The `app.h` header file already includes `<stdbool.h>` and `<stdint.h>` headers, so you don't need to include them in your application code. On meshmass.com, you can view the `app.h` file for reference, but it's not recommended to edit it.
 
 **Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos. This consistent timing ensures smooth control updates.
