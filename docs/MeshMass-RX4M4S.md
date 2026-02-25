@@ -19,9 +19,10 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 - **Programmable Channel Mapping**: Map any of the 16 wireless channels to any output
 - **Mixing Support**: Combine multiple channels for complex behaviors (tank steering, crane controls)
 - **OLED Display Interface**: 6-pin SH1.0 connector for 128x64 SPI OLED (sold separately)
+- **WS2812 RGB LED Interface**: 4-pin SH1.0 connector for addressable RGB LED strips
+- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module
 - **Low Latency**: 2.4GHz proprietary protocol optimized for real-time control
 - **External Antenna Option**: IPEX-1 connector for external 2.4GHz antenna
-- **Buzzer**: Lost connection alarm and system feedback
 - **Compact Design**: Easy to integrate into custom builds
 
 ## Specification
@@ -75,8 +76,6 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 - Compatible with 9g servos and standard analog/digital servos
 - PWM signal: 50Hz (20ms frame), 1000-2000μs pulse width
 
-**Note:** SM1 and SM2 share pins with the buzzer. When using these servo ports, the buzzer function is unavailable.
-
 ### Power
 
 | Specification | Value |
@@ -101,10 +100,11 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 | Component | Description |
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately) |
+| WS2812 LED Interface | 4-pin SH1.0 connector for addressable RGB LED strips |
+| Audio Module Interface | 4-pin SH1.0 connector for optional audio module |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately), also provides serial console output |
 | Display Shows | Battery voltage, Wireless signal strength, All 16 channel values (-128 to 127) |
 | LED Indicators | 4 LEDs for motor channel status (0-3) |
-| Buzzer | Lost connection alarm (shared with SM1, SM2) |
 
 **Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. The OLED displays all 16 channel values received from the transmitter, allowing students to directly verify the wireless communication is working correctly. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
 
@@ -363,8 +363,9 @@ void loop() {
 
 The scaffold handles several system functions automatically:
 - **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all 16 channel values (-128 to 127). Displays raw decimal values (not simplified visualizations) for precise verification. The OLED is sold separately, making it optional for fixed installations.
-- **Buzzer**: Provides lost connection alarms and system feedback (shared pins with SM1, SM2)
-- **LED Indicators**: 4 LEDs show motor channel activity (0-3)
+- **WS2812 RGB LED**: Addressable RGB LED strip support for visual feedback and effects
+- **Audio Module**: Optional audio module support for sound effects
+- **LED Indicators**: 4 LEDs show motor channel activity (DM0-DM3)
 - **Wireless Communication**: Manages 2.4GHz packet reception with auto-hopping
 - **Battery Monitoring**: Monitors input voltage and provides low-battery warnings
 
