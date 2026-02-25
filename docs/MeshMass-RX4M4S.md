@@ -37,12 +37,12 @@ The RX4M4S is powered by the same WCH CH571F microcontroller as the TX6A4D trans
 | CPU Speed | 48 MHz (typical) |
 | Memory | 32KB SRAM, 256KB Flash |
 | Wireless | 2.4GHz proprietary protocol (raw PHY layer for minimum latency) |
-| ADC | 12-bit, 8 channels |
 | GPIO | Multiple configurable I/O pins |
-| PWM | Hardware PWM outputs (used for servo control) |
+| PWM | Hardware PWM outputs (used for WS2812 LED control) |
+| Timer | Advanced timer for servo PWM generation |
 | Peripherals | SPI, UART |
 
-The CH571F's hardware PWM capabilities are particularly important for the RX4M4S, enabling precise servo control with minimal CPU overhead. Like the TX6A4D, the receiver utilizes the raw 2.4GHz physical layer for minimum latency in real-time control applications.
+The CH571F's advanced timer capabilities are particularly important for the RX4M4S, enabling precise servo PWM signal generation with minimal CPU overhead. Like the TX6A4D, the receiver utilizes the raw 2.4GHz physical layer for minimum latency in real-time control applications.
 
 ### Outputs
 
