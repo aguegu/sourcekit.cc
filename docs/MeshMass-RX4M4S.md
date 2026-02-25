@@ -48,10 +48,10 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 
 | Type | Count | Connector | Description |
 |------|-------|-----------|-------------|
-| DC Motor | 4 | PH2.0 | Brushed DC motor driver outputs (0-3) |
+| DC Motor | 4 | PH2.0 | Brushed DC motor driver outputs (DM0-DM3) |
 | Servo | 4 | 2.54mm servo header (3-pin) | Standard PWM servo outputs (5V) |
 
-**Motor Outputs (M0-M3):**
+**Motor Outputs (DM0-DM3):**
 - 4x PH2.0 connectors for brushed DC motors
 - Driven by 4x HXA2820 H-bridge motor drivers (one per channel)
 - HXA2820 specifications:
