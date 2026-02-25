@@ -59,7 +59,12 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
   - Max continuous current: 2A per channel
   - Max peak current: 3.5A
   - Overtemperature protection: 150°C
-- Supports N20, 370, and similar brushed DC motors
+- Supports a wide range of brushed DC motors:
+  - N20 gear motors (micro metal gearmotors)
+  - 130/280 series motors (standard RC motors)
+  - R300 series motors (high-torque applications)
+  - 8515/8520 coreless motors (high-speed, low-inertia)
+  - 370 series motors (larger RC vehicles)
 - PWM speed control with forward/reverse/brake capability
 
 **Servo Outputs (SM0-SM3):**
