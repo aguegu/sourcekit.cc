@@ -19,8 +19,8 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 - **Programmable Channel Mapping**: Map any of the 16 wireless channels to any output
 - **Mixing Support**: Combine multiple channels for complex behaviors (tank steering, crane controls)
 - **OLED Display Interface**: 6-pin SH1.0 connector for 128x64 SPI OLED (sold separately)
-- **WS2812 RGB LED Interface**: 4-pin SH1.0 connector for addressable RGB LED strips (shares signal pin with SM3)
-- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module (shares pins with SM1, SM2)
+- **WS2812 RGB LED Interface**: 4-pin SH1.0 connector for addressable RGB LED strips (shares signal pin with SM3, firmware under development)
+- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module (shares pins with SM1, SM2, module under development)
 - **Low Latency**: 2.4GHz proprietary protocol optimized for real-time control
 - **External Antenna Option**: IPEX-1 connector for external 2.4GHz antenna
 - **Compact Design**: Easy to integrate into custom builds
@@ -77,9 +77,9 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 - PWM signal: 50Hz (20ms frame), 1000-2000μs pulse width
 
 **Note:** The WS2812 LED interface shares the signal pin with SM3, and the audio module interface shares pins with SM1 and SM2. This means:
-- **RX4M4S** (default on meshmass.com): Supports all 4 servos (SM0-SM3), WS2812 and audio interfaces not enabled
-- **RX4M3S1N**: Supports WS2812 Neopixel + 3 servos (SM0-SM2, SM3 unavailable)
-- **RX4M1S1N1A**: Supports WS2812 Neopixel + audio module + 1 servo (SM0 only, SM1-SM3 unavailable)
+- **RX4M4S**: Supports all 4 servos (SM0-SM3), WS2812 and audio interfaces not enabled (currently available)
+- **RX4M3S1N**: Supports WS2812 Neopixel + 3 servos (SM0-SM2, SM3 unavailable) - *Not released yet*
+- **RX4M1S1N1A**: Supports WS2812 Neopixel + audio module + 1 servo (SM0 only, SM1-SM3 unavailable) - *Not released yet, audio module under development*
 
 Contact Sourcekit for special firmware configurations based on your application needs.
 
@@ -377,9 +377,9 @@ The scaffold handles several system functions automatically:
 - **Battery Monitoring**: Monitors input voltage and provides low-battery warnings
 
 **Firmware Variants:**
-- **RX4M4S** (default on meshmass.com): 4 DC motors + 4 servos, WS2812/audio interfaces disabled
-- **RX4M3S1N**: 4 DC motors + WS2812 Neopixel + 3 servos (SM3 unavailable, used for Neopixel signal)
-- **RX4M1S1N1A**: 4 DC motors + WS2812 Neopixel + audio module + 1 servo (SM1-SM3 unavailable)
+- **RX4M4S**: 4 DC motors + 4 servos, WS2812/audio interfaces disabled (currently available)
+- **RX4M3S1N**: 4 DC motors + WS2812 Neopixel + 3 servos (SM3 unavailable, used for Neopixel signal) - *Not released yet*
+- **RX4M1S1N1A**: 4 DC motors + WS2812 Neopixel + audio module + 1 servo (SM1-SM3 unavailable) - *Not released yet, audio module under development*
 
 This separation allows users to focus on application logic (output mapping) while the firmware handles hardware complexities.
 
