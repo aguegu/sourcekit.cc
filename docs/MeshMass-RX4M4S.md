@@ -58,6 +58,7 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 
 **Servo Outputs (SM0-SM3):**
 - 4x standard 2.54mm servo headers (3-pin, Dupont style) for standard servos
+- Pinout: GND (black) / 5V (red) / Signal (yellow)
 - 5V power supply for servos
 - Compatible with 9g servos and standard analog/digital servos
 - PWM signal: 50Hz (20ms frame), 1000-2000μs pulse width
