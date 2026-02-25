@@ -60,7 +60,7 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
   - Max peak current: 3.5A
   - Overtemperature protection: 150°C
 - **Key Advantage**: Built-in motor drivers eliminate the need for external ESCs or motor driver boards. Most RC receivers require separate electronic speed controllers (ESCs) for each DC motor, adding cost, weight, and wiring complexity. The RX4M4S integrates 4 motor drivers directly on the board.
-- Supports a wide range of low-voltage brushed DC motors (3V-10V):
+- Supports a wide range of low-voltage brushed DC motors (3V-7.4V, 2S LiPo range):
   - **Micro motors**: N20, 610, 716, 718 (micro robots, small mechanisms)
   - **Coreless motors**: 8515, 8520, 1020, 1220 (high-speed, fast response)
   - **Standard RC motors**: 130, 140, 180, 260, 270, 280 series (1/10 scale vehicles)
