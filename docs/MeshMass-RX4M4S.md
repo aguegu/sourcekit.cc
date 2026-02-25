@@ -19,8 +19,8 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 - **Programmable Channel Mapping**: Map any of the 16 wireless channels to any output
 - **Mixing Support**: Combine multiple channels for complex behaviors (tank steering, crane controls)
 - **OLED Display Interface**: 6-pin SH1.0 connector for 128x64 SPI OLED (sold separately)
-- **WS2812 RGB LED Interface**: 4-pin SH1.0 connector for addressable RGB LED strips
-- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module
+- **WS2812 RGB LED Interface**: 4-pin SH1.0 connector for addressable RGB LED strips (shares signal pin with SM3)
+- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module (shares pins with SM1, SM2)
 - **Low Latency**: 2.4GHz proprietary protocol optimized for real-time control
 - **External Antenna Option**: IPEX-1 connector for external 2.4GHz antenna
 - **Compact Design**: Easy to integrate into custom builds
@@ -76,6 +76,13 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 - Compatible with 9g servos and standard analog/digital servos
 - PWM signal: 50Hz (20ms frame), 1000-2000μs pulse width
 
+**Note:** The WS2812 LED interface shares the signal pin with SM3, and the audio module interface shares pins with SM1 and SM2. This means:
+- **Standard firmware** (default on meshmass.com): Supports all 4 servos (SM0-SM3), WS2812 and audio interfaces not enabled
+- **WS2812 firmware**: Supports WS2812 LED strip + 3 servos (SM0-SM2, SM3 unavailable)
+- **WS2812 + Audio firmware**: Supports WS2812 + audio module + 1 servo (SM0 only, SM1-SM3 unavailable)
+
+Contact Sourcekit for special firmware configurations based on your application needs.
+
 ### Power
 
 | Specification | Value |
@@ -100,11 +107,11 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 | Component | Description |
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately) |
-| WS2812 LED Interface | 4-pin SH1.0 connector for addressable RGB LED strips |
-| Audio Module Interface | 4-pin SH1.0 connector for optional audio module |
+| WS2812 LED Interface | 4-pin SH1.0 connector for addressable RGB LED strips (shares signal pin with SM3) |
+| Audio Module Interface | 4-pin SH1.0 connector for optional audio module (shares pins with SM1, SM2) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately), also provides serial console output |
 | Display Shows | Battery voltage, Wireless signal strength, All 16 channel values (-128 to 127) |
-| LED Indicators | 4 LEDs for motor channel status (0-3) |
+| LED Indicators | 4 LEDs for motor channel status (DM0-DM3) |
 
 **Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. The OLED displays all 16 channel values received from the transmitter, allowing students to directly verify the wireless communication is working correctly. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
 
@@ -363,11 +370,16 @@ void loop() {
 
 The scaffold handles several system functions automatically:
 - **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all 16 channel values (-128 to 127). Displays raw decimal values (not simplified visualizations) for precise verification. The OLED is sold separately, making it optional for fixed installations.
-- **WS2812 RGB LED**: Addressable RGB LED strip support for visual feedback and effects
-- **Audio Module**: Optional audio module support for sound effects
+- **WS2812 RGB LED**: Addressable RGB LED strip support for visual feedback and effects (shares signal pin with SM3, special firmware required)
+- **Audio Module**: Optional audio module support for sound effects (shares pins with SM1/SM2, special firmware required)
 - **LED Indicators**: 4 LEDs show motor channel activity (DM0-DM3)
 - **Wireless Communication**: Manages 2.4GHz packet reception with auto-hopping
 - **Battery Monitoring**: Monitors input voltage and provides low-battery warnings
+
+**Firmware Variants:**
+- **Standard Firmware** (default on meshmass.com): 4 DC motors + 4 servos, WS2812/audio interfaces disabled
+- **WS2812 Firmware**: 4 DC motors + WS2812 LED + 3 servos (SM3 unavailable)
+- **WS2812 + Audio Firmware**: 4 DC motors + WS2812 LED + audio module + 1 servo (SM1-SM3 unavailable)
 
 This separation allows users to focus on application logic (output mapping) while the firmware handles hardware complexities.
 
