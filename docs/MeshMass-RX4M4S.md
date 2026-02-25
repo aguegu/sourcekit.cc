@@ -248,7 +248,7 @@ The scaffold provides a simple API for reading channels and controlling outputs.
 
 **Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos and ESCs. This consistent timing ensures smooth control updates.
 
-**Firmware Cycle Details:** After each `loop()` call completes, the motor and servo outputs are updated with the new values. Motor outputs use PWM for speed control, while servo outputs use precise PWM timing (1000-2000μs) for position control.
+**Firmware Cycle Details:** After each `loop()` call completes, the motor and servo outputs are updated with the new values. Motor outputs use PWM for speed control, while servo outputs use PWM signal (center ~150, range approximately 100-200) for position control.
 
 **Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
 
@@ -257,24 +257,34 @@ The scaffold provides a simple API for reading channels and controlling outputs.
 
 // Variables that persist between loop() calls should be declared globally
 // or as static inside loop() (using 'static' keyword)
-static int16_t servo_center = 0;  // Servo center offset
+static uint8_t servo_center = 150;  // Servo center point (~150)
 
 void loop() {
+  // --- Default Configuration (from app.c) ---
+  // Direct channel to motor mapping for motors 0-3
+  setMotor(0, getChannel(0));
+  setMotor(1, getChannel(1));
+  setMotor(2, getChannel(2));
+  setMotor(3, getChannel(3));
+
+  // Servo control with center offset and scaled travel
+  // Channel values (-127 to 127) converted to servo range (~100-200)
+  setServo(0, 150 + getChannel(4) * 2 / 5);
+  setServo(1, 150 + getChannel(5) * 2 / 5);
+  setServo(2, 150 + getChannel(6) * 2 / 5);
+  setServo(3, 150 + getChannel(7) * 2 / 5);
+
   // --- Basic Motor Control Examples ---
 
-  // Example 1: Direct channel to motor mapping
-  // Channel 0 controls motor 0 (forward/reverse)
-  setMotor(0, getChannel(0));
-
-  // Example 2: Reversed motor direction
+  // Example 1: Reversed motor direction
   // Useful for motors that need opposite rotation
   setMotor(1, -getChannel(1));
 
-  // Example 3: Scaled motor speed
+  // Example 2: Scaled motor speed
   // Reduce sensitivity for fine control
   setMotor(2, getChannel(2) / 2);
 
-  // Example 4: Motor with deadzone
+  // Example 3: Motor with deadzone
   // Ignore small channel values to prevent motor creep
   int8_t motor_val = getChannel(3);
   if (abs(motor_val) > 10) {
@@ -285,43 +295,43 @@ void loop() {
 
   // --- Basic Servo Control Examples ---
 
-  // Example 5: Direct channel to servo mapping
-  // Channel 4 controls servo 0
-  // Channel values (-127 to 127) mapped to servo PWM (1000-2000μs)
-  setServo(0, getChannel(4));
+  // Example 4: Direct channel to servo mapping with custom center
+  // Channel values (-127 to 127) scaled to servo range
+  // Formula: center + channel * 2 / 5 gives range ~100-200
+  setServo(0, servo_center + getChannel(4) * 2 / 5);
 
-  // Example 6: Servo with center adjustment
-  // Add offset to center point for mechanical alignment
-  setServo(1, getChannel(5) + servo_center);
+  // Example 5: Servo with adjustable center point
+  // Change servo_center variable to adjust mechanical alignment
+  setServo(1, servo_center + getChannel(5) * 2 / 5);
 
-  // Example 7: Servo with travel limit
+  // Example 6: Servo with travel limit
   // Restrict servo movement range
   int8_t servo_val = getChannel(6);
   if (servo_val > 100) servo_val = 100;
   if (servo_val < -100) servo_val = -100;
-  setServo(2, servo_val);
+  setServo(2, 150 + servo_val * 2 / 5);
 
   // --- Mixing Examples ---
 
-  // Example 8: Tank steering (differential drive)
+  // Example 7: Tank steering (differential drive)
   // Combine two channels for throttle and steering
   int8_t throttle = getChannel(0);
   int8_t steering = getChannel(1);
   setMotor(0, throttle + steering);  // Left motor
   setMotor(1, throttle - steering);  // Right motor
 
-  // Example 9: Crane articulation
+  // Example 8: Crane articulation
   // Multiple servos working together
   int8_t crane_base = getChannel(2);
   int8_t crane_arm = getChannel(3);
-  setServo(0, crane_base);      // Base rotation
-  setServo(1, crane_arm);       // Arm articulation
+  setServo(0, 150 + crane_base * 2 / 5);  // Base rotation
+  setServo(1, 150 + crane_arm * 2 / 5);   // Arm articulation
 
-  // Example 10: Three-way mixing for excavator
+  // Example 9: Three-way mixing for excavator
   // Swing, boom, and arm control
-  setServo(0, getChannel(0));   // Swing
-  setServo(1, getChannel(1));   // Boom
-  setServo(2, getChannel(2));   // Arm
+  setServo(0, 150 + getChannel(0) * 2 / 5);  // Swing
+  setServo(1, 150 + getChannel(1) * 2 / 5);  // Boom
+  setServo(2, 150 + getChannel(2) * 2 / 5);  // Arm
 }
 ```
 
@@ -329,8 +339,7 @@ void loop() {
 
 - `int8_t getChannel(uint8_t n)`: Returns received signed 8-bit value (-128 to 127) from wireless channel `n` (0-15)
 - `void setMotor(uint8_t n, int8_t value)`: Sets motor `n` (0-3) to `value` (-127 to 127). Positive values = forward, negative = reverse, 0 = stop
-- `void setServo(uint8_t n, int8_t value)`: Sets servo `n` (0-3) position. Value range (-127 to 127) maps to PWM pulse width (approximately 1000-2000μs)
-- `void setLED(uint8_t n, bool state)`: Sets LED indicator `n` (0-3) on or off
+- `void setServo(uint8_t n, uint8_t value)`: Sets servo `n` (0-3) position. Center point is ~150, typical range 100-200. Use formula `150 + channel * 2 / 5` to convert channel values (-127 to 127) to servo range.
 - `void loop()`: Application main loop function called every 20ms (50Hz). Implement this function to define your output control logic.
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
