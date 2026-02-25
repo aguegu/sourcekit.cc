@@ -53,6 +53,12 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 
 **Motor Outputs (M0-M3):**
 - 4x PH2.0 connectors for brushed DC motors
+- Driven by 4x HXA2820 H-bridge motor drivers (one per channel)
+- HXA2820 specifications:
+  - Max working voltage: 10.5V (compatible with 2S LiPo)
+  - Max continuous current: 2A per channel
+  - Max peak current: 3.5A
+  - Overtemperature protection: 150°C
 - Supports N20, 370, and similar brushed DC motors
 - PWM speed control with forward/reverse capability
 
