@@ -77,9 +77,9 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 - PWM signal: 50Hz (20ms frame), 1000-2000μs pulse width
 
 **Note:** The WS2812 LED interface shares the signal pin with SM3, and the audio module interface shares pins with SM1 and SM2. This means:
-- **Standard firmware** (default on meshmass.com): Supports all 4 servos (SM0-SM3), WS2812 and audio interfaces not enabled
-- **WS2812 firmware**: Supports WS2812 LED strip + 3 servos (SM0-SM2, SM3 unavailable)
-- **WS2812 + Audio firmware**: Supports WS2812 + audio module + 1 servo (SM0 only, SM1-SM3 unavailable)
+- **RX4M4S** (default on meshmass.com): Supports all 4 servos (SM0-SM3), WS2812 and audio interfaces not enabled
+- **RX4M3S1N**: Supports WS2812 Neopixel + 3 servos (SM0-SM2, SM3 unavailable)
+- **RX4M1S1N1A**: Supports WS2812 Neopixel + audio module + 1 servo (SM0 only, SM1-SM3 unavailable)
 
 Contact Sourcekit for special firmware configurations based on your application needs.
 
@@ -377,9 +377,9 @@ The scaffold handles several system functions automatically:
 - **Battery Monitoring**: Monitors input voltage and provides low-battery warnings
 
 **Firmware Variants:**
-- **Standard Firmware** (default on meshmass.com): 4 DC motors + 4 servos, WS2812/audio interfaces disabled
-- **WS2812 Firmware**: 4 DC motors + WS2812 LED + 3 servos (SM3 unavailable)
-- **WS2812 + Audio Firmware**: 4 DC motors + WS2812 LED + audio module + 1 servo (SM1-SM3 unavailable)
+- **RX4M4S** (default on meshmass.com): 4 DC motors + 4 servos, WS2812/audio interfaces disabled
+- **RX4M3S1N**: 4 DC motors + WS2812 Neopixel + 3 servos (SM3 unavailable, used for Neopixel signal)
+- **RX4M1S1N1A**: 4 DC motors + WS2812 Neopixel + audio module + 1 servo (SM1-SM3 unavailable)
 
 This separation allows users to focus on application logic (output mapping) while the firmware handles hardware complexities.
 
