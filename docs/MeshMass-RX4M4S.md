@@ -111,7 +111,6 @@ Contact Sourcekit for special firmware configurations based on your application 
 | Audio Module Interface | 4-pin SH1.0 connector for optional audio module (shares pins with SM1, SM2) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately), also provides serial console output |
 | Display Shows | Battery voltage, Wireless signal strength, All 16 channel values (-128 to 127) |
-| LED Indicators | 4 LEDs for motor channel status (DM0-DM3) |
 
 **Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. The OLED displays all 16 channel values received from the transmitter, allowing students to directly verify the wireless communication is working correctly. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
 
@@ -372,7 +371,6 @@ The scaffold handles several system functions automatically:
 - **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all 16 channel values (-128 to 127). Displays raw decimal values (not simplified visualizations) for precise verification. The OLED is sold separately, making it optional for fixed installations.
 - **WS2812 RGB LED**: Addressable RGB LED strip support for visual feedback and effects (shares signal pin with SM3, special firmware required)
 - **Audio Module**: Optional audio module support for sound effects (shares pins with SM1/SM2, special firmware required)
-- **LED Indicators**: 4 LEDs show motor channel activity (DM0-DM3)
 - **Wireless Communication**: Manages 2.4GHz packet reception with auto-hopping
 - **Battery Monitoring**: Monitors input voltage and provides low-battery warnings
 
