@@ -15,6 +15,9 @@ features:
   - title: MeshMass TX6A4D
     details: 可编程遥控发射器，带双摇杆和旋钮
     link: /zh/MeshMass-TX6A4D
+  - title: MeshMass RX4M4S
+    details: 4通道直流电机 + 4通道舵机接收器，内置电机驱动
+    link: /zh/MeshMass-RX4M4S
   - title: PiTray clip
     details: 在 DIN 导轨上安装单板计算机
     link: /zh/PiTray-clip

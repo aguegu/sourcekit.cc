@@ -15,6 +15,9 @@ features:
   - title: MeshMass TX6A4D
     details: Programmable RC transmitter with dual joysticks and knobs
     link: /MeshMass-TX6A4D
+  - title: MeshMass RX4M4S
+    details: 4-channel DC motor + 4-channel servo receiver with built-in motor drivers
+    link: /MeshMass-RX4M4S
   - title: PiTray clip
     details: Mount Single board computers on DIN rails
     link: /PiTray-clip

@@ -22,6 +22,7 @@ export default defineConfig({
           {
             text: 'MeshMass',
             items: [
+              { text: 'Introduction', link: '/MeshMass-Introduction' },
               { text: 'TX6A4D Transmitter', link: '/MeshMass-TX6A4D' },
               { text: 'RX4M4S Receiver', link: '/MeshMass-RX4M4S' },
             ]
@@ -62,7 +63,9 @@ export default defineConfig({
           {
             text: 'MeshMass',
             items: [
+              { text: '简介', link: '/zh/MeshMass-Introduction' },
               { text: 'TX6A4D 发射器', link: '/zh/MeshMass-TX6A4D' },
+              { text: 'RX4M4S 接收器', link: '/zh/MeshMass-RX4M4S' },
             ]
           },
           {

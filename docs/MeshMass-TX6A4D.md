@@ -77,10 +77,10 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately with cable) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately with cable), also provides serial console output (OLED display recommended for visual debugging) |
-| Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; All 16 channel values (-128 to 127) on RX4M4S |
+| Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; Debugging values: first 8 channel values, motor outputs, and servo outputs on RX4M4S |
 | Buzzer | Lost connection alarm |
 
-**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. Students can directly see how their code translates physical inputs to numerical outputs. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
+**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. Students can directly see how their code translates physical inputs to numerical outputs. The transmitter OLED displays system status (battery voltage, signal strength) since the user holds it in hand, while the receiver OLED focuses on output debugging. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
 
 ### Connectivity
 
@@ -92,44 +92,13 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 
 ## Pairing
 
-MeshMass TX6A4D uses a secure one-to-one pairing system to establish exclusive wireless connections between transmitter and receiver modules. The pairing system ensures reliable communication and prevents interference from other nearby devices.
+The TX6A4D follows the standard MeshMass pairing system described in the [MeshMass Introduction](/MeshMass-Introduction#pairing-system). Key details specific to the TX6A4D:
 
-### EEPROM Storage
+- The pairing button is labeled **"PAIR"** on the PCB, separate from the programmable shoulder buttons (BTN0-BTN3)
+- It's controlled by firmware and cannot be reprogrammed for other functions
+- The OLED display shows pairing status and confirmation
 
-Pairing information is stored in **EEPROM** (Electrically Erasable Programmable Read-Only Memory), a non-volatile memory that retains data even when power is removed. Once a TX6A4D transmitter is paired with an RX4M4S receiver, their connection information persists across power cycles and reboots. This means you don't need to re-pair devices every time you use them—the established connection is automatically restored when both devices are powered on.
-
-### One-to-One Exclusive Pairing
-
-MeshMass pairing is **bi-directional and exclusive**:
-- When a transmitter pairs with a new receiver, it loses access to any previously paired receiver
-- When a receiver pairs with a new transmitter, its previous transmitter can no longer control it
-
-This one-to-one relationship ensures that each transmitter controls exactly one receiver at a time, and each receiver responds to exactly one transmitter. If you need to control multiple receivers simultaneously, you'll need multiple transmitter modules.
-
-### Pairing Process
-
-To pair a TX6A4D transmitter with an RX4M4S receiver:
-
-1. **Enter pairing mode on the first device**:
-   - Press and hold the **Pair button** for **more than 5 seconds**
-   - The OLED screen will indicate pairing mode (typically showing "PAIRING" or similar message)
-
-2. **Enter pairing mode on the second device**:
-   - While the first device is in pairing mode, press and hold the **Pair button** on the second device
-   - This device will also enter pairing mode with appropriate screen indication
-
-3. **Automatic identity exchange**:
-   - When both devices are in pairing mode and within wireless range, they automatically exchange identification information
-   - This process typically completes within a few seconds
-
-4. **Return to normal operation**:
-   - Both devices automatically exit pairing mode and return to normal operation
-   - The OLED displays revert to showing input values and channel data
-   - The devices are now paired and ready for use
-
-**Note:** The pairing button is labeled "PAIR" on the PCB and is separate from the programmable shoulder buttons (BTN0-BTN3). It's controlled by the firmware and cannot be reprogrammed for other functions.
-
-**Aborting Pairing:** If a device is in pairing mode, pressing the Pair button again will abort the pairing process. Since no new pairing information gets stored, the previous pairing record remains intact and will continue to be used when the device returns to normal mode.
+For complete pairing instructions including EEPROM storage, one-to-one exclusive pairing, and the detailed pairing process, refer to the [Pairing System](/MeshMass-Introduction#pairing-system) section in the MeshMass Introduction.
 
 ## Programming
 
@@ -143,114 +112,14 @@ Programming is done through a web browser using the MeshMass USB flashing dongle
 
 > **Note**: The TX6A4D USB-C port is for charging only. Firmware flashing requires the separate USB dongle.
 
-### Why Code-Based Programming?
+### Programming Philosophy
 
-Traditional RC control solutions fall into two categories with significant drawbacks:
+The MeshMass system is built on a code-based programming approach that combines the flexibility of open hardware with the accessibility of consumer products. For detailed discussion of our design philosophy, competitive advantages, educational value, and system architecture, see the [MeshMass Introduction](/MeshMass-Introduction) page.
 
-**A. Complex Open Hardware Solutions**
-- Require deep electronics knowledge to assemble and debug
-- Involve multiple components (Arduino, RF modules, power regulation)
-- Need complex software toolchains (Arduino IDE, platform configuration)
-- High learning curve for beginners and hobbyists
-
-**B. Expensive "Customizable" RC Controllers**
-- Rely on complex menu systems with poor UX
-- Limited to predefined mixing options
-- Expensive ($200-500+ for comparable functionality)
-- Cannot implement truly custom behaviors
-
-**MeshMass TX6A4D: The Best of Both Worlds**
-- **Simple**: Write clean C code with a minimal API
-- **Powerful**: Programming flexibility for RC control without hardware complexity
-- **Affordable**: Professional-grade control at hobbyist prices
-- **Accessible**: Web-based editor, no complex toolchain installation
-- **Example-Driven**: Comprehensive library of working code examples and tutorials for common use cases
-
-### Competitive Comparison
-
-| Feature | Traditional Open Hardware | Expensive RC Controllers | MeshMass TX6A4D |
-|---------|---------------------------|--------------------------|-----------------|
-| **Price** | Moderate ($50-100 + components) | High ($200-500+) | Affordable |
-| **Learning Curve** | Steep (electronics + software) | Moderate (complex menus) | Gentle (simple C API) |
-| **Flexibility** | High (but requires expertise) | Limited (predefined options) | Focused on RC control (code-based mapping) |
-| **Setup Time** | Hours to days | Minutes to hours | Minutes |
-| **Debugging** | Complex (hardware + software) | Limited (system menus) | Visual debugging via OLED (inputs & channels) |
-| **Custom Behaviors** | Possible with expertise | Limited or impossible | Highly programmable mapping for RC scenarios |
-
-### STEM Education Benefits
-
-The TX6A4D transforms abstract math and programming concepts into tangible, interactive experiences:
-
-**Math Comes Alive**
-- **Variables & Functions**: Students see how `getStick(0)` reads physical joystick position
-- **Coordinate Systems**: X/Y axes map directly to joystick movements (-127 to 127 range)
-- **Algebraic Operations**: Mix inputs with `(getStick(1) + getStick(2)) / 2` for tank steering
-- **Conditional Logic**: Implement safety features with `if (getButton(0)) { setChannel(0, 0); }`
-- **Scaling & Transformation**: Apply `getStick(0) / 2` for reduced sensitivity
-
-**Hands-On Learning Pipeline**
-```c
-// Student writes this code:
-void loop() {
-  // Math: Linear scaling with division
-  setChannel(0, getStick(0) / 2);
-
-  // Physics: Exponential response for fine control
-  int8_t val = getStick(1);
-  int8_t sign = (val > 0) ? 1 : ((val < 0) ? -1 : 0);
-  setChannel(1, (val * val * sign) / 127);
-
-  // Logic: Safety system with dual buttons
-  if (getButton(0) && getButton(3)) {
-    setChannel(2, getStick(2));  // Enable only when both safety buttons pressed
-  } else {
-    setChannel(2, 0);  // Emergency stop
-  }
-}
-```
-
-**Immediate Physical Feedback**
-- Code changes → Immediate vehicle response
-- Debug by watching the vehicle move
-- **Visual debugging**: Watch input and channel values update on OLED displays in real-time (even without motors/servos attached)
-- Learn programming through cause-and-effect
-- No abstraction layers between code and physical motion
-
-### From Idea to Working Controller
-
-**Traditional Open Hardware Approach:**
-1. Research components (2-4 hours)
-2. Order parts, wait for delivery (3-7 days)
-3. Assemble hardware, debug connections (4-8 hours)
-4. Write firmware, debug RF communication (6-12 hours)
-5. Test and refine (2-4 hours)
-**Total: 15-35 hours over 3-7 days**
-
-**MeshMass TX6A4D Approach:**
-1. Plug in TX6A4D and USB dongle (2 minutes)
-2. Select from pre-built examples or modify code in web editor (5-15 minutes)
-3. Flash and test (1 minute)
-4. Refine code as needed (5-15 minutes)
-**Total: 10-30 minutes**
-
-*With comprehensive examples and tutorials available on meshmass.com, most users can find working code for their specific use case in minutes. Beginners from the 3D printing community often find ready-to-use templates matching their vehicle designs.*
-
-### Target Audiences
-
-**For RC Enthusiasts:**
-- Create professional-grade mixing that expensive transmitters can't match
-- Implement custom behaviors for unique vehicles (tank steering, excavator controls)
-- No more menu diving - just write the logic you need
-
-**For STEM Education:**
-- Teach real programming concepts with immediate physical feedback
-- Students see their code control real hardware in minutes
-- Perfect balance: simple enough for beginners, powerful enough for projects
-
-**For 3D Printing Community:**
-- Customize controls for your unique printed creations
-- No electronics expertise needed - focus on your design
-- Affordable way to bring custom vehicles to life
+**Key advantages for TX6A4D:**
+- Simple C API for mapping physical inputs to wireless channels
+- Web-based programming with immediate visual feedback via OLED
+- Comprehensive library of examples for common RC scenarios
 
 ## Firmware Scaffold
 
@@ -399,21 +268,13 @@ The API enables flexible mappings:
 
 ### Firmware-Managed Features
 The scaffold handles several system functions automatically:
-- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays all 16 channel values (-128 to 127) for complete system inspection. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
+- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays debugging values: first 8 channel values (channels 0-7), 4 motor outputs, and 4 servo outputs for system inspection and mapping verification. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
 - **Buzzer**: Provides lost connection alarms and system feedback
 - **Wireless Communication**: Manages 2.4GHz packet transmission with auto-hopping
 - **Battery Management**: Monitors voltage and provides low-battery warnings
 
 This separation allows users to focus on application logic (channel mapping) while the firmware handles hardware complexities.
 
-## System Architecture
-
-The MeshMass system separates concerns between transmitter and receiver:
-
-- **TX6A4D (Transmitter)**: Maps physical inputs (joysticks, knobs, buttons) to wireless channels
-- **RX4M4S (Receiver)**: Maps received channels to physical outputs (motors, servos)
-
-This abstraction allows users to focus on what matters for their specific build without worrying about RF protocol details.
 
 ## Applications
 
