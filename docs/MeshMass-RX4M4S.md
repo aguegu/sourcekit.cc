@@ -49,7 +49,7 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 | Type | Count | Connector | Description |
 |------|-------|-----------|-------------|
 | DC Motor | 4 | PH2.0 | Brushed DC motor driver outputs (0-3) |
-| Servo | 4 | SH1.0 | Standard PWM servo outputs (5V) |
+| Servo | 4 | 2.54mm servo header (3-pin) | Standard PWM servo outputs (5V) |
 
 **Motor Outputs (M0-M3):**
 - 4x PH2.0 connectors for brushed DC motors
@@ -57,7 +57,7 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 - PWM speed control with forward/reverse capability
 
 **Servo Outputs (SM0-SM3):**
-- 4x SH1.0 connectors for standard servos
+- 4x standard 2.54mm servo headers (3-pin, Dupont style) for standard servos
 - 5V power supply for servos
 - Compatible with 9g servos and standard analog/digital servos
 - PWM signal: 50Hz (20ms frame), 1000-2000μs pulse width
