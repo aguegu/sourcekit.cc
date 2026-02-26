@@ -290,10 +290,19 @@ meshmass.com上提供示例应用和代码模板，适用于：
 - STEM教育项目
 - 自定义机器人和自动化
 
+## 3D打印与定制
+
+TX6A4D 专为3D打印社区设计。社区成员创建了自定义设计以增强您的构建体验：
+
+- **3D打印外壳设计**：[CDHCHAOREN](https://makerworld.com.cn/zh/@cdhchaoren) 为 TX6A4D 设计了3D打印外壳。STL文件可在 [MakerWorld](https://makerworld.com.cn/zh/models/2193372-16tong-dao-ke-bian-cheng-zi-ding-yi-shua-ji-yao-ko) 上下载。该外壳保护电子元件的同时提供符合人体工程学的手感（需要3D打印机和耗材）。
+
+TX6A4D 的 M2.5 安装孔使其易于集成到自定义3D打印外壳或车辆设计中。与社区分享您的创作！
+
 ## 讨论与展示
 
 - [论坛（由GitHub Discussion提供支持）](https://github.com/aguegu/sourcekit.cc/discussions)
 - [bilibili - 猥琐老虎 - 合集-可编程遥控模块](https://space.bilibili.com/24674093/lists/6826437)
+- [MakerWorld - CDHCHAOREN 设计的 TX6A4D 3D打印外壳](https://makerworld.com.cn/zh/models/2193372-16tong-dao-ke-bian-cheng-zi-ding-yi-shua-ji-yao-ko)
 
 ## 购买渠道
 

@@ -167,11 +167,6 @@ Users only write the code that matters for their specific vehicle:
 - Community integration: Designers get columns on meshmass.com linking to their stores, Makerworld pages, video channels
 - Business model: Grow together with 3D printing community creators
 
-### Chinese Manufacturing Advantage
-- Uses domestic chips: WCH CH571F (Nanjing), HXA2820 (Shanghai)
-- Cost-effective supply chain
-- Global SaaS platform (meshmass.com) with local manufacturing
-
 ### Future Expansion
 1. **Additional firmware variants** for specialized applications
 2. **Expanded accessory ecosystem** (audio modules, LED effects)
