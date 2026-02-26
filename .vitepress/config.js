@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
+import lightbox from 'vitepress-plugin-lightbox';
 
 const tagId = 'G-TK6CPWVPRE';
 
@@ -111,7 +112,7 @@ export default defineConfig({
 
   themeConfig: {
     search: {
-      provider: 'local'
+      provider: 'local',
     },
 
     // Language switcher in navbar
@@ -119,8 +120,14 @@ export default defineConfig({
       text: '',
       items: [
         { text: 'English', link: '/' },
-        { text: '简体中文', link: '/zh/' }
+        { text: '简体中文', link: '/zh/' },
       ]
     }
-  }
-})
+  },
+  markdown: {
+    config: (md) => {
+      // Use lightbox plugin
+      md.use(lightbox, {});
+    },
+  },
+});
