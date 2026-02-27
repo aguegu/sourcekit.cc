@@ -296,7 +296,7 @@ Sample applications and code templates are available on meshmass.com for:
 
 The TX6A4D is designed with the 3D printing community in mind. Community members have created custom designs to enhance your building experience:
 
-- **3D Printed Case Design**: [CDHCHAOREN](https://makerworld.com.cn/zh/@cdhchaoren) has designed a 3D printable case for the TX6A4D. The STL file is available for download on [MakerWorld](https://makerworld.com.cn/zh/models/2193372-16tong-dao-ke-bian-cheng-zi-ding-yi-shua-ji-yao-ko). This case protects the electronics while providing ergonomic handling (requires 3D printer and filament).
+- **3D Printed Case Design**: [CDHCHAOREN](https://makerworld.com.cn/zh/@cdhchaoren) has designed a 3D printable case for the TX6A4D. The STL file is available for download on [MakerWorld](https://makerworld.com.cn/zh/models/2193372-16tong-dao-ke-bian-cheng-zi-ding-yi-shua-ji-yao-ko). This simple enclosure protects the electronics and provides mounting support (requires 3D printer and filament).
 
 The TX6A4D's M2.5 mounting holes make it easy to integrate into custom 3D printed enclosures or vehicle designs. Share your creations with the community!
 
