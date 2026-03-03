@@ -330,11 +330,11 @@ void loop() {
 ### API 参考
 
 ::: details RX4M4S 标准固件头文件
-<<< @/public/images/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
+<<< @/code/zh/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
 :::
 
 ::: details RX4M3S1N Neopixel 变体固件头文件
-<<< @/public/images/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+<<< @/code/zh/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
 :::
 
 ### 固件管理的功能

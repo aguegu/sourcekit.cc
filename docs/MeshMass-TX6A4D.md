@@ -272,7 +272,7 @@ The API enables flexible mappings:
 
 ### API Reference
 ::: details TX6A4D Application Header File
-<<< @/public/images/MeshMass-TX6A4D/app.h{c:highlightLines}
+<<< @/code/en/MeshMass-TX6A4D/app.h{c:highlightLines}
 :::
 
 ### Firmware-Managed Features

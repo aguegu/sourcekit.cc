@@ -332,11 +332,11 @@ void loop() {
 ### API Reference
 
 ::: details RX4M4S Standard Firmware Header File
-<<< @/public/images/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
+<<< @/code/en/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
 :::
 
 ::: details RX4M3S1N Neopixel Variant Firmware Header File
-<<< @/public/images/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+<<< @/code/en/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
 :::
 
 ### Firmware-Managed Features

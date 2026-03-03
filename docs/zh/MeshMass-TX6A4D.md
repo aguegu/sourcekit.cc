@@ -259,7 +259,7 @@ API支持灵活的映射：
 
 ### SDK
 ::: details TX6A4D Application Header file
-<<< @/public/images/MeshMass-TX6A4D/app.h{c:highlightLines}
+<<< @/code/zh/MeshMass-TX6A4D/app.h{c:highlightLines}
 :::
 
 ### 固件管理的功能
