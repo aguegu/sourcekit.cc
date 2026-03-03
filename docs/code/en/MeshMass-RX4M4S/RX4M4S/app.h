@@ -33,10 +33,15 @@ void setMotor(uint8_t index, int8_t value);
  * @param index Servo index (0-3 for RX4M4S)
  * @param value Unsigned 8-bit value (0-255) representing servo position.
  *              The value corresponds to PWM high-level pulse width in
- *              0.01ms units within a 20ms period. For typical analog servos:
- *              - 100 = 1.0ms pulse (minimum position)
- *              - 150 = 1.5ms pulse (center position)
- *              - 200 = 2.0ms pulse (maximum position)
+ *              0.01ms units within a 20ms period, providing a range of
+ *              0ms to 2.55ms with 0.01ms resolution.
+ *              Typical analog servos use pulse widths between 1.0ms and 2.0ms:
+ *              - 100 = 1.0ms pulse
+ *              - 150 = 1.5ms pulse (center position for regular analog servos)
+ *              - 200 = 2.0ms pulse
+ *              Advanced servos may support extended ranges (0.5ms to 2.5ms).
+ *              The mapping between pulse width and physical angle varies
+ *              by servo model and should be calibrated for each application.
  */
 void setServo(uint8_t index, uint8_t value);
 
