@@ -1,5 +1,9 @@
 # MeshMass Programmable RC System
 
+**Official Online Platform:**
+- **Global Access**: [meshmass.com](https://meshmass.com)
+- **China Mainland Access**: [meshmass.y77.cc](https://meshmass.y77.cc)
+
 ## Overview
 
 MeshMass is a family of affordable, programmable remote control modules designed for RC enthusiasts, STEM education, and the 3D printing community. The system consists of:
@@ -87,7 +91,7 @@ TX6A4D Joystick → getStick() → setChannel() → Wireless Transmission
 RX4M4S Reception → getChannel() → setMotor()/setServo() → Motor/Servo
 ```
 
-All mappings are configurable through [meshmass.com](https://meshmass.com).
+All mappings are configurable through the MeshMass online platform at [meshmass.com](https://meshmass.com) (global access) or [meshmass.y77.cc](https://meshmass.y77.cc) (China mainland).
 
 ## Scaffold Programming Approach
 
@@ -218,7 +222,7 @@ To pair a MeshMass transmitter with a receiver:
 ## Getting Started
 
 1. **Choose your modules**: [TX6A4D Transmitter](/MeshMass-TX6A4D) and [RX4M4S Receiver](/MeshMass-RX4M4S)
-2. **Visit meshmass.com**: Access the web-based programming platform
+2. **Visit the MeshMass online platform** at [meshmass.com](https://meshmass.com) (global access) or [meshmass.y77.cc](https://meshmass.y77.cc) (China mainland): Access the web-based programming platform
 3. **Get the USB flashing dongle**: Required for programming (sold separately)
 4. **Explore examples**: Start with pre-built code for common vehicle types
 5. **Join the community**: [Forum discussions](https://github.com/aguegu/sourcekit.cc/discussions) and [show cases](https://space.bilibili.com/24674093/lists/6826437)

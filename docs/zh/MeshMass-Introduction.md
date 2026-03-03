@@ -1,5 +1,9 @@
 # MeshMass 可编程遥控系统
 
+**官方在线平台：**
+- **全球访问**：[meshmass.com](https://meshmass.com)
+- **中国大陆访问**：[meshmass.y77.cc](https://meshmass.y77.cc)
+
 ## 概述
 
 MeshMass 是一系列经济实惠的可编程遥控模块，专为遥控爱好者、STEM教育和3D打印社区设计。该系统包括：
@@ -86,7 +90,7 @@ TX6A4D 摇杆 → getStick() → setChannel() → 无线传输
 RX4M4S 接收 → getChannel() → setMotor()/setServo() → 电机/舵机
 ```
 
-所有映射均可通过 [meshmass.com](https://meshmass.com) 配置。
+所有映射均可通过 MeshMass 在线平台 [meshmass.com](https://meshmass.com)（全球访问）或 [meshmass.y77.cc](https://meshmass.y77.cc)（中国大陆访问）配置。
 
 ## 框架编程方法
 
@@ -217,7 +221,7 @@ MeshMass配对是**双向且独占的**：
 ## 入门指南
 
 1. **选择您的模块**：[TX6A4D 发射器](/zh/MeshMass-TX6A4D) 和 [RX4M4S 接收器](/zh/MeshMass-RX4M4S)
-2. **访问 meshmass.com**：访问基于Web的编程平台
+2. **访问 MeshMass 在线平台**：访问基于Web的编程平台 [meshmass.com](https://meshmass.com)（全球访问）或 [meshmass.y77.cc](https://meshmass.y77.cc)（中国大陆访问）
 3. **获取 USB 烧录器**：编程所需（单独出售）
 4. **探索示例**：从常见车辆类型的预构建代码开始
 5. **加入社区**：[论坛讨论](https://github.com/aguegu/sourcekit.cc/discussions) 和 [展示案例](https://space.bilibili.com/24674093/lists/6826437)

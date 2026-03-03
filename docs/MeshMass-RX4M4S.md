@@ -122,9 +122,9 @@ Contact Sourcekit for special firmware configurations based on your application 
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately), also provides serial console output |
-| Display Shows | Debugging values: first 8 channel values (channels 0-7), 4 motor outputs, and 4 servo outputs displayed as signed 3-digit integers on 4-line OLED |
+| Display Shows | Debugging values: channel values, 4 motor outputs, and 4 servo outputs displayed as signed 3-digit integers on 4-line OLED |
 
-**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. The 4-line OLED displays debugging information as signed 3-digit integers: lines 1-2 show first 8 channel values (channels 0-7, 4 values per line), line 3 shows 4 motor output values, and line 4 shows 4 servo output values. This allows students to debug mapping and math operations from channels to outputs. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
+**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. The 4-line OLED displays debugging information as signed 3-digit integers, including channel values, motor outputs, and servo outputs. This allows students to debug mapping and math operations from channels to outputs. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
 
 ### Connectivity
 
@@ -146,7 +146,19 @@ The RX4M4S follows the standard MeshMass pairing system described in the [MeshMa
 
 For complete pairing instructions including EEPROM storage, one-to-one exclusive pairing, and the detailed pairing process, refer to the [Pairing System](/MeshMass-Introduction#pairing-system) section in the MeshMass Introduction.
 
-## Design Philosophy
+## Development Guide
+
+The RX4M4S is programmable via the MeshMass online platform at [meshmass.com](https://meshmass.com) (global access) or [meshmass.y77.cc](https://meshmass.y77.cc) (China mainland) using a web browser and the MeshMass USB flashing dongle (sold separately). The CH571F runs pre-built firmware scaffolds that handle low-level RF communication and hardware drivers, while users focus on application-level output mapping logic.
+
+> **Note**: The RX4M4S does not have a built-in charging circuit. Programming and power are supplied through separate connectors.
+
+**What you program:** On RX4M4S, you define how received wireless channels map to motor, servo, and RGB LED outputs. How these channels are generated is determined by the transmitter (TX) firmware.
+
+- Map any of the 16 wireless channels to motor, servo, and RGB LED outputs
+- Create mixing functions (e.g., differential steering, crane articulation)
+- Configure motor direction and speed curves
+- Set servo travel limits, center points, and exponential response
+- Implement custom logic for buttons and switches
 
 The MeshMass system is built on a code-based programming approach that combines the flexibility of open hardware with the accessibility of consumer products. For detailed discussion of our design philosophy, competitive advantages, educational value, and system architecture, see the [MeshMass Introduction](/MeshMass-Introduction) page.
 
@@ -182,33 +194,17 @@ The MeshMass system is built on a code-based programming approach that combines 
 
 
 
-## Programming
-
-The RX4M4S is programmable via the [MeshMass online platform](https://meshmass.com). Users can:
-
-- Map any of the 16 wireless channels to motor and servo outputs
-- Create mixing functions (e.g., differential steering, crane articulation)
-- Configure motor direction and speed curves
-- Set servo travel limits, center points, and exponential response
-- Implement custom logic for buttons and switches
-
-Programming is done through a web browser using the MeshMass USB flashing dongle (sold separately). The CH571F runs pre-built firmware scaffolds that handle the low-level RF communication, timing, and hardware drivers, while users focus on application-level output mapping logic. This scaffold approach means you only write the code that matters for your specific vehicle - no need to understand wireless protocols or PWM timing details.
-
-> **Note**: The RX4M4S does not have a built-in charging circuit. Programming and power are supplied through separate connectors.
 
 
+## Firmware Architecture
 
-## Firmware Scaffold
-
-The RX4M4S runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming.
+The RX4M4S runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. This architecture separates hardware complexity from application logic, allowing users to focus on output mapping.
 
 ### Channel System
 
-The firmware receives 16 signed bytes (-128 to 127) as wireless channels from the paired TX6A4D transmitter. These channels form the communication bridge between transmitter and receiver:
-- Channels 0-5: Typically mapped from analog inputs (joysticks, knobs)
-- Channels 6-15: Typically mapped from digital inputs (buttons, logic)
+The firmware receives 16 signed bytes (-128 to 127) as wireless channels from the paired TX6A4D transmitter. These channels form the communication bridge between transmitter and receiver. Application code interprets these channel values and maps them to motor, servo, and RGB LED outputs based on the specific vehicle's requirements.
 
-**Note:** The channel values received on RX4M4S are exactly what the TX6A4D transmitter sends. The TX6A4D only controls the mapping from physical inputs to channels. How these channel values are interpreted and converted to motor/servo outputs is determined by the application code running on the RX4M4S.
+**Note:** The channel values received on RX4M4S are exactly what the TX6A4D transmitter sends. The TX6A4D only controls the mapping from physical inputs to channels. How these channel values are interpreted and converted to motor, servo, and RGB LED outputs is determined by the application code running on the RX4M4S.
 
 ### Application Code Examples
 
@@ -310,32 +306,59 @@ void loop() {
 }
 ```
 
-### API Functions
+### Quick Reference
 
-- `int8_t getChannel(uint8_t n)`: Returns received signed 8-bit value (-128 to 127) from wireless channel `n` (0-15)
-- `void setMotor(uint8_t n, int8_t value)`: Sets motor `n` (0-3) to `value` (-127 to 127). Positive values = forward, negative = reverse, 0 = stop
-- `void setServo(uint8_t n, uint8_t value)`: Sets the positive pulse width for servo `n` (0-3). The value represents pulse width in units of 0.01ms (e.g., 150 = 1.5ms) with a fixed 20ms period. The parameter is `uint8_t` (0-255 range), supporting approximately 0.5-2.5ms pulse widths. Typical center is ~150 (1.5ms) with range 100-200 (1.0-2.0ms). Use formula `150 + channel * 2 / 5` to convert channel values (-127 to 127) to servo range, or adjust the scaling factor (0.4 = *2/5) for different servo travel ranges.
-- `void loop()`: Application main loop function called after each successfully received wireless payload (typically 50Hz when connection is healthy). Implement this function to define your output control logic.
+**Core Functions:**
+- `getChannel(n)` - Read wireless channel value (-128 to 127)
+- `setMotor(n, value)` - Set motor speed and direction (-127 to 127 forward/reverse, 0 stop)
+- `getMotor(n)` - Get current motor output value
+- `setServo(n, value)` - Set servo position (0.01ms units, 150 = 1.5ms center)
+- `getServo(n)` - Get current servo output value
+- `setup()` - One-time initialization function
+- `loop()` - Main application function called after each received payload
+
+**RGB LED (Neopixel) Functions:** (available to RX4M3S1N and RX4M1S1N1A)
+- `neo()` - LED animation function called every 125ms
+- `neoInit(pixelCount)` - Initialize Neopixel LED strip (1-16 LEDs)
+- `neoSetHSL(n, hue, saturation, lightness)` - Set LED color using HSL color model
+- `neoSetColor(index, color, lightness)` - Set LED color using simplified color value
+
+*For complete function documentation with parameters, return values, and usage notes, see the [API Reference](#api-reference) section below.*
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
 
 **Standard Library**: Common C standard library functions like `abs()` are available for mathematical operations.
 
+### API Reference
+
+::: details RX4M4S Standard Firmware Header File
+<<< @/public/images/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
+:::
+
+::: details RX4M3S1N Neopixel Variant Firmware Header File
+<<< @/public/images/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+:::
+
 ### Firmware-Managed Features
 
 The scaffold handles several system functions automatically:
-- **OLED Display**: Real-time debugging display showing debugging values: first 8 channel values (channels 0-7), 4 motor outputs, and 4 servo outputs displayed as signed 3-digit integers on 4-line OLED. Displays raw decimal values (not simplified visualizations) for precise verification. The OLED is sold separately, making it optional for fixed installations.
-- **WS2812 Neopixels**: Addressable RGB LED strips for vehicle lights (head/turning/tail). **Shares signal pin with SM3** (special firmware required)
-- **Audio Module**: MP3 playback for sound effects (engine start, horns). **Shares pins with SM1, SM2** (special firmware required, module sold separately)
+- **OLED Display**: Real-time debugging display showing channel values, motor outputs, and servo outputs
+- **WS2812 Neopixels**: Addressable RGB LED strips for vehicle lights (shares signal pin with SM3)
+- **Audio Module**: MP3 playback for sound effects (shares pins with SM1, SM2)
 - **Wireless Communication**: Manages 2.4GHz packet reception with auto-hopping
 - **Battery Monitoring**: Monitors input voltage and provides low-battery warnings
 
-**Firmware Variants:**
-- **RX4M4S**: 4 DC motors + 4 servos (SM0-SM3), WS2812 Neopixels and audio module interfaces disabled (currently available)
-- **RX4M3S1N**: 4 DC motors + WS2812 Neopixels (vehicle lights, uses SM3 pin) + 3 servos (SM0-SM2) - *Not released yet*
-- **RX4M1S1N1A**: 4 DC motors + WS2812 Neopixels (vehicle lights) + audio module (MP3 sound effects, uses SM1, SM2 pins) + 1 servo (SM0 only) - *Not released yet, audio module under development*
 
 This separation allows users to focus on application logic (output mapping) while the firmware handles hardware complexities.
+
+## System Architecture
+
+MeshMass separates transmitter and receiver concerns:
+
+- **TX6A4D (Transmitter)**: Maps physical inputs (joysticks, knobs, buttons) to 16 wireless channels
+- **RX4M4S (Receiver)**: Maps received channels to physical outputs (motors, servos)
+
+This abstraction lets users focus on what matters most for their specific build without worrying about RF protocol details. The transmitter defines *what* to send (channel values), while the receiver defines *how* to actuate (motor/servo outputs).
 
 ## Applications
 

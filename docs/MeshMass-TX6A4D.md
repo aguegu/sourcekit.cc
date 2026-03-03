@@ -80,7 +80,7 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately with cable) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately with cable), also provides serial console output (OLED display recommended for visual debugging) |
-| Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; Debugging values: first 8 channel values, motor outputs, and servo outputs on RX4M4S |
+| Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; Debugging values including channel values, motor outputs, and servo outputs on RX4M4S |
 | Buzzer | Lost connection alarm |
 
 **Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. Students can directly see how their code translates physical inputs to numerical outputs. The transmitter OLED displays system status (battery voltage, signal strength) since the user holds it in hand, while the receiver OLED focuses on output debugging. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
@@ -103,35 +103,29 @@ The TX6A4D follows the standard MeshMass pairing system described in the [MeshMa
 
 For complete pairing instructions including EEPROM storage, one-to-one exclusive pairing, and the detailed pairing process, refer to the [Pairing System](/MeshMass-Introduction#pairing-system) section in the MeshMass Introduction.
 
-## Programming
+## Development Guide
 
-The TX6A4D is programmable via the [MeshMass online platform](https://meshmass.com). Users can:
-
-- Map joystick axes, knobs, and buttons to output channels
-- Create custom control mixing (e.g., tank steering, crane controls)
-- Configure button behaviors for specific functions
-
-Programming is done through a web browser using the MeshMass USB flashing dongle (sold separately). The CH571F runs pre-built firmware scaffolds that handle the low-level RF communication, while users focus on application-level input mapping logic.
+The TX6A4D is programmable via the MeshMass online platform at [meshmass.com](https://meshmass.com) (global access) or [meshmass.y77.cc](https://meshmass.y77.cc) (China mainland) using a web browser and the MeshMass USB flashing dongle (sold separately). The CH571F runs pre-built firmware scaffolds that handle low-level RF communication, while users focus on application-level input mapping logic.
 
 > **Note**: The TX6A4D USB-C port is for charging only. Firmware flashing requires the separate USB dongle.
 
 ### Programming Philosophy
 
-The MeshMass system is built on a code-based programming approach that combines the flexibility of open hardware with the accessibility of consumer products. For detailed discussion of our design philosophy, competitive advantages, educational value, and system architecture, see the [MeshMass Introduction](/MeshMass-Introduction) page.
+MeshMass adopts a code-based programming approach that combines open hardware flexibility with consumer product accessibility. For detailed discussion of design philosophy, competitive advantages, educational value, and system architecture, see the [MeshMass Introduction](/MeshMass-Introduction) page.
 
 **Key advantages for TX6A4D:**
 - Simple C API for mapping physical inputs to wireless channels
 - Web-based programming with immediate visual feedback via OLED
 - Comprehensive library of examples for common RC scenarios
 
-## Firmware Scaffold
+**What you program:** On TX6A4D, you define how physical inputs (joysticks, knobs, buttons) map to 16 wireless channels. How these channels control motors and servos is determined by the receiver (RX) firmware.
 
-The TX6A4D runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. Key aspects of the firmware scaffold include:
+## Firmware Architecture
+
+The TX6A4D runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. This architecture separates hardware complexity from application logic, allowing users to focus on channel mapping.
 
 ### Channel System
-The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver. The value -128 is avoided by `getStick()` outputs to enable clean direction reversal in joystick inputs, but channels can be set to -128 for special purposes (e.g., braking in motor control):
-- Channels 0-5: Typically mapped to analog inputs (joysticks, knobs)
-- Channels 6-15: Available for custom mapping (buttons, logic, mixing)
+The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver. Applications map physical inputs (joysticks, knobs, buttons) to these channels, which are then transmitted wirelessly to paired receivers.
 
 **PCB Labels:** The PCB is labeled with STK0-STK5 for analog inputs and BTN0-BTN3 for digital buttons, corresponding directly to API indices.
 
@@ -158,18 +152,21 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 - **Left Joystick Press**: Activates `getButton(0)` (same as Button 0 / left edge button)
 - **Right Joystick Press**: Activates `getButton(3)` (same as Button 3 / right edge button) |
 
+### Timing and Execution
+
+**Execution Model:** The `loop()` function is called every 20ms (50Hz) by the firmware scaffold. This matches the typical update frequency of analog servos, ensuring smooth control updates.
+
+**Firmware Cycle Details:** Before each `loop()` call, the firmware automatically refreshes all analog inputs (joysticks, knobs) and digital inputs (buttons), storing their latest values in memory. The `getStick()` and `getButton()` functions return these pre-fetched values. During `loop()`, `setChannel()` updates values in a 16-byte transmission frame buffer. Channels not explicitly set retain their previous values. After `loop()` completes, the entire frame buffer (all 16 int8_t channel values) is broadcast wirelessly.
+
+**Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
+
 ### Application Code Examples
+
 The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques using proper stdint.h types:
 
 **Architecture Note:** The code on TX6A4D only controls the mapping from physical inputs (joysticks, knobs, buttons) to wireless channels. How these channel values are interpreted and reflected on the receiver module (RX) or vehicle is determined by the application code running on the RX modules.
 
 **Note:** The `app.h` header file already includes `<stdbool.h>` and `<stdint.h>` headers, so you don't need to include them in your application code. On meshmass.com, you can view the `app.h` file for reference, but it's not recommended to edit it.
-
-**Timing Note:** The `loop()` function is called every 20ms (50 times per second, or 50Hz), which matches the typical update frequency of analog servos. This consistent timing ensures smooth control updates.
-
-**Firmware Cycle Details:** Before each `loop()` call, the firmware automatically refreshes all analog inputs (joysticks, knobs) and digital inputs (buttons), storing their latest values in memory. The `getStick()` and `getButton()` functions simply return these pre-fetched values. During `loop()`, `setChannel()` updates values in a 16-byte transmission frame buffer. Channels not explicitly set retain their previous values. After `loop()` completes, the entire frame buffer (all 16 int8_t channel values) is broadcast wirelessly.
-
-**Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
 
 ```c
 #include "app.h"
@@ -247,12 +244,16 @@ void loop() {
 }
 ```
 
-### API Functions
-- `int8_t getStick(uint8_t n)`: Returns signed 8-bit value (-127 to 127) from analog input `n` (0-5). Value -128 is avoided by firmware to enable clean direction reversal.
-- `bool getButton(uint8_t n)`: Returns boolean value `false` (not pressed) or `true` (pressed) for digital button `n` (0-3)
-- `int8_t getChannel(uint8_t n)`: Returns current signed 8-bit value of channel `n` (0-15)
-- `void setChannel(uint8_t n, int8_t value)`: Sets channel `n` to `value` (-128 to 127). Note: While `getStick()` avoids -128 to enable clean direction reversal, `setChannel()` can use -128 for special purposes like braking in motor control.
-- `void loop()`: Application main loop function called every 20ms (50Hz). Implement this function to define your control logic.
+### Quick Reference
+
+**Core Functions:**
+- `getStick(n)` - Read analog input (joystick/knob) value (-127 to 127)
+- `getButton(n)` - Read digital button state (true/false)
+- `setChannel(n, value)` - Set wireless channel value (-128 to 127)
+- `getChannel(n)` - Get current channel value
+- `loop()` - Main application function called every 20ms
+
+*For complete function documentation with parameters, return values, and usage notes, see the [API Reference](#api-reference) section below.*
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
 
@@ -269,15 +270,28 @@ The API enables flexible mappings:
 - **Dual-button safety**: Require multiple buttons pressed simultaneously for safety-critical functions
 - **Complex mixing**: Combine multiple inputs with mathematical operations
 
+### API Reference
+::: details TX6A4D Application Header File
+<<< @/public/images/MeshMass-TX6A4D/app.h{c:highlightLines}
+:::
+
 ### Firmware-Managed Features
 The scaffold handles several system functions automatically:
-- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays debugging values: first 8 channel values (channels 0-7), 4 motor outputs, and 4 servo outputs for system inspection and mapping verification. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
+- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays debugging values including channel values, motor outputs, and servo outputs for system inspection and mapping verification. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
 - **Buzzer**: Provides lost connection alarms and system feedback
 - **Wireless Communication**: Manages 2.4GHz packet transmission with auto-hopping
 - **Battery Management**: Monitors voltage and provides low-battery warnings
 
 This separation allows users to focus on application logic (channel mapping) while the firmware handles hardware complexities.
 
+## System Architecture
+
+MeshMass separates transmitter and receiver concerns:
+
+- **TX6A4D (Transmitter)**: Maps physical inputs (joysticks, knobs, buttons) to 16 wireless channels
+- **RX4M4S (Receiver)**: Maps received channels to physical outputs (motors, servos)
+
+This abstraction lets users focus on what matters most for their specific build without worrying about RF protocol details. The transmitter defines *what* to send (channel values), while the receiver defines *how* to actuate (motor/servo outputs).
 
 ## Applications
 
