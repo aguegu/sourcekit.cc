@@ -72,10 +72,10 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
   - **Standard RC motors**: 130, 140, 180, 260, 270, 280 series (1/10 scale vehicles)
   - **Medium motors**: R300, 350, 370, 380, 390 series (higher torque applications)
   - **Gear motors**: Any of the above with gearbox reduction for precise control
-- PWM speed control (~220Hz) with forward/reverse/brake capability
+- PWM speed control (~220Hz) with bidirectional control and braking capability
 
 **Technical Note:** The RX4M4S generates two types of PWM signals:
-- **Motor PWM**: ~220Hz frequency for smooth motor speed control. Each DC motor channel uses two complementary PWM outputs to drive the H-bridge for forward/reverse/brake operation.
+- **Motor PWM**: ~220Hz frequency for smooth motor speed control. Each DC motor channel uses two complementary PWM outputs to drive the H-bridge for bidirectional control with braking.
 - **Servo PWM**: 50Hz (20ms period) standard servo control. Each servo channel uses one PWM output for position control.
 
 **Servo Outputs (SM0-SM3):**
@@ -242,7 +242,7 @@ void loop() {
 
   // --- Basic Motor Control Examples ---
 
-  // Example 1: Reversed motor direction
+  // Example 1: Inverted motor direction
   // Useful for motors that need opposite rotation
   setMotor(1, -getChannel(1));
 
@@ -261,8 +261,8 @@ void loop() {
 
   // --- Basic Servo Control Examples ---
 
-  // Example 4: Servo direction reversal
-  // Use subtraction instead of addition to reverse servo movement direction
+  // Example 4: Servo direction inversion
+  // Use subtraction instead of addition to invert servo movement direction
   // Without changing transmitter configuration
   setServo(0, 150 - getChannel(4) * 2 / 5);
 
@@ -310,7 +310,7 @@ void loop() {
 
 **Core Functions:**
 - `getChannel(n)` - Read wireless channel value (-128 to 127)
-- `setMotor(n, value)` - Set motor speed and direction (-127 to 127 forward/reverse, 0 stop)
+- `setMotor(n, value)` - Set motor speed and direction (127: 100% PWM one direction, -127: 100% PWM opposite direction, 0: stop, -128: brake)
 - `getMotor(n)` - Get current motor output value
 - `setServo(n, value)` - Set servo position (0.01ms units, 150 = 1.5ms center)
 - `getServo(n)` - Get current servo output value

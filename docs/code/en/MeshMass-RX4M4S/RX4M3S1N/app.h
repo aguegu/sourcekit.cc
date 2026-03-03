@@ -33,12 +33,14 @@ int8_t getChannel(uint8_t index);
  * Set motor output value.
  *
  * @param index Motor index (0-3 for RX4M3S1N)
- * @param value Signed 8-bit value (-128 to 127) representing motor
- *              speed and direction. The value represents PWM duty cycle
- *              percentage: 127 means 100% forward, -127 means 100% reverse,
- *              and 0 means stop (no power). Value -128 activates braking
- *              (short circuit). Actual rotation direction depends on motor
- *              wiring and can be reversed by swapping motor connections.
+ * @param value Signed 8-bit value (-128 to 127) representing motor speed and direction.
+ *              The value represents PWM duty cycle percentage:
+ *              - 127: 100% PWM duty cycle in one direction
+ *              - 0: stop (no power)
+ *              - -127: 100% PWM duty cycle in opposite direction
+ *              - -128: activates braking (short circuit)
+ *              Actual rotation direction depends on motor wiring.
+ *              Swap motor terminals to reverse direction if needed.
  */
 void setMotor(uint8_t index, int8_t value);
 

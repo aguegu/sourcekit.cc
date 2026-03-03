@@ -237,7 +237,7 @@ void loop() {
   // Example 10: Dual-button safety latch - requires two buttons pressed
   // Button 3 acts as safety, must be held while button 2 triggers action
   if (getButton(3) && getButton(2)) {
-    setChannel(10, 127);  // Full forward when safety + trigger pressed
+    setChannel(10, 127);  // Full speed in one direction when safety + trigger pressed
   } else {
     setChannel(10, 0);    // Stop otherwise
   }
