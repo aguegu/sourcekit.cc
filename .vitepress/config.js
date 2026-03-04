@@ -130,4 +130,7 @@ export default defineConfig({
       md.use(lightbox, {});
     },
   },
+  sitemap: {
+    hostname: 'https://sourcekit.cc',
+  },
 });
