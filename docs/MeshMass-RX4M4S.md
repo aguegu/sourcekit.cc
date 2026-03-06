@@ -323,6 +323,11 @@ void loop() {
 - `neoSetHSL(n, hue, saturation, lightness)` - Set LED color using HSL color model
 - `neoSetColor(index, color, lightness)` - Set LED color using simplified color value
 
+**Audio Functions:** (available to RX4M1S1N1A)
+- `mpPlay(filesn, force)` - Play audio file from MY1690 audio module (filesn: 1-9999, force: playback behavior control)
+- `mpVolume(value)` - Set audio playback volume level (0-30, 0 = silent, 30 = maximum)
+- `onPlayerReady()` - Callback function called when audio module initialization completes
+
 *For complete function documentation with parameters, return values, and usage notes, see the [API Reference](#api-reference) section below.*
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
@@ -337,6 +342,10 @@ void loop() {
 
 ::: details RX4M3S1N Neopixel Variant Firmware Header File
 <<< @/code/en/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+:::
+
+::: details RX4M1S1N1A Neopixel + Audio Variant Firmware Header File
+<<< @/code/en/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c:highlightLines}
 :::
 
 ### Firmware-Managed Features

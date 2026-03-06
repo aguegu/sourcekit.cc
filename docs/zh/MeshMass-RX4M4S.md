@@ -321,6 +321,11 @@ void loop() {
 - `neoSetHSL(n, hue, saturation, lightness)` - 使用 HSL 颜色模型设置 LED 颜色
 - `neoSetColor(index, color, lightness)` - 使用简化颜色值设置 LED 颜色
 
+**音频函数：** (适用于 RX4M1S1N1A)
+- `mpPlay(filesn, force)` - 从 MY1690 音频模块播放音频文件 (filesn: 1-9999, force: 播放行为控制)
+- `mpVolume(value)` - 设置音频播放音量级别 (0-30, 0 = 静音, 30 = 最大音量)
+- `onPlayerReady()` - 音频模块初始化完成时调用的回调函数
+
 *完整的函数文档包含参数、返回值和用法说明，请参阅下面的 [API 参考](#api-参考) 部分。*
 
 **状态持久性**：需要在 `loop()` 调用之间保持值的变量应声明为 `static` 在 `loop()` 内部或作为全局变量在函数外部声明。
@@ -335,6 +340,10 @@ void loop() {
 
 ::: details RX4M3S1N Neopixel 变体固件头文件
 <<< @/code/zh/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+:::
+
+::: details RX4M1S1N1A Neopixel + Audio 变体固件头文件
+<<< @/code/zh/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c:highlightLines}
 :::
 
 ### 固件管理的功能
