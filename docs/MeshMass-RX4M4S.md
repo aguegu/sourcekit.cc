@@ -223,6 +223,24 @@ The scaffold provides a simple API for reading channels and controlling outputs.
 // or as static inside loop() (using 'static' keyword)
 static uint8_t servo_center = 150;  // Servo center point (~150)
 
+// One-time initialization function
+void setup() {
+  // Initialize Neopixel LED strip with 8 LEDs (for RX4M3S1N or RX4M1S1N1A variants)
+  neoInit(8);
+
+  // Other initialization tasks can be added here
+  // (motor/servo defaults, variable initialization, etc.)
+}
+
+// Audio module ready callback (for RX4M1S1N1A variant)
+void onPlayerReady() {
+  // Set default audio volume when audio module is ready
+  mpVolume(20);  // Volume level 20 out of 30 (0 = silent, 30 = maximum)
+
+  // Optional: Play startup sound
+  // mpPlay(1, true);  // Play file 0001 with force
+}
+
 void loop() {
   // --- Default Configuration (from app.c) ---
   // Direct channel to motor mapping for motors 0-3
@@ -303,6 +321,69 @@ void loop() {
   setServo(0, 150 + getChannel(0) * 2 / 5);  // Swing
   setServo(1, 150 + getChannel(1) * 2 / 5);  // Boom
   setServo(2, 150 + getChannel(2) * 2 / 5);  // Arm
+
+  // --- Neopixel and Audio Integration Examples ---
+
+  // Example 11: Vehicle lights based on motor speed (for RX4M3S1N or RX4M1S1N1A)
+  // Set LED brightness proportional to motor speed
+  // Assume 8 LEDs: 0-3 for front, 4-7 for rear
+  int8_t speed = abs(getChannel(0));  // Use throttle channel for speed
+  uint8_t brightness = speed * 2;     // Scale to 0-254 range
+  if (brightness > 255) brightness = 255;
+
+  // Front lights (white)
+  neoSetColor(0, COLOR_WHITE, brightness);
+  neoSetColor(1, COLOR_WHITE, brightness);
+
+  // Rear lights (red)
+  neoSetColor(4, COLOR_RED, brightness / 3);  // Dimmer red lights
+  neoSetColor(5, COLOR_RED, brightness / 3);
+
+  // Example 12: Direction indicator lights
+  // Green for forward, red for reverse, yellow for stopped
+  if (getChannel(0) > 20) {
+    // Moving forward - green front lights
+    neoSetColor(2, COLOR_GREEN, 200);
+    neoSetColor(3, COLOR_GREEN, 200);
+  } else if (getChannel(0) < -20) {
+    // Moving backward - red front lights
+    neoSetColor(2, COLOR_RED, 200);
+    neoSetColor(3, COLOR_RED, 200);
+  } else {
+    // Stopped - yellow front lights
+    neoSetColor(2, COLOR_YELLOW, 100);
+    neoSetColor(3, COLOR_YELLOW, 100);
+  }
+
+  // Example 13: Audio feedback for engine sounds (for RX4M1S1N1A)
+  // Play engine sound when throttle exceeds threshold
+  static bool engine_playing = false;
+  int8_t throttle = getChannel(0);
+
+  if (abs(throttle) > 30) {
+    // Engine running - play engine sound (file 0001)
+    if (!engine_playing) {
+      mpPlay(1, true);  // Force play engine sound
+      engine_playing = true;
+    }
+  } else {
+    // Engine idle or stopped
+    if (engine_playing) {
+      // Could play idle sound here (file 0002)
+      engine_playing = false;
+    }
+  }
+
+  // Example 14: Beep sound for button press
+  // Play beep when button is pressed (channel 8 as button)
+  static bool button_was_pressed = false;
+  bool button_pressed = (getChannel(8) > 0);
+
+  if (button_pressed && !button_was_pressed) {
+    // Button just pressed - play beep sound (file 0003)
+    mpPlay(3, false);  // Don't force - skip if already playing
+  }
+  button_was_pressed = button_pressed;
 }
 ```
 

@@ -221,6 +221,24 @@ RX4M4S 运行预构建的固件框架，处理底层硬件操作，同时为应�
 // 或在 loop() 内部使用 'static' 关键字声明
 static uint8_t servo_center = 150;  // 舵机中心点 (~150)
 
+// 一次性初始化函数
+void setup() {
+  // 初始化 Neopixel LED 灯带，8 个 LED（适用于 RX4M3S1N 或 RX4M1S1N1A 变体）
+  neoInit(8);
+
+  // 其他初始化任务可以在此添加
+  // （电机/舵机默认值、变量初始化等）
+}
+
+// 音频模块就绪回调（适用于 RX4M1S1N1A 变体）
+void onPlayerReady() {
+  // 音频模块就绪时设置默认音量
+  mpVolume(20);  // 音量级别 20（共 30，0 = 静音，30 = 最大音量）
+
+  // 可选：播放启动声音
+  // mpPlay(1, true);  // 强制播放文件 0001
+}
+
 void loop() {
   // --- 默认配置（来自 app.c）---
   // 通道到电机的直接映射，电机 0-3
@@ -301,6 +319,69 @@ void loop() {
   setServo(0, 150 + getChannel(0) * 2 / 5);  // 回转
   setServo(1, 150 + getChannel(1) * 2 / 5);  // 动臂
   setServo(2, 150 + getChannel(2) * 2 / 5);  // 斗杆
+
+  // --- Neopixel 与音频集成示例 ---
+
+  // 示例 11: 基于电机速度的车辆灯光（适用于 RX4M3S1N 或 RX4M1S1N1A）
+  // 设置 LED 亮度与电机速度成正比
+  // 假设 8 个 LED：0-3 为前灯，4-7 为尾灯
+  int8_t speed = abs(getChannel(0));  // 使用油门通道作为速度
+  uint8_t brightness = speed * 2;     // 缩放到 0-254 范围
+  if (brightness > 255) brightness = 255;
+
+  // 前灯（白色）
+  neoSetColor(0, COLOR_WHITE, brightness);
+  neoSetColor(1, COLOR_WHITE, brightness);
+
+  // 尾灯（红色）
+  neoSetColor(4, COLOR_RED, brightness / 3);  // 较暗的红色灯光
+  neoSetColor(5, COLOR_RED, brightness / 3);
+
+  // 示例 12: 方向指示灯
+  // 前进为绿色，后退为红色，停止为黄色
+  if (getChannel(0) > 20) {
+    // 前进 - 绿色前灯
+    neoSetColor(2, COLOR_GREEN, 200);
+    neoSetColor(3, COLOR_GREEN, 200);
+  } else if (getChannel(0) < -20) {
+    // 后退 - 红色前灯
+    neoSetColor(2, COLOR_RED, 200);
+    neoSetColor(3, COLOR_RED, 200);
+  } else {
+    // 停止 - 黄色前灯
+    neoSetColor(2, COLOR_YELLOW, 100);
+    neoSetColor(3, COLOR_YELLOW, 100);
+  }
+
+  // 示例 13: 引擎声音的音频反馈（适用于 RX4M1S1N1A）
+  // 当油门超过阈值时播放引擎声音
+  static bool engine_playing = false;
+  int8_t throttle = getChannel(0);
+
+  if (abs(throttle) > 30) {
+    // 引擎运行 - 播放引擎声音（文件 0001）
+    if (!engine_playing) {
+      mpPlay(1, true);  // 强制播放引擎声音
+      engine_playing = true;
+    }
+  } else {
+    // 引擎怠速或停止
+    if (engine_playing) {
+      // 可以在此播放怠速声音（文件 0002）
+      engine_playing = false;
+    }
+  }
+
+  // 示例 14: 按钮按下时的蜂鸣声
+  // 按钮按下时播放蜂鸣声（通道 8 作为按钮）
+  static bool button_was_pressed = false;
+  bool button_pressed = (getChannel(8) > 0);
+
+  if (button_pressed && !button_was_pressed) {
+    // 按钮刚按下 - 播放蜂鸣声（文件 0003）
+    mpPlay(3, false);  // 不强制 - 如果已经在播放则跳过
+  }
+  button_was_pressed = button_pressed;
 }
 ```
 
