@@ -13,7 +13,7 @@ Sourcekit® MeshMass TX6A4D is a programmable remote control transmitter module 
 
 The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, making it ideal for building custom remote control systems for toys, brick builds, and 3D printed vehicles.
 
-![TX6A4D Controller](/images/MeshMass-TX6A4D/main.jpg)
+![TX6A4D Controller](/images/MeshMass-TX6A4D/main.png)
 
 ## Features
 

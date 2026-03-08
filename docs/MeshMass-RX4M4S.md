@@ -13,7 +13,7 @@ Sourcekit® MeshMass RX4M4S is a programmable receiver module designed for RC ap
 
 The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for controlling complex vehicles like construction equipment, RC cars, cranes, and custom 3D printed builds. Designed with 3D printing hobbyists in mind, it offers space-efficient integration, built-in motor drivers, and easy programming through a web-based editor.
 
-![RX4M4S Receiver](/images/MeshMass-RX4M4S/main.jpg)
+![RX4M4S Receiver](/images/MeshMass-RX4M4S/main.png)
 
 ## Features
 

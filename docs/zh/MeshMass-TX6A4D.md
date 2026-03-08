@@ -13,7 +13,7 @@ Sourcekit® MeshMass TX6A4D 是一款可编程的遥控发射器模块，专为�
 
 TX6A4D 配备双摇杆、旋转旋钮和可编程按钮，非常适合为玩具、积木搭建和3D打印车辆构建自定义遥控系统。
 
-![TX6A4D 控制器](/images/MeshMass-TX6A4D/main.jpg)
+![TX6A4D 控制器](/images/MeshMass-TX6A4D/main.png)
 
 ## 特性
 
