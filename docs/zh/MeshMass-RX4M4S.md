@@ -13,7 +13,7 @@ Sourcekit® MeshMass RX4M4S 是一款专为遥控应用设计的可编程接收�
 
 RX4M4S 提供 4 路直流电机输出和 4 路舵机输出，非常适合控制复杂的车辆，如工程设备、遥控汽车、起重机和自定义 3D 打印构建。专为 3D 打印爱好者设计，它提供空间高效集成、内置电机驱动器和通过基于 Web 的编辑器轻松编程。
 
-![RX4M4S 接收器](/images/MeshMass-RX4M4S/main.png)
+![RX4M4S 接收器](/images/MeshMass-RX4M4S/front.png)
 
 ## 特性
 
@@ -485,6 +485,10 @@ RX4M4S 非常适合 3D 打印工程车辆和 RC 模型。meshmass.com 上提供�
 ## 购买渠道
 
 - [淘宝 - 猥琐老虎遥控玩物](https://dti9o8bd7lkwm7d4o9slcd2h6apezgn.taobao.com)
+
+## 产品照片
+
+![RX4M4S 接收器 - 主视图](/images/MeshMass-RX4M4S/main.png)
 
 ## 相关产品
 
