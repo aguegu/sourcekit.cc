@@ -206,6 +206,16 @@ The firmware receives 16 signed bytes (-128 to 127) as wireless channels from th
 
 **Note:** The channel values received on RX4M4S are exactly what the TX6A4D transmitter sends. The TX6A4D only controls the mapping from physical inputs to channels. How these channel values are interpreted and converted to motor, servo, and RGB LED outputs is determined by the application code running on the RX4M4S.
 
+```mermaid
+venn-beta
+  title "Channel System Overview"
+  set TX["TX6A4D"]
+    text "joysticks knobs buttons"
+  set RX["RX4M4S"]
+    text "motors servos leds mp3"
+  union TX,RX["channels"]
+```
+
 ### Application Code Examples
 
 The scaffold provides a simple API for reading channels and controlling outputs. Here's an example showing various output control techniques:
