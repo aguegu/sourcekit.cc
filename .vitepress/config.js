@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitepress';
 import lightbox from 'vitepress-plugin-lightbox';
+import { withMermaid } from "vitepress-plugin-mermaid";
 
 const tagId = 'G-TK6CPWVPRE';
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   srcDir: "docs",
   base: '/',
 
@@ -130,6 +131,7 @@ export default defineConfig({
       md.use(lightbox, {});
     },
   },
+  mermaid: {},
   sitemap: {
     hostname: 'https://sourcekit.cc',
   },
