@@ -107,7 +107,7 @@ export default withMermaid({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', ${tagId});`
+      gtag('config', '${tagId}');`
     ]
   ],
 
