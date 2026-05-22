@@ -416,15 +416,15 @@ void loop() {
 ### API 参考
 
 ::: details RX4M4S 标准固件头文件
-<<< @/code/zh/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
+<<< @/code/zh/MeshMass-RX4M4S/RX4M4S/app.h{c}
 :::
 
 ::: details RX4M3S1N Neopixel 变体固件头文件
-<<< @/code/zh/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+<<< @/code/zh/MeshMass-RX4M4S/RX4M3S1N/app.h{c}
 :::
 
 ::: details RX4M1S1N1A Neopixel + Audio 变体固件头文件
-<<< @/code/zh/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c:highlightLines}
+<<< @/code/zh/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c}
 :::
 
 ### 固件管理的功能

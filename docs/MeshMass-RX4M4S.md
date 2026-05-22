@@ -418,15 +418,15 @@ void loop() {
 ### API Reference
 
 ::: details RX4M4S Standard Firmware Header File
-<<< @/code/en/MeshMass-RX4M4S/RX4M4S/app.h{c:highlightLines}
+<<< @/code/en/MeshMass-RX4M4S/RX4M4S/app.h{c}
 :::
 
 ::: details RX4M3S1N Neopixel Variant Firmware Header File
-<<< @/code/en/MeshMass-RX4M4S/RX4M3S1N/app.h{c:highlightLines}
+<<< @/code/en/MeshMass-RX4M4S/RX4M3S1N/app.h{c}
 :::
 
 ::: details RX4M1S1N1A Neopixel + Audio Variant Firmware Header File
-<<< @/code/en/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c:highlightLines}
+<<< @/code/en/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c}
 :::
 
 ### Firmware-Managed Features
