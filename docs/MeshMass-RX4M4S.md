@@ -15,6 +15,27 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 
 ![RX4M4S Receiver](/images/MeshMass-RX4M4S/front.png)
 
+```
+┌─────┬───────────────────┬──────────┬───┬───┬───┬───┬──┬───┬─┬───┬─────┐
+│     │    Onboard        │  ┌────┐  │   │   │   │   │  │ R │ │ M │     │
+│     │        Antenna    │  │PAIR│  │ S │ S │ S │ S │  │ G │ │ P │     │
+│     └───────────────────┘  └────┘  │ M │ M │ M │ M │  │ B │ │ 3 │     │
+│         ┌───┐                      │ 0 │ 1 │ 2 │ 3 │  └───┘ └───┘     │
+│         │Ext│                      │   │   │   │   │  ┌───┐           │
+│         │Ant│                      └───┴───┴───┴───┘  │ O │           │
+│         └───┘                                         │ L │           │
+│                         SOURCEKIT                     │ E │           │
+│                         MeshMass                      │ D │       ┌───┤
+│                         RX4M4S                        └───┘       │ P │
+│                                                                   │ R │
+│                                                     ┌────────────┐│ O │
+│    ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐  │            ││ G │
+│    │         │ │         │ │         │ │         │  │  DC Power  │└───┤
+│    │   DM0   │ │   DM1   │ │   DM2   │ │   DM3   │  │  7.4-8.4v  │    │
+│    │         │ │         │ │         │ │         │  │   +    -   │    │
+└────┴─────────┴─┴─────────┴─┴─────────┴─┴─────────┴──┴────────────┴────┘
+```
+
 ## Features
 
 - **4 DC Motor Outputs**: For brushed DC motor control (N20, 370, etc.)
