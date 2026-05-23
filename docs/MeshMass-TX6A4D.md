@@ -29,9 +29,9 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 │            ▼                  │OLED│ │PAIR│              ▼            │  
 │                               └────┘ └────┘                     ┌─────┤  
 │                       ┌──────┐         ┌──────┐      ┌────────┐ │ USB │  
-│┌──────┐               │      │         │      │      │DC Power│ │CHARGE  
-││BUZZER│               │ STK4 │         │ STK5 │      │3.7-4.2v│ └─────┤  
-│└──────┘               │      │         │      │      │ +    - │       │  
+│ ┌──────┐              │      │         │      │      │DC Power│ │CHARGE  
+│ │BUZZER│              │ STK4 │         │ STK5 │      │3.7-4.2v│ └─────┤  
+│ └──────┘              │      │         │      │      │ +    - │       │  
 └───────────────────────┴──────┴─────────┴──────┴──────┴────────┴───────┘  
 ```
 
