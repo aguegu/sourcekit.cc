@@ -15,6 +15,26 @@ The TX6A4D features dual joysticks, rotary knobs, and programmable buttons, maki
 
 ![TX6A4D Controller](/images/MeshMass-TX6A4D/main.png)
 
+```
+       ┌──┐     ┌──┐                                 ┌──┐     ┌──┐         
+┌────┬─└──┘─┬─┬─└──┘─┬──┬─────────────┬────┬────┬──┬─└──┘─┬─┬─└──┘─┬────┐  
+│    │ BTN0 │ │ BTN1 │  │ Onboard ANT │    │PROG│  │ BTN2 │ │ BTN3 │    │  
+│    └──────┘ └──────┘  └─────────────┘    └────┘  └──────┘ └──────┘┌───┌─┐
+│                        ┌───┐                                      │PWR└─┘
+│          STK2          │EXT│     SOURCEKIT             STK1       │ SW│  
+│            ▲           │ANT│     MeshMass                ▲        └───┤  
+│            │           └───┘     TX6A4D                  │            │  
+│     ◄──────┼──────► STK3                     STK0 ◄──────┼──────►     │  
+│            │                  ┌────┐ ┌────┐              │            │  
+│            ▼                  │OLED│ │PAIR│              ▼            │  
+│                               └────┘ └────┘                     ┌─────┤  
+│                       ┌──────┐         ┌──────┐      ┌────────┐ │ USB │  
+│┌──────┐               │      │         │      │      │DC Power│ │CHARGE  
+││BUZZER│               │ STK4 │         │ STK5 │      │3.7-4.2v│ └─────┤  
+│└──────┘               │      │         │      │      │ +    - │       │  
+└───────────────────────┴──────┴─────────┴──────┴──────┴────────┴───────┘  
+```
+
 ## Features
 
 - **Dual Joysticks**: Two dual-axis joysticks providing 4 analog input channels
