@@ -42,3 +42,5 @@ Content pages should exist in both `docs/` (English) and `docs/zh/` (Chinese) fo
 ## Content Conventions
 
 Product pages use ATX-style headers (`#`) for titles. Markdown files include embedded YouTube iframes for demo videos, GitHub discussion links for support, and step-by-step installation images referencing `docs/public/images/`.
+
+For **kit teacher's guides** (e.g. `docs/MeshMass-Mini-Tank-Starter-Kit.md`), see [TEACHER_GUIDE_STYLE.md](TEACHER_GUIDE_STYLE.md) at the repo root for the established writing-style conventions (audience/voice, container patterns, pedagogical flow, tone, localisation).
