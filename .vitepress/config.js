@@ -27,6 +27,7 @@ export default withMermaid({
               { text: 'Introduction', link: '/MeshMass-Introduction' },
               { text: 'TX6A4D Transmitter', link: '/MeshMass-TX6A4D' },
               { text: 'RX4M4S Receiver', link: '/MeshMass-RX4M4S' },
+              { text: 'Mini Tank Starter Kit', link: '/MeshMass-Mini-Tank-Starter-Kit' },
             ]
           },
           {
