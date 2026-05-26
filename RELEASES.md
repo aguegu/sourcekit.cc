@@ -2,10 +2,15 @@
 
 Internal change log for the sourcekit.cc docs site. Not published to the website (lives outside `docs/`).
 
-## 0.1.1 — unreleased
+## 0.1.1 — 2026-05-26
 
-- Dev server now binds to `0.0.0.0` (configured via `vite.server.host` in `.vitepress/config.js`) so the server is reachable from other hosts on the LAN.
-- Mini Tank Starter Kit, Session 1 Step 1: pedagogical rework as a teacher's guide for ~10yo students with ~2 years of English. Restructured into four narrative arcs — *Meet the Parts → Make the Motor Spin → What About Speed? → Variable Speed With One Battery* — with three hands-on experiments in `::: info` containers (Simple Circuit, Bigger Battery, Speed Control by Timing) progressively landing **circuit**, **switch**, **polarity reversal**, **voltage** (named after Volta), **series stacking**, and **PWM**. Closes by naming PWM, then uses the "person too big to ride the tank" framing to motivate MeshMass. *Battery Is Everywhere* now opens with a vocabulary-check question. Safety Rules wrapped in `::: danger`. Dropped `1.x.x` numbering throughout Step 1.
+- Dev server binds to `0.0.0.0` (via `vite.server.host` in `.vitepress/config.js`) so it's reachable from other hosts on the LAN.
+- Mini Tank Starter Kit: built out Session 1 (~3 hours) as a complete teacher's guide for ~10yo students. Five hands-on experiments in Step 1 (Simple Circuit, Bigger Battery, Speed Control by Timing) land electronics concepts; Step 2's parallel receiver/transmitter board tours culminate in Experiment #4 (Prove All the Electronics Work); Steps 3–4 assemble the controller and tank, closing with Experiment #5 (Why Tracks Matter); Step 5 plays. Session 1 Summary groups Electronics, Mechanics, Hardware, and Build. Session 2 (programming) marked WIP.
+- Mini Tank Starter Kit: page structure reworked. Overview rewritten as a teacher-guide intro; product-shape info moved to "About the Kit" near the BOM. "Concept Coverage" replaced by a brief "At a Glance" preview. Beyond This Kit section added with five expansion branches. Discussion section with GitHub Discussions link. Removed blank chapters (Features, Drive System, Programming, Where to Buy, leftover Assembly stub).
+- Mini Tank Starter Kit: Chinese version created (`docs/zh/MeshMass-Mini-Tank-Starter-Kit.md`) and added to the Chinese sidebar. ESL framing dropped since the Chinese-language audience reads in their native language.
+- Replaced manual `Version: 1.0.0` lines with VitePress's built-in `lastUpdated` footer (enabled via `lastUpdated: true` in config). Applies to MeshMass-RX4M4S, MeshMass-TX6A4D, CircusGoggles, PiTray-clip, PiTray-mini, and all Chinese counterparts.
+- Page outline: `outline: [2, 4]` in themeConfig so H4 headings (arc dividers, assembly sub-steps) appear in the right-side "On this page" panel.
+- Cross-product links: TX6A4D and RX4M4S pages now list the Mini Tank Starter Kit as a Related Product.
 - Mini Tank Starter Kit, Session 1 Step 1: tightened the closing. The three fragmented blocks (*Think About It! / The Problem / This is why we need MeshMass!*) are merged into a single *The Speed Problem* section that bridges directly into Step 2.
 - Mini Tank Starter Kit, Session 1 Step 1: replaced the *How to Control It?* bullet list with an *Experiment: A Simple Circuit* section. The experiment introduces the **circuit** concept (1S battery + N20 motor + two wires), folds in a short-circuit safety caution, the **switch** concept (on/off via interrupting one wire), and the polarity reversal that was previously listed.
 

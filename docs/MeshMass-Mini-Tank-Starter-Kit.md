@@ -17,7 +17,7 @@ This page is the teacher's guide for the Mini Tank lesson, organised in two sess
 
 Reference sections at the back: **Learning Path**, **Bill of Materials**, **Specifications**, **Related Products**.
 
-## Session 1: Get Running First! (2 Hours)
+## Session 1: Get Running First! (3 Hours)
 
 No programming required - firmware is pre-flashed. Just assemble and play!
 
@@ -319,8 +319,10 @@ Build the mini tank chassis.
 
 **Instructions:**
 1. Place a Front Wheel against its mounting point on the chassis.
-2. Pass a PB2×8 screw through the wheel and into the chassis. Tighten **just enough** that the wheel rotates freely without wobble - front wheels are idlers and must spin freely.
+2. Pass a PB2×8 screw through the wheel and into the chassis. **Fasten it tight.** The Front Wheel is essentially two rings stacked together with a groove between them, 3D-printed as a single piece — the rings cannot be separated but they can still spin relative to each other. So the screw clamps the inner ring to the chassis while the outer ring continues to spin freely.
 3. Repeat for the second front wheel.
+
+> **💡 Tip for Teachers:** This is a great example of a 3D-printing technique called **print-in-place** — two (or more) parts are printed at the same time with a tiny gap between them, so they come off the printer pre-assembled. They fit together perfectly, can't be separated, but can move relative to each other. The same technique can print fully-functional hinges, joints, chains, and bearings without any post-assembly work.
 
 #### 4.4 Mount the OLED Screen on the Screen Stand
 
@@ -399,6 +401,10 @@ Materials: Continuous Tracks × 2
 This is why every real tank, bulldozer, and crawler uses **continuous tracks**: more ground contact means more traction. Two wheels alone can roll; tracks turn rolling into crawling.
 
 > **💡 Tip for Teachers:** A folded sheet of paper, a thin book, or a small ramp makes a great mini obstacle course. The "with tracks" advantage gets obvious fast when the tracked tank climbs what the bare-wheel tank can't.
+
+> **💡 Tip for Teachers:** A small 3D-printing design lesson lives here. If the rear wheels were wrapped in a soft (TPU/rubber) tire, grip on a hard floor would already be decent — no tracks needed. But this starter kit is designed so **every 3D-printed part prints fast, on one plate, in a single common material like PLA or PETG**. The result: hard plastic rear wheels, which don't grip much on a hard floor. The continuous track is the part that restores the grip — turning rolling into crawling.
+
+> **💡 Tip for Teachers:** Another design choice: a tank with **two motors driving two tracks** can turn just by running the motors at different speeds (or in opposite directions). That is **differential steering**. Cars need a separate steering servo to angle their front wheels; tank tracks don't. This is why the starter kit's electronics and mechanics stay simple — no extra steering servo, no steering linkage, no pivots.
 
 :::
 
