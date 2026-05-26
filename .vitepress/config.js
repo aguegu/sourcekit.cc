@@ -8,6 +8,7 @@ const tagId = 'G-TK6CPWVPRE';
 export default withMermaid({
   srcDir: "docs",
   base: '/',
+  lastUpdated: true,
 
   // Internationalization configuration
   locales: {

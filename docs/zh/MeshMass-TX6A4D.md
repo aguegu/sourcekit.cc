@@ -1,7 +1,5 @@
 # Sourcekit® MeshMass TX6A4D
 
-版本: 1.0.0
-
 设计人:
 官微宏 [<span class="mdi mdi-github" style="color: #000;" />](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;" />](https://twitter.com/BG5USN),
 方圣源，

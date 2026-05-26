@@ -1,7 +1,5 @@
 # Sourcekit® MeshMass RX4M4S
 
-Version: 1.0.0
-
 Designer:
 Weihong Guan [<span class="mdi mdi-github" style="color: #000;" />](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;" />](https://twitter.com/BG5USN),
 Shengyuan Fang,
@@ -527,4 +525,5 @@ Many 3D printing kit designers create models specifically designed for MeshMass 
 ## Related Products
 
 - [TX6A4D Transmitter](/MeshMass-TX6A4D) - Dual joystick transmitter module
+- [Mini Tank Starter Kit](/MeshMass-Mini-Tank-Starter-Kit) - Complete 3D-printable tank kit using TX6A4D + RX4M4S, with teacher's guide
 - USB Flashing Dongle - Browser-based programming tool (coming soon)

@@ -1,7 +1,5 @@
 # Sourcekit® PiTray mini
 
-版本：1.1.0
-
 Language: [English](PiTray-mini), 简体中文
 
 设计人：方圣源，官微宏

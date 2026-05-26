@@ -1,7 +1,5 @@
 # Sourcekit® MeshMass TX6A4D
 
-Version: 1.0.0
-
 Designer:
 Weihong Guan [<span class="mdi mdi-github" style="color: #000;" />](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;" />](https://twitter.com/BG5USN),
 Shengyuan Fang,
@@ -347,4 +345,5 @@ The TX6A4D's M2.5 mounting holes make it easy to integrate into custom 3D printe
 ## Related Products
 
 - [RX4M4S Receiver](/MeshMass-RX4M4S) - 4 DC Motor + 4 Servo receiver module
+- [Mini Tank Starter Kit](/MeshMass-Mini-Tank-Starter-Kit) - Complete 3D-printable tank kit using TX6A4D + RX4M4S, with teacher's guide
 - USB Flashing Dongle - Browser-based programming tool (coming soon)

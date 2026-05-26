@@ -1,43 +1,27 @@
 # MeshMass Mini Tank Starter Kit
 
-Version: 1.0.0
+Author: Weihong Guan [<span class="mdi mdi-github" style="color: #000;" />](https://github.com/aguegu/) [<span class="mdi mdi-twitter" style="color: #1da1f2;" />](https://twitter.com/BG5USN)
 
 ## Overview
 
-The Mini Tank Starter Kit is a beginner-friendly, 3D-printable tank **chassis** kit designed specifically for the MeshMass RX4M4S receiver. It combines the TX6A4D transmitter and RX4M4S receiver to create a complete programmable RC tank chassis experience.
+The **Mini Tank Starter Kit** is a beginner-friendly, 3D-printable tank chassis kit that uses the MeshMass **TX6A4D** transmitter and **RX4M4S** receiver to make a complete programmable RC tank. This page is the **teacher's guide** for delivering the kit as a structured lesson.
 
-This is a **starter kit** with a minimum setup:
-- **2 motors** for differential track drive (one motor per side)
-- No turret - tracks and forward/reverse only
-- Upgrade paths available for adding servos and more
+The lesson targets **STEM education** classrooms with native-English teachers and ~10-year-old students (~2 years of English background). It is **hands-on first** - students discover concepts by touching parts and running experiments before any programming.
 
-**Turret Expansion:** The chassis is designed to be extended with custom turrets. Popular community designs include:
-- Cannon
-- Crane
-- Forklift
-- Crawler arm
-- And more...
+## At a Glance
 
-## Concept Coverage
+This page is the teacher's guide for the Mini Tank lesson, organised in two sessions:
 
-This kit covers fundamental concepts through hands-on practice:
+- **Session 1: Get Running First!** - electronics, mechanics, and hardware. Five hands-on experiments take students from a single battery and motor all the way to a fully assembled, wireless-controlled tank. No programming.
+- **Session 2: Code Your Tank** *(work in progress)* - programming the receiver's MCU to customise how the tank responds.
 
-**Sessions:**
-- Session 1: Get Running First! (no programming)
-- Session 2: Code Your Tank
-
-**Concepts:**
-- Mechanical Basics - Tank tracks, gear reduction, steering
-- Electronics Basics - Voltage, current, DC motors, PWM
-- Digital Logic - Binary, bytes, communication protocols
-- 3D Printing Basics - Layer manufacturing, model sources
-- C Programming Introduction - Variables, functions, control flow
+Reference sections at the back: **Learning Path**, **Bill of Materials**, **Specifications**, **Related Products**.
 
 ## Session 1: Get Running First! (2 Hours)
 
 No programming required - firmware is pre-flashed. Just assemble and play!
 
-### Step 1: Power Up - Electronics Basics
+### Step 1: Electronics Basics
 
 #### Meet the Parts
 
@@ -209,7 +193,7 @@ Manual PWM works as a demo, but for a real mini tank it has a problem: **a perso
 
 At hundreds of switches per second, each off-gap is too brief for the motor to feel (its own weight and momentum carry it through) and too brief for human eyes to see. The motor experiences only an *average* power level, and the shaft spins smoothly at whatever speed the on/off ratio sets.
 
-### Step 2: MeshMass Pairing
+### Step 2: Meet the MeshMass Boards
 
 #### Meet the Receiver
 
@@ -277,7 +261,7 @@ The full path is now traceable: fingers → joystick → TX's MCU → antenna �
 
 :::
 
-### Step 3: Assemble Transmitter
+### Step 3: Assemble the Transmitter
 
 Build the controller students will hold.
 
@@ -297,22 +281,193 @@ Build the controller students will hold.
 
 > **💡 Tip for Teachers:** Once a controller is assembled, it can go straight on a USB hub for charging (via the included USB Type-C cable). If several controllers are charging together, have students add a **name tag or sticker** to their transmitter chassis so each pair gets their own back when class resumes.
 
-### Step 4: Assemble Tank
+### Step 4: Assemble the Tank
 
-Build your tank chassis:
-- Install motors
-- Mount RX4M4S receiver
-- Connect battery
-- Assemble tracks
+Build the mini tank chassis.
 
-### Step 5: Game Time!
+#### 4.1 Mount the Motors
 
-Race your tank and learn:
-- Differential steering (one track forward, one backward = turn)
-- Tank track mechanics
-- Have fun!
+**Materials:**
+- N20 DC Motors × 2
+- PB2×5 screws × 8
+- Tank Chassis × 1
+- Motor Covers × 2
 
-## Session 2: Code Your Tank
+**Tools:** Phillips Screwdriver, Socket Separator
+
+**Instructions:**
+1. Use the **Socket Separator** to gently unplug both N20 motors from the receiver.
+2. Place one N20 motor into its slot on one side of the chassis. The output shaft should point outward (where the wheel will mount); route the motor wires into the chassis interior.
+3. Set a Motor Cover over the motor and fasten it to the chassis with 4 PB2×5 screws.
+4. Repeat for the second motor on the other side.
+
+#### 4.2 Mount the Rear Wheels
+
+**Materials:**
+- Rear Wheels × 2
+
+**Instructions:**
+1. Press a Rear Wheel firmly onto each motor's output shaft. The hole in the wheel is sized for a snug press fit - no glue or screws needed.
+
+#### 4.3 Mount the Front Wheels
+
+**Materials:**
+- Front Wheels × 2
+- PB2×8 screws × 2
+
+**Tool:** Phillips Screwdriver
+
+**Instructions:**
+1. Place a Front Wheel against its mounting point on the chassis.
+2. Pass a PB2×8 screw through the wheel and into the chassis. Tighten **just enough** that the wheel rotates freely without wobble - front wheels are idlers and must spin freely.
+3. Repeat for the second front wheel.
+
+#### 4.4 Mount the OLED Screen on the Screen Stand
+
+**Materials:**
+- 128×64 OLED Display × 1
+- PB2×5 screws × 2
+- Screen Stand × 1
+
+**Tool:** Phillips Screwdriver
+
+**Instructions:**
+1. Place the OLED display on the Screen Stand, aligning its two screw holes.
+2. Fasten with 2 PB2×5 screws.
+3. Plug the OLED's cable into the screen socket on the RX4M4S.
+
+#### 4.5 Place the 2S LiPo on the Chassis
+
+Retrieve the 2S LiPo battery from charging.
+
+**Materials:**
+- 2S LiPo battery × 1 (charged)
+
+**Instructions:**
+1. Place the 2S LiPo battery into the battery well on the chassis - between the four receiver mounting poles, so the receiver will sit on top of it.
+2. Route the battery's connector cable so it can reach the receiver's power socket from above once the receiver is mounted.
+
+#### 4.6 Mount the RX4M4S on the Chassis
+
+The receiver mounts onto four poles on the chassis. Two of those poles will also hold the Screen Stand on top of the receiver.
+
+**Materials:**
+- PB2×5 screws × 2
+- PB2×8 screws × 2
+
+**Tool:** Phillips Screwdriver
+
+**Instructions:**
+1. Place the RX4M4S onto the four mounting poles of the chassis.
+2. Set the Screen Stand (with the OLED display from 4.4) on top of the RX4M4S, aligning its two screw holes with two of the receiver's four mounting holes.
+3. Fasten the two stacked holes (Screen Stand → RX4M4S → chassis pole) using the **long PB2×8 screws** - they need the extra length.
+4. Fasten the other two holes (RX4M4S → chassis pole, no Screen Stand) using the **short PB2×5 screws**.
+5. Plug both N20 motor cables back into the RX4M4S - **DM0** for the **left** motor, **DM1** for the **right** motor.
+
+::: warning No Power Switch
+
+The RX4M4S has **no power switch**. This kit treats the tank like a classic RC vehicle: connect the **2S LiPo** to power on, **disconnect** it to power off. Use the **Socket Separator** in the kit for disconnection - the LiPo plug is intentionally tight.
+
+**Always disconnect the battery when done playing.** A LiPo left plugged in keeps draining itself, which shortens the battery's useful life and can cause damage over time.
+
+:::
+
+The chassis can already roll on its bare wheels - let's see what tracks add.
+
+::: info Experiment #5: Why Tracks Matter
+
+The Mini Tank's track system is the simplest possible - just two wheels per side. Without the tracks, those wheels still touch the ground. So why bother with tracks at all? Let's find out.
+
+**Setup:** With the chassis assembled to this point, connect the **2S LiPo** battery to the receiver's power socket. Switch on the TX6A4D.
+
+**Drive without tracks first.** With the bare wheels on the ground, drive the tank around using the joysticks. Watch closely:
+- The wheels touch the ground at only a few small points.
+- Bumps, slopes, or carpet make the tank slip or get stuck.
+
+**Now put the tracks on.**
+
+Materials: Continuous Tracks × 2
+
+1. Wrap one Continuous Track around the rear and front wheels on one side. Fit the track around both wheels.
+2. Make sure the track is taut but not stretched.
+3. Repeat on the other side.
+
+**Drive with tracks.** The differences:
+- The track makes a long, flat contact patch instead of two small wheel-points.
+- The tank now climbs small bumps and grips carpet and slopes.
+
+This is why every real tank, bulldozer, and crawler uses **continuous tracks**: more ground contact means more traction. Two wheels alone can roll; tracks turn rolling into crawling.
+
+> **💡 Tip for Teachers:** A folded sheet of paper, a thin book, or a small ramp makes a great mini obstacle course. The "with tracks" advantage gets obvious fast when the tracked tank climbs what the bare-wheel tank can't.
+
+:::
+
+> **💡 Tip for Teachers:** Once the tank is powered, the **OLED screen** on the receiver displays the **incoming signals** from the transmitter and the **outgoing values** to the motor drivers - all as numbers. This is a perfect chance to connect figures to motor actions: push the left stick → a number on the screen changes → the left motor responds. A useful warm-up for Session 2's programming.
+>
+> Realistically, by this point students are itching to drive. Spend a moment on screen-watching if the energy allows; otherwise save it for Session 2.
+
+### Step 5: Game Time
+
+The tank is ready to drive as-is. The **Horn** is an optional accessory that turns the tank into a football pusher - mount it if you plan to play the default football game; otherwise skip ahead to Game Time.
+
+**Mount the Horn**
+
+**Materials:**
+- Horn × 1
+- PB2×5 screws × 2
+
+**Tool:** Phillips Screwdriver
+
+**Instructions:**
+1. Place the Horn against the head of the tank chassis, aligning its two screw holes.
+2. Fasten with 2 PB2×5 screws.
+
+The Horn sticks out at the front like a pair of arms - useful for pushing objects.
+
+**Game Time!**
+
+Drive freely. A few ideas:
+
+- **Robot football duels** - push a light ball (paper wad, ping-pong ball) into the opponent's goal. Books mark the goals; the Horn makes contact.
+- **Racing** - mark a start line and a finish line. First tank home wins.
+- **Maze** - lay out walls with books or tape. Drive from one end to the other.
+- **Sumo** - draw a circle; two tanks inside; first one pushed out loses.
+- **Obstacle course** - ramps, gates, small bumps to drive over.
+
+Or invent new games entirely.
+
+> **💡 Tip for Teachers:** Mark a clear **boundary** for the play area (tape on the floor, a ring of books). The tank moves fast and is small enough to slip under furniture. A tank that ends up under someone's foot gets smashed.
+
+> **💡 Tip for Teachers:** The tank ships **without body covers** - the motor and battery cables sit exposed on the chassis. In rough play (sumo, football collisions), a stray Horn or a flip onto its side can yank a wire loose or snap one. Either **bind the cables** neatly along the chassis with a small piece of tape, or be ready to **repair** (re-crimp the JST, swap a connector). A future 3D-modelling session in this kit's roadmap will let students design their own protective covers.
+
+Enjoy.
+
+### Summary
+
+By the end of Session 1, students have:
+
+**Electronics (Step 1):**
+- **Circuit**, **switch**, and **polarity** - discovered through the 1S battery + motor experiments.
+- **Voltage** as the push behind electricity; measured in volts (V), named after Volta.
+- **Series stacking** of cells (1S + 1S = 2S, 3.7V + 3.7V = 7.4V).
+- **PWM** (Pulse Width Modulation) - speed control by rapid on/off switching.
+
+**Mechanics:**
+- **Gearbox** - slows the motor down to make it stronger, like a low bicycle gear (Step 1).
+- **Continuous tracks** - more ground contact than bare wheels means more grip and climbing ability (Experiment #5).
+
+**Hardware (Step 2):**
+- **RX4M4S** receiver - motor drivers, MCU, antenna.
+- **TX6A4D** transmitter - inputs, MCU, antenna; same architecture mirrored.
+- The **wireless link** between the two antennas.
+
+**Built and drove (Steps 3-5):**
+- A handheld controller (TX6A4D + 1S LiPo) and a tracked mini tank (RX4M4S + 2S LiPo + N20 motors + OLED).
+- Free driving with the Horn - football, racing, maze, sumo, obstacle course.
+
+In Session 2, students go inside the MCU's program and change how the tank responds to the controller.
+
+## Session 2: Code Your Tank *(work in progress)*
 
 Learn programming with hands-on tank control!
 
@@ -393,6 +548,13 @@ This starter kit guides you through fundamental MeshMass concepts through hands-
 3. **Input Mapping** - Controller inputs map to channels
 4. **Mixing** - Combine inputs for tank steering
 
+## About the Kit
+
+This is a starter kit with a minimum setup:
+- 2 motors, one for each track.
+- No turret - tracks and forward/reverse only.
+- Expansion paths for adding servos and more in [Beyond This Kit](#beyond-this-kit).
+
 ## Bill of Materials
 
 ### Electronics
@@ -446,38 +608,23 @@ This starter kit guides you through fundamental MeshMass concepts through hands-
 | PB2x5 Screw | 18 |
 | PB2x8 Screw | 4 |
 
-## Features
+## Beyond This Kit
 
-## Specifications
+Once students have driven their Mini Tank, several branches open up.
 
-### Chassis
+**1. Print a finished transmitter case.** CDHCHAOREN has designed a complete 3D-printable case for the TX6A4D, [available on MakerWorld](https://makerworld.com.cn/zh/models/2193372-16tong-dao-ke-bian-cheng-zi-ding-yi-shua-ji-yao-ko). It replaces the basic Transmitter Chassis from this kit with a finished, comfortable-to-hold enclosure.
 
-| Specification | Value |
-|---------------|-------|
-| Dimensions | TBD |
-| Weight | TBD |
-| Material | PETG (recommended) |
-| Layer Height | 0.2mm |
+**2. Customise this Mini Tank.** Keep working on the Mini Tank itself - design custom turrets, body covers, and other add-ons in CAD, then 3D-print them in your favourite colour combinations. The kit uses only 2 of the receiver's 4 motor sockets and none of its 4 servo sockets, so there is room to add motorised arms, grippers, lights, or other moving parts. You can also reprogram the receiver to try different control schemes - that is what Session 2 covers.
 
-### Drive System
+**3. Build a bigger or different vehicle.** Reuse the same TX6A4D and RX4M4S electronics to drive completely different builds, usually larger - construction equipment (forklift, dump truck, excavator), RC cars and trucks, cranes, manipulators. The receiver supports up to 4 DC motors and 4 servos per build.
 
-## Assembly
+**4. Migrate MeshMass to LEGO Technic.** Bring wireless remote control to existing LEGO Technic builds using hobby motors that mount onto Technic systems. A static LEGO excavator or truck can become a fully RC version.
 
-All parts are pre-printed and wires are pre-soldered - just plug and screw!
+**5. Add MeshMass accessories.** The RX4M4S has hardware support for **WS2812 RGB LED strips** (head/turning/tail lights, ambient glow) and an **MP3 audio module** (engine sounds, horns, custom effects). These require alternate firmware variants - see the [RX4M4S product page](/MeshMass-RX4M4S) for details on the RX4M3S1N and RX4M1S1N1A variants.
 
-### 1. Install Motors
+## Discussion
 
-### 2. Assemble Tracks and Wheels
-
-### 3. Mount RX4M4S
-
-### 4. Connect Battery
-
-### 5. Install TX6A4D in Controller
-
-## Programming
-
-## Where to Buy
+- [Forum (Powered by GitHub Discussion)](https://github.com/aguegu/sourcekit.cc/discussions)
 
 ## Related Products
 
