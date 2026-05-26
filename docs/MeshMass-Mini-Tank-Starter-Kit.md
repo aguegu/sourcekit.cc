@@ -120,17 +120,21 @@ This experiment shows that **the size of the voltage controls how fast the motor
 
 **What is Voltage?**
 
+Voltage is the **push** that makes electricity flow through a wire.
+
 Think of voltage like **water pressure** in pipes:
 
 - More pressure = water pushes harder = more flow
 - More voltage = electrons push harder = more power
 
-Voltage is measured in **volts** (**V**). The unit is named after **Alessandro Volta**, the Italian scientist who built the first real battery (a "voltaic pile") around the year 1800. So "3.7V" on a LiPo battery means "3.7 volts" - the strength of that battery's push.
+Voltage is measured in **volts** (**V**). So "3.7V" on a LiPo battery means "3.7 volts" - the strength of that battery's push.
 
 **Analogy Time!**
 - A tiny battery (1.5V AA) = garden hose spray - gentle
 - A bigger battery (3.7V LiPo) = pressure washer - much stronger!
 - A car battery (12V) = fire hose - super powerful!
+
+> **💡 Tip for Teachers:** The unit is named after **Alessandro Volta**, the Italian scientist who built the first real battery (a "voltaic pile") around the year 1800 - a nice moment to introduce a famous name behind a unit.
 
 > **💡 Tip for Teachers:** A digital multimeter ($10-20) is a great investment for the classroom! You can:
 > - Measure battery voltage to confirm it's charged (3.7V per cell = full, below 3.5V = needs charging)
@@ -203,28 +207,95 @@ When students do this with their fingers, it is called **manual PWM**.
 
 Manual PWM works as a demo, but for a real mini tank it has a problem: **a person is too big and too heavy to ride on the tank and tap wires while it drives**. We also can't tap fast enough - a real motor wants PWM hundreds of times per second, not once per second.
 
-What we need is a small, fast, *automatic* PWM-maker that fits on the tank itself. And we want the controller in our hands instead of on the tank - so a wireless link, too.
-
-That is exactly what MeshMass provides:
-- The **receiver** (on the tank) generates PWM automatically
-- The **transmitter** (in your hand) sends instructions wirelessly
-
-In the next step, we meet them.
+At hundreds of switches per second, each off-gap is too brief for the motor to feel (its own weight and momentum carry it through) and too brief for human eyes to see. The motor experiences only an *average* power level, and the shaft spins smoothly at whatever speed the on/off ratio sets.
 
 ### Step 2: MeshMass Pairing
 
-Verify all electronics work:
-- Power up TX6A4D and RX4M4S
-- Pair transmitter with receiver
-- Test motor outputs with sticks
-- Confirm everything functional!
+#### Meet the Receiver
+
+The **RX4M4S** is the **receiver** of MeshMass - the small board you mount on the tank. Tour it by following its parts.
+
+**Start at the motor sockets.** On one edge of the board you will see **four small connectors** - the same kind that fits the N20 motor's plug from Experiment #1. The Mini Tank kit uses two of them (one motor per track); the other two are spare outputs.
+
+**Follow the wires inward.** Each motor socket runs through traces on the board to a small chip nearby. These chips are called **motor drivers** - four in total, one per motor output. A motor driver takes over the two jobs Step 1 taught us:
+
+- It switches the motor on and off **hundreds of times per second** - automatic PWM, the technique from Experiment #3. The motor sees a smooth average power level.
+- It can **reverse the output direction** - the same wire-swap trick from Experiment #1, but done electronically with no hands.
+
+So each motor driver is the small, fast, automatic helper that solves the "person can't ride on the tank" problem we finished Step 1 with.
+
+**Keep tracing inward.** Follow the wires from the **other side** of the motor drivers. They all meet at a single, even **smaller** chip. This chip is the **MCU** - *Micro Controller Unit*. The MCU is the **brain** of the receiver: tiny, but it tells every motor driver what to do (how fast, which direction, when to stop). When students write code in Session 2, that program runs on this chip.
+
+**Keep going.** One wire from the MCU is special - it does not lead to a chip or a connector. Instead it twists across the board in a flat, zig-zag shape, like a **square snake**. That is the **antenna**. It catches the wireless signal sent by the transmitter (which we meet next), so the MCU can hear the instructions.
+
+**Putting it all together.** With the RX4M4S on board, no human needs to ride the tank tapping wires. The **motor drivers** do the rapid tapping for us (automatic PWM, automatic direction reversal). The **MCU** receives signals from the **antenna** and tells each motor driver what to do - following the program running on it. The human just sends instructions **remotely**, with a controller in hand.
+
+The RX4M4S also has 4 servo outputs and runs off the 2S LiPo battery from Step 1.
+
+For full hardware details, see the [RX4M4S product page](/MeshMass-RX4M4S).
+
+#### Meet the Transmitter
+
+The **TX6A4D** is the **transmitter** of MeshMass - the controller students hold in their hands (this is the "controller" Step 1 ended with). Tour it by following its parts.
+
+**Start at the inputs.** On the top of the TX6A4D you will see:
+- Two **joysticks** - each tilts in any direction. The Mini Tank uses these to steer.
+- Several **buttons** and **knobs** - extra controls for triggers, modes, and fine tuning.
+- A small **OLED display** - shows status and current mode.
+
+Anything a student moves or presses becomes a number that the transmitter will send to the receiver.
+
+**Look inside.** Same **MCU-and-antenna** pair as the RX4M4S - just wired the other way around. Where the RX4M4S's MCU drives **outputs** (the motor drivers and servo sockets), the TX6A4D's MCU reads **inputs** (the joysticks, knobs, and buttons on top). The MCU packages every reading into a message, and the **antenna** (another square snake) broadcasts it wirelessly to the receiver, many times every second.
+
+**Power.** The TX6A4D runs off the **1S LiPo battery** from Step 1 - much smaller than the receiver's 2S, because the transmitter only powers its MCU, display, and radio. No motors here.
+
+For full hardware details, see the [TX6A4D product page](/MeshMass-TX6A4D).
+
+::: info Experiment #4: Prove All the Electronics Work
+
+> **Before you start:** Both MCUs come pre-flashed with the right firmware and pre-paired at the factory. No flashing or pairing is needed here - just power and connect.
+
+**Power the transmitter:** plug the **1S LiPo** battery into the TX6A4D and switch it on.
+
+**Power the receiver:** plug a motor into the **DM0** socket on the RX4M4S (the first of the four DC motor sockets), and a second motor into **DM1**. Then plug in the **2S LiPo** battery.
+
+Now move the joysticks on the transmitter.
+
+The motors on the receiver spin in response - faster with more stick deflection, reverse when the stick crosses centre, stop when the stick is centred. No wires running between the two boards. No human tapping anything.
+
+This is everything from Step 1 happening **automatically**:
+
+- The **PWM** the student did by hand in Experiment #3 is now generated by the motor drivers, hundreds of times per second.
+- The **direction reversal** from Experiment #1 happens whenever the stick crosses centre.
+- The **wireless link** between the two antennas closes the loop between the inputs in the student's hand and the outputs spinning on the table.
+
+The full path is now traceable: fingers → joystick → TX's MCU → antenna → air → RX's antenna → RX's MCU → motor drivers → motors → spinning shaft.
+
+> **💡 Tip for Teachers:** This is the payoff of Session 1. Spend time here. Let students push the sticks in different directions, watch the motors respond, and notice the invisibility of the wireless link. Saying it explicitly helps: "There is nothing between these two boards but air."
+
+> **💡 After the experiment:** Use the **Socket Separator** in the kit to unplug each 2S LiPo from the receiver - LiPo connectors are tight by design. Then put the batteries on the included **USB LiPo charger**. Factory-fresh packs often arrive partially charged, so it's worth topping them up before the next step.
+
+:::
 
 ### Step 3: Assemble Transmitter
 
-Build your custom controller:
-- Install TX6A4D in controller chassis
-- Attach screen stand
-- Connect battery
+Build the controller students will hold.
+
+**Materials:**
+- TX6A4D × 1
+- PB2×5 screws × 4
+- 1S LiPo battery × 1
+- Transmitter Chassis × 1
+
+**Tool:** Phillips Screwdriver
+
+**Instructions:**
+1. Place the **1S LiPo** battery inside the Transmitter Chassis.
+2. Place the **TX6A4D** on top of the battery and chassis, aligning its 4 screw holes with the chassis.
+3. Fasten the 4 **PB2×5 screws** through the TX6A4D into the chassis with the Phillips screwdriver.
+4. Arrange the battery cables so they stay inside the chassis (no loose wires hanging out).
+
+> **💡 Tip for Teachers:** Once a controller is assembled, it can go straight on a USB hub for charging (via the included USB Type-C cable). If several controllers are charging together, have students add a **name tag or sticker** to their transmitter chassis so each pair gets their own back when class resumes.
 
 ### Step 4: Assemble Tank
 
