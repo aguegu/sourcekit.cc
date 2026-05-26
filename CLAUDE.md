@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the documentation website for Sourcekit Electronics Ltd, built with VitePress. It documents hardware products (PiTray clip, PiTray mini, MeshMass remote control kits) in English and Simplified Chinese. Circus Goggles is deprecated.
+This is the documentation website for Sourcekit Electronics Ltd, built with VitePress. It documents hardware products (PiTray clip, PiTray mini, MeshMass TX6A4D transmitter, MeshMass RX4M4S receiver, MeshMass Mini Tank Starter Kit) in English and Simplified Chinese. Circus Goggles is deprecated.
 
 ## Commands
 
@@ -18,7 +18,7 @@ There are no test or lint commands.
 
 ## Architecture
 
-**Stack:** VitePress 2.0.0-alpha.16 + Vue 3, with `@mdi/font` for Material Design Icons.
+**Stack:** VitePress 1.6.4 + Vue 3, with `@mdi/font` for Material Design Icons, `vitepress-plugin-lightbox` for image lightboxes, and `vitepress-plugin-mermaid` for Mermaid diagrams.
 
 **Content lives in `docs/`:**
 - `docs/*.md` — English product pages
@@ -27,8 +27,8 @@ There are no test or lint commands.
 - `docs/public/` — Static assets (images organized under `images/`, PDFs, favicons)
 
 **Configuration in `.vitepress/`:**
-- `config.js` — Site metadata, i18n locales (en root `/`, zh at `/zh/`), nav, sidebar, Google Analytics (`G-TK6CPWVPRE`)
-- `theme/index.js` — Extends default theme, registers MDI font
+- `config.js` — Site metadata, i18n locales (en root `/`, zh at `/zh/`), nav, sidebar, Google Analytics (`G-TK6CPWVPRE`), lightbox + Mermaid wiring, sitemap
+- `theme/index.js` — Re-exports the default VitePress theme; imports MDI font CSS and `style.css`
 - `theme/style.css` — CSS variable overrides for brand colors, dark mode
 
 **Deployment:** GitHub Actions (`.github/workflows/deploy.yml`) auto-deploys to GitHub Pages on push to `main`.

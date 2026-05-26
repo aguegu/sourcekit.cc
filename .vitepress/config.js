@@ -116,15 +116,6 @@ export default withMermaid({
     search: {
       provider: 'local',
     },
-
-    // Language switcher in navbar
-    localeLinks: {
-      text: '',
-      items: [
-        { text: 'English', link: '/' },
-        { text: '简体中文', link: '/zh/' },
-      ]
-    }
   },
   markdown: {
     config: (md) => {
@@ -135,5 +126,10 @@ export default withMermaid({
   mermaid: {},
   sitemap: {
     hostname: 'https://sourcekit.cc',
+  },
+  vite: {
+    server: {
+      host: '0.0.0.0',
+    },
   },
 });

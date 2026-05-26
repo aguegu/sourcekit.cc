@@ -39,71 +39,31 @@ No programming required - firmware is pre-flashed. Just assemble and play!
 
 ### Step 1: Power Up - Electronics Basics
 
-Learn about batteries and motors:
+#### Meet the Parts
 
-**1.1 Battery Introduction**
+**Battery Is Everywhere**
 
-**1.1.1 Battery is Everywhere**
-- What do smartphones, remote controls, electric cars, submarines, and the International Space Station have in common?
-- They all need portable power - and batteries make it possible!
-- **Electric cars** - thousands of batteries working together to power a vehicle
-- **Submarines** - batteries let them operate underwater without surfacing
-- **Satellites** - solar panels charge batteries that power everything in space
-- **Your remote control** - just two small batteries make it work!
-- Our kit uses rechargeable LiPo (Lithium Polymer) batteries - the same type used in drones and action cameras
+**Where do you see batteries in everyday life?** Let students answer first - this also gives a quick read on their English vocabulary for everyday objects. After they have shared, enrich with a few examples they may not have thought of:
 
-**1.1.2 Positive and Negative Terminals**
+- **Electric cars** - thousands of batteries working together to power a vehicle.
+- **Submarines** - batteries let them operate underwater without surfacing.
+- **Satellites** - solar panels charge batteries that power everything in space.
+
+Our kit uses **rechargeable LiPo (Lithium Polymer) batteries** - the same type used in drones and action cameras.
+
+**Positive and Negative Terminals**
 
 Think of a battery like a water tower:
 - The **positive terminal (+)** is like the top of the tower - water wants to flow OUT from here
 - The **negative terminal (-)** is like the bottom - water wants to flow IN here
 - Electricity works the same way - electrons (tiny particles!) want to flow from + to -
 
-**Fun fact:** Lightning is nature's way of moving electrons from clouds (positive) to the ground (negative)!
+::: danger Safety Rules
 
-**⚠️ Short Circuit = Danger!**
+1. Never put metal (coins, keys, screwdrivers) across battery terminals.
+2. Always be careful when connecting battery packs.
 
-What happens if you connect a wire directly from + to -?
-- It's like removing ALL the pipes between a water tower's top and bottom
-- Water rushes out so fast that the tower can burst!
-- Electricity: the battery drains instantly, gets VERY hot, and can cause burns or fire
-
-**Safety Rules:**
-1. Never put metal (coins, keys, screwdrivers) across battery terminals
-2. Always be careful when connecting battery packs
-3. "Red is +, Black is -" - remember this when wiring!
-
-**⚠️ Warning for Teachers:** Household sockets have 110V AC (USA) or 220V AC (China/Europe) - this is DANGEROUS for kids! Never let children touch wall sockets. Our kit uses safe low voltages (3.7V-7.4V).
-
-**1.1.3 What is Voltage?**
-
-Think of voltage like **water pressure** in pipes:
-
-- More pressure = water pushes harder = more flow
-- More voltage = electrons push harder = more power
-
-**Analogy Time!**
-- A tiny battery (1.5V AA) = garden hose spray - gentle
-- A bigger battery (3.7V LiPo) = pressure washer - much stronger!
-- A car battery (12V) = fire hose - super powerful!
-
-**Our Kit Uses:**
-- TX6A4D transmitter: **1S LiPo = 3.7V** (small, lightweight)
-- RX4M4S receiver: **2S LiPo = 7.4V** (stronger for motors!)
-- Why motors need more voltage: they need more "push" to spin
-
-> **💡 Tip for Teachers:** A digital multimeter ($10-20) is a great investment for the classroom! You can:
-> - Measure battery voltage to confirm it's charged (3.7V per cell = full, below 3.5V = needs charging)
-> - Show students how voltage adds up when batteries are connected in series
-> - Test that circuits are working correctly
-
-**1.1.4 Series Circuit**
-- When batteries are connected in series, voltages add up
-- 1S + 1S = 2S (3.7V + 3.7V = 7.4V)
-- TX6A4D uses 1S (3.7V) - small battery
-- RX4M4S uses 2S (7.4V) - bigger battery for motors
-
-**1.2 DC Motor Introduction**
+:::
 
 **What is a Motor?**
 - A motor is the opposite of a battery!
@@ -117,29 +77,139 @@ Think of voltage like **water pressure** in pipes:
   1. **Slows it down** - so it's controllable
   2. **Makes it stronger** - like bicycle gears!
 
-**How to Control It?**
-- Connect battery + to motor red wire, - to black wire → spins one way
-- Flip the wires (swap + and -) → spins the other way!
-- This is how your tank goes forward and backward
+#### Make the Motor Spin
 
-**Why Motors Need More Voltage Than Electronics?**
-- Electronics (like your TV remote) need very little power
-- Motors need "muscle" to spin wheels and lift things
-- That's why RX4M4S uses a bigger 2S battery (7.4V)!
+::: info Experiment #1: A Simple Circuit
 
-> **💡 Tip for Teachers:** Let students try the motor with a 1S battery first - it barely spins! Then try with the 2S battery - much stronger! This shows how voltage affects motor power directly.
+With just one 1S battery and one N20 motor, students can build the smallest possible electric circuit. **Wiring convention:** red = **+**, black = **−** (this matches the coloured wires on both the battery's connector and the motor).
 
-**Think About It!**
-- Great! The motor spins!
-- But... how do we control the **SPEED**?
-- How do race car drivers slow down? How do you control an electric scooter?
+- Motor's red wire → battery's **+** terminal
+- Motor's black wire → battery's **-** terminal
 
-**The Problem:**
-- With just a battery, motor runs at ONE speed (full speed)
-- Real vehicles need VARIABLE speed control
-- And we want wireless control - no messy wires!
+The motor spins.
 
-**This is why we need MeshMass!**
+A **circuit** is a closed loop that lets electricity flow from the battery, through the motor, and back. Break the loop anywhere - lift a wire - and the motor stops.
+
+> **⚠️ Safety:** The motor must always stay in the loop. Never let a bare wire (or a coin, paperclip, finger) connect the battery's **+** directly to **-** without the motor in between - that is a **short circuit**, and the battery will overheat.
+
+**On/off control:** Keep one wire firmly attached and just tap the other wire on and off its terminal. The motor turns on and off. Breaking the loop at *any* single point stops it - that is exactly how a **switch** works.
+
+**Reversing direction:** swap the wires (red to **-**, black to **+**) and the motor spins the other way. That is how your tank will go both forward and backward.
+
+> **💡 Tip for Teachers:** Draw the loop on the board: battery → motor → battery. The word "circuit" shares a root with "circular" - a closed path. The tap-on/tap-off step is a natural moment to introduce the word "switch".
+
+:::
+
+#### What About Speed?
+
+A natural question after the first experiment: how do we make the motor spin *faster* or *slower*? A sensible first guess is to try a different battery.
+
+::: info Experiment #2: Trying a Bigger Battery
+
+Run the same simple circuit, but with the **2S battery** instead of the 1S:
+- Motor's red wire → 2S battery's **+** terminal
+- Motor's black wire → 2S battery's **-** terminal
+
+The motor spins clearly faster than it did on the 1S battery.
+
+This experiment shows that **the size of the voltage controls how fast the motor spins**. Higher voltage = faster spin. Lower voltage = slower spin.
+
+> **💡 Tip for Teachers:** "Use a bigger battery" is partly right and worth celebrating - it leads directly to this experiment. But a tank driver doesn't carry a box of different batteries to change speed mid-drive, so this isn't the full answer.
+
+:::
+
+**What is Voltage?**
+
+Think of voltage like **water pressure** in pipes:
+
+- More pressure = water pushes harder = more flow
+- More voltage = electrons push harder = more power
+
+Voltage is measured in **volts** (**V**). The unit is named after **Alessandro Volta**, the Italian scientist who built the first real battery (a "voltaic pile") around the year 1800. So "3.7V" on a LiPo battery means "3.7 volts" - the strength of that battery's push.
+
+**Analogy Time!**
+- A tiny battery (1.5V AA) = garden hose spray - gentle
+- A bigger battery (3.7V LiPo) = pressure washer - much stronger!
+- A car battery (12V) = fire hose - super powerful!
+
+> **💡 Tip for Teachers:** A digital multimeter ($10-20) is a great investment for the classroom! You can:
+> - Measure battery voltage to confirm it's charged (3.7V per cell = full, below 3.5V = needs charging)
+> - Show students how voltage adds up when batteries are connected in series
+> - Test that circuits are working correctly
+
+**Series Circuit**
+- When batteries are connected in series, voltages add up
+- 1S + 1S = 2S (3.7V + 3.7V = 7.4V)
+
+**Why the Receiver Uses a 2S Battery**
+
+Motors need more electrical power than small electronics. A TV remote needs very little voltage; a motor that spins a wheel needs *muscle*. That is why our kit uses two different batteries:
+
+- **TX6A4D transmitter:** 1S LiPo (3.7V) - small, lightweight, enough for buttons, sticks, and display.
+- **RX4M4S receiver:** 2S LiPo (7.4V) - the stronger push the motors need.
+
+#### Variable Speed With One Battery
+
+**The Speed Problem**
+
+Real vehicles don't swap batteries to control speed. An electric scooter, an electric car, a remote-control car - they all run on a single battery, and the driver still controls speed smoothly from zero to top.
+
+So the harder question is: **how do we vary speed with the same battery?**
+
+For the rest of the lesson, switch the demo back to the 1S battery. At 1S, the motor still spins at a fair speed - the difference between 1S and 2S is the *maximum* speed available, not whether the motor works.
+
+> **💡 Tip for Teachers:** Switching back to 1S keeps the remaining demos safer and more predictable. The point of Experiment #2 was to show voltage affects speed - not to declare 1S too weak. For everything that follows, 1S works fine.
+
+**⚠️ Warning for Teachers:** Household sockets have 110V AC (USA) or 220V AC (China/Europe) - this is DANGEROUS for kids! Never let children touch wall sockets. Our kit uses safe low voltages (3.7V-7.4V).
+
+This experiment builds on the on/off trick from Experiment #1.
+
+::: info Experiment #3: Speed Control by Timing
+
+Same setup - 1S battery, N20 motor, two wires. But instead of tapping randomly, do it with a steady rhythm:
+
+- Tap **on** for one second
+- **Off** for one second
+- **On** for one second
+- **Off** for one second
+- ... and so on
+
+Watch the motor over a 2-second window. It is connected for 1 second, disconnected for 1 second. On average, it gets half the power - not because the battery is smaller, just because we changed *when* it is connected. The motor runs at about half speed.
+
+This is the key idea: **we can control speed by controlling when the motor is on**.
+
+> **💡 Tip for Teachers:** If students are stuck on "how do we vary speed with the same battery?", this experiment is the unlock. Frame it as: "remember tapping the wire on and off? What if you do it on purpose, with timing?"
+
+:::
+
+**Naming What We Just Did: PWM**
+
+Switching the motor on and off rapidly to control its speed has a real name: **PWM** - *Pulse Width Modulation*. Break the name apart:
+
+- **Pulse** - a short burst of power (the on-time).
+- **Width** - how long each pulse lasts.
+- **Modulation** - varying, changing.
+
+So PWM means **varying the width of the on-pulses to control average power**. Longer on-pulse → more average power → faster motor. Shorter on-pulse → less power → slower motor.
+
+In Experiment #3, the rhythm was **on = 1s, off = 1s** → motor at about 50% speed. The same idea scales:
+
+- **on = 1.5s, off = 0.5s** → about 75% speed
+- **on = 0.5s, off = 1.5s** → about 25% speed
+
+When students do this with their fingers, it is called **manual PWM**.
+
+**Manual PWM Has a Problem**
+
+Manual PWM works as a demo, but for a real mini tank it has a problem: **a person is too big and too heavy to ride on the tank and tap wires while it drives**. We also can't tap fast enough - a real motor wants PWM hundreds of times per second, not once per second.
+
+What we need is a small, fast, *automatic* PWM-maker that fits on the tank itself. And we want the controller in our hands instead of on the tank - so a wireless link, too.
+
+That is exactly what MeshMass provides:
+- The **receiver** (on the tank) generates PWM automatically
+- The **transmitter** (in your hand) sends instructions wirelessly
+
+In the next step, we meet them.
 
 ### Step 2: MeshMass Pairing
 
@@ -289,7 +359,8 @@ This starter kit guides you through fundamental MeshMass concepts through hands-
 | Screen Stand | 1 |
 | Continuous Track | 2 |
 
-**Tool:**
+### Tools and Accessories
+
 | Part | Quantity |
 |------|----------|
 | Socket Separator | 1 |
@@ -332,8 +403,6 @@ All parts are pre-printed and wires are pre-soldered - just plug and screw!
 ### 4. Connect Battery
 
 ### 5. Install TX6A4D in Controller
-
-## Programming
 
 ## Programming
 
