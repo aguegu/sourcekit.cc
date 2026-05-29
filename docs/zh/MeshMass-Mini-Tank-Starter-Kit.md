@@ -582,6 +582,8 @@ setMotor(1, getChannel(0));  // 右侧
 
 ### 3D 打印件
 
+本套件所有 3D 打印件的模型文件可在 [MakerWorld](https://makerworld.com.cn/zh/models/2550208-ke-bian-cheng-yao-kong-zu-qiu-xiao-che-lu-dai-che) 下载。
+
 **遥控器：**
 | 零件 | 数量 |
 |------|----------|

@@ -582,6 +582,8 @@ This is a starter kit with a minimum setup:
 
 ### 3D Printed Parts
 
+The 3D model files for all printable parts in this kit are available on [MakerWorld](https://makerworld.com.cn/zh/models/2550208-ke-bian-cheng-yao-kong-zu-qiu-xiao-che-lu-dai-che).
+
 **Remote Controller:**
 | Part | Quantity |
 |------|----------|
