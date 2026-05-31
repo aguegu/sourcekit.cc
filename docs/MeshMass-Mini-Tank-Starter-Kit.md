@@ -17,6 +17,19 @@ This page is the teacher's guide for the Mini Tank lesson, organised in two sess
 
 Reference sections at the back: **Learning Path**, **Bill of Materials**, **Specifications**, **Related Products**.
 
+## Pre-class Preparation
+
+Before delivering Session 1, the teacher should:
+
+- **Charge both batteries** (the 1S LiPo for the TX6A4D and the 2S LiPo for the RX4M4S). New packs ship partially charged, and the kit's chargers take longer than a 3-hour class to fill them.
+- **Confirm the right firmware is on each board** (the kit ships pre-flashed; re-flash from the MeshMass platform if needed):
+  - **RX4M4S**: [`05-OnDisconnect`](https://meshmass.y77.cc/#/courses/3057237/lessons/05-OnDisconnect)
+  - **TX6A4D**: [`20-MiniTank`](https://meshmass.y77.cc/#/courses/2979972/lessons/20-MiniTank)
+- **Pair both boards once** — this also verifies the firmware. Power both on and hold each board's **PAIR** button for 5+ seconds; the OLEDs confirm the link.
+  - **Recommendation:** pair one kit at a time if multiple are being set up — otherwise boards can accidentally pair with the wrong partner.
+  - Pairing is sticky across power cycles, so it only needs doing once after re-flashing.
+  - Full pairing details: see the [RX4M4S](/MeshMass-RX4M4S#pairing) and [TX6A4D](/MeshMass-TX6A4D#pairing) product pages.
+
 ## Session 1: Get Running First! (3 Hours)
 
 No programming required - firmware is pre-flashed. Just assemble and play!
@@ -257,7 +270,7 @@ The full path is now traceable: fingers → joystick → TX's MCU → antenna �
 
 > **💡 Tip for Teachers:** This is the payoff of Session 1. Spend time here. Let students push the sticks in different directions, watch the motors respond, and notice the invisibility of the wireless link. Saying it explicitly helps: "There is nothing between these two boards but air."
 
-> **💡 After the experiment:** Use the **Socket Separator** in the kit to unplug each 2S LiPo from the receiver - LiPo connectors are tight by design. Then put the batteries on the included **USB LiPo charger**. Factory-fresh packs often arrive partially charged, so it's worth topping them up before the next step.
+> **💡 After the experiment:** Use the **Socket Separator** in the kit to unplug each 2S LiPo from the receiver - LiPo connectors are tight by design.
 
 :::
 
@@ -279,13 +292,15 @@ Build the controller students will hold.
 3. Fasten the 4 **PB2×5 screws** through the TX6A4D into the chassis with the Phillips screwdriver.
 4. Arrange the battery cables so they stay inside the chassis (no loose wires hanging out).
 
-> **💡 Tip for Teachers:** Once a controller is assembled, it can go straight on a USB hub for charging (via the included USB Type-C cable). If several controllers are charging together, have students add a **name tag or sticker** to their transmitter chassis so each pair gets their own back when class resumes.
+> **💡 Tip for Teachers:** Once a controller is assembled, have students add a **name tag or sticker** to their transmitter chassis so each pair gets their own back next session.
 
 ### Step 4: Assemble the Tank
 
 Build the mini tank chassis.
 
 #### 4.1 Mount the Motors
+
+Wheels stay off until 4.5–4.6 - that way the chassis sits flat on the table during the screw-heavy steps in between.
 
 **Materials:**
 - N20 DC Motors × 2
@@ -301,30 +316,7 @@ Build the mini tank chassis.
 3. Set a Motor Cover over the motor and fasten it to the chassis with 4 PB2×5 screws.
 4. Repeat for the second motor on the other side.
 
-#### 4.2 Mount the Rear Wheels
-
-**Materials:**
-- Rear Wheels × 2
-
-**Instructions:**
-1. Press a Rear Wheel firmly onto each motor's output shaft. The hole in the wheel is sized for a snug press fit - no glue or screws needed.
-
-#### 4.3 Mount the Front Wheels
-
-**Materials:**
-- Front Wheels × 2
-- PB2×8 screws × 2
-
-**Tool:** Phillips Screwdriver
-
-**Instructions:**
-1. Place a Front Wheel against its mounting point on the chassis.
-2. Pass a PB2×8 screw through the wheel and into the chassis. **Fasten it tight.** The Front Wheel is essentially two rings stacked together with a groove between them, 3D-printed as a single piece — the rings cannot be separated but they can still spin relative to each other. So the screw clamps the inner ring to the chassis while the outer ring continues to spin freely.
-3. Repeat for the second front wheel.
-
-> **💡 Tip for Teachers:** This is a great example of a 3D-printing technique called **print-in-place** — two (or more) parts are printed at the same time with a tiny gap between them, so they come off the printer pre-assembled. They fit together perfectly, can't be separated, but can move relative to each other. The same technique can print fully-functional hinges, joints, chains, and bearings without any post-assembly work.
-
-#### 4.4 Mount the OLED Screen on the Screen Stand
+#### 4.2 Mount the OLED Screen on the Screen Stand
 
 **Materials:**
 - 128×64 OLED Display × 1
@@ -338,18 +330,16 @@ Build the mini tank chassis.
 2. Fasten with 2 PB2×5 screws.
 3. Plug the OLED's cable into the screen socket on the RX4M4S.
 
-#### 4.5 Place the 2S LiPo on the Chassis
-
-Retrieve the 2S LiPo battery from charging.
+#### 4.3 Place the 2S LiPo on the Chassis
 
 **Materials:**
-- 2S LiPo battery × 1 (charged)
+- 2S LiPo battery × 1
 
 **Instructions:**
 1. Place the 2S LiPo battery into the battery well on the chassis - between the four receiver mounting poles, so the receiver will sit on top of it.
 2. Route the battery's connector cable so it can reach the receiver's power socket from above once the receiver is mounted.
 
-#### 4.6 Mount the RX4M4S on the Chassis
+#### 4.4 Mount the RX4M4S on the Chassis
 
 The receiver mounts onto four poles on the chassis. Two of those poles will also hold the Screen Stand on top of the receiver.
 
@@ -361,7 +351,7 @@ The receiver mounts onto four poles on the chassis. Two of those poles will also
 
 **Instructions:**
 1. Place the RX4M4S onto the four mounting poles of the chassis.
-2. Set the Screen Stand (with the OLED display from 4.4) on top of the RX4M4S, aligning its two screw holes with two of the receiver's four mounting holes.
+2. Set the Screen Stand (with the OLED display from 4.2) on top of the RX4M4S, aligning its two screw holes with two of the receiver's four mounting holes.
 3. Fasten the two stacked holes (Screen Stand → RX4M4S → chassis pole) using the **long PB2×8 screws** - they need the extra length.
 4. Fasten the other two holes (RX4M4S → chassis pole, no Screen Stand) using the **short PB2×5 screws**.
 5. Plug both N20 motor cables back into the RX4M4S - **DM0** for the **left** motor, **DM1** for the **right** motor.
@@ -373,6 +363,29 @@ The RX4M4S has **no power switch**. This kit treats the tank like a classic RC v
 **Always disconnect the battery when done playing.** A LiPo left plugged in keeps draining itself, which shortens the battery's useful life and can cause damage over time.
 
 :::
+
+#### 4.5 Mount the Rear Wheels
+
+**Materials:**
+- Rear Wheels × 2
+
+**Instructions:**
+1. Press a Rear Wheel firmly onto each motor's output shaft. The hole in the wheel is sized for a snug press fit - no glue or screws needed.
+
+#### 4.6 Mount the Front Wheels
+
+**Materials:**
+- Front Wheels × 2
+- PB2×8 screws × 2
+
+**Tool:** Phillips Screwdriver
+
+**Instructions:**
+1. Place a Front Wheel against its mounting point on the chassis.
+2. Pass a PB2×8 screw through the wheel and into the chassis. **Fasten it tight.** The Front Wheel is essentially two rings stacked together with a groove between them, 3D-printed as a single piece — the rings cannot be separated but they can still spin relative to each other. So the screw clamps the inner ring to the chassis while the outer ring continues to spin freely.
+3. Repeat for the second front wheel.
+
+> **💡 Tip for Teachers:** This is a great example of a 3D-printing technique called **print-in-place** — two (or more) parts are printed at the same time with a tiny gap between them, so they come off the printer pre-assembled. They fit together perfectly, can't be separated, but can move relative to each other. The same technique can print fully-functional hinges, joints, chains, and bearings without any post-assembly work.
 
 The chassis can already roll on its bare wheels - let's see what tracks add.
 
