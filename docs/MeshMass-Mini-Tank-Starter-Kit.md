@@ -455,6 +455,12 @@ Drive freely. A few ideas:
 
 Or invent new games entirely.
 
+::: warning Indoor Use Only
+
+This kit is designed for **indoor education use**. Water, mud, sand, or dirt can damage the electronics, motors, and 3D-printed parts. Keep play on smooth, dry indoor surfaces.
+
+:::
+
 > **💡 Tip for Teachers:** Mark a clear **boundary** for the play area (tape on the floor, a ring of books). The tank moves fast and is small enough to slip under furniture. A tank that ends up under someone's foot gets smashed.
 
 > **💡 Tip for Teachers:** The tank ships **without body covers** - the motor and battery cables sit exposed on the chassis. In rough play (sumo, football collisions), a stray Horn or a flip onto its side can yank a wire loose or snap one. Either **bind the cables** neatly along the chassis with a small piece of tape, or be ready to **repair** (re-crimp the JST, swap a connector). A future 3D-modelling session in this kit's roadmap will let students design their own protective covers.
