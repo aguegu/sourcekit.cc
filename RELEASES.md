@@ -24,7 +24,7 @@ MeshMass documentation rebuilt for the **raw protocol** firmware generation (ups
 
 - **Lesson links follow the locale.** English pages link to `meshmass.com`, Chinese pages to `meshmass.y77.cc`, matching how the rest of the docs already present the two instances. Both share one backend, so the course keys are identical (verified against each instance's `/api/courses`). Note `meshmass.com` 301s to `dev.meshmass.com`; browsers carry the `#/courses/…` fragment across the redirect.
 
-**Known gaps after this release:** The RX4M4S page still describes the audio module as *"sold separately, under development"* in both locales, which may be stale now that the firmware ships a complete MP3 API and four audio lessons.
+- **Audio module is on sale.** Dropped the *"under development"* qualifier from the Features bullet and the Outputs table in both locales — the module now ships, alongside the firmware's complete MP3 API and its audio lessons.
 
 ## 0.1.2 — 2026-05-31
 
