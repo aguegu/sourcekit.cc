@@ -21,13 +21,13 @@ Donghao Chen — better known online as [CDHCHAOREN](https://makerworld.com.cn/z
 
 The RC gear a model designer could buy at the time was limiting in ways that had nothing to do with the model. Joysticks reported little more than a direction instead of a proportional position, so a boom could go up or down but not *gently*. Channels were wired to fixed functions. Adding lights or sound meant stacking awkward extra boards. And none of it could be programmed, so a carefully geared excavator arm ended up being driven like a toy.
 
-So Weihong got in touch and suggested that they and Shengyuan Fang could build something better matched to these machines. MeshMass is the result: a transmitter that sends honest, proportional readings; a receiver with the motor drivers already on board; and a programming model where a vehicle's behaviour is written for that vehicle.
+So Weihong got in touch, and MeshMass was designed by the three of them — Donghao, Weihong and Shengyuan Fang — each bringing their own expertise: the machines and how they ought to move, the electronics, and the firmware. The result is a transmitter that sends honest, proportional readings; a receiver with the motor drivers already on board; and a programming model where a vehicle's behaviour is written for that vehicle.
 
-Better hardware was only half the problem. Donghao is a designer, not a programmer or an electronics engineer, and had customers to look after — people who buy a model and later want a firmware update or a change in how it drives. The conventional answer is to hand them a source tree: install a toolchain, set up an IDE, edit the code, rebuild. Every one of those steps is somewhere to get stuck, and the people at the far end are model buyers, young students, and parents who bought a 3D printer to make something cool with their kids. None of them signed up to debug a build environment.
+Getting the hardware right was only half of it. These kits reach model buyers, young students, and parents who bought a 3D printer to make something cool with their kids. Handing that audience a source tree — install a toolchain, set up an IDE, edit the code, rebuild — puts a dozen places to get stuck between them and a working model.
 
 That is why the platform is part of the product rather than an accessory to it. The toolchain and the firmware core live on the server: open a page, pick a lesson, change a number, build, flash. Nothing to install, no account, nothing to configure — so "here is the link" can be the whole of the support instructions.
 
-The pairing that started it — someone who designs the machine, someone who handles the electronics and the code — is still how the best builds happen. If you design models, everything on the electronics side is documented here and [the lessons are open source](/MeshMass-RX4M4S#worked-examples); bring a design, and the rest is learnable.
+The mix that started it — mechanical design on one side, electronics and firmware on the other — is still how the best builds happen. If you design models, everything on the electronics side is documented here and [the lessons are open source](/MeshMass-RX4M4S#worked-examples); bring a design, and the rest is learnable.
 
 ## Design Philosophy
 
