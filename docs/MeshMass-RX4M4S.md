@@ -380,6 +380,8 @@ The vehicle lessons are the ones to read. A few to start with:
 
 The course is actively growing, so browse it for the current set — including full builds that add lighting and engine sounds on top of a drivetrain. Lessons named `*Demo` are there to exercise the Neopixel and audio interfaces on their own; they are for checking hardware rather than examples to build a vehicle from.
 
+The lessons are open source (Apache-2.0) and contributions are welcome — if you build something worth sharing, a lesson and the 3D models that go with it are both at home in the repository.
+
 Because every shape of the board runs the same firmware, the lessons form one continuous sequence — you work through them in order rather than switching courses when you fit an accessory.
 
 ### Quick Reference
