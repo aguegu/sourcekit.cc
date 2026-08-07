@@ -369,23 +369,18 @@ void onDisconnect() {
 
 #### Worked examples
 
-Complete, tested programs ship as lessons in the **RX4MX** course on the MeshMass platform, where they can be compiled and flashed straight to the board. Each lesson includes a `README` explaining the control scheme and the maths behind it. The source is also mirrored on GitHub in [chrc-courses](https://github.com/aguegu/chrc-courses).
+Complete, tested programs ship as lessons in the [**RX4MX** course](https://meshmass.y77.cc/#/courses/12136090) on the MeshMass platform, where they can be compiled and flashed straight to the board. Each one includes a `README` explaining its control scheme and the maths behind it. The source is also mirrored on GitHub in [chrc-courses](https://github.com/aguegu/chrc-courses).
+
+The vehicle lessons are the ones to read. A few to start with:
+
+- [`02-MiniTank`](https://meshmass.y77.cc/#/courses/12136090/lessons/02-MiniTank) — a tracked chassis with arcade mixing and three selectable drive modes; the knobs pick the mode and cap the speed.
+- [`03-Combo`](https://meshmass.y77.cc/#/courses/12136090/lessons/03-Combo) — a car with throttle and steering combined on a single stick.
+- [`04-forklift`](https://meshmass.y77.cc/#/courses/12136090/lessons/04-forklift) — the `03-Combo` drivetrain plus mast tilt and lift.
+- [`05-Excavator`](https://meshmass.y77.cc/#/courses/12136090/lessons/05-Excavator) — a four-motor arm, with tracks and attachments on servos.
+
+The course is actively growing, so browse it for the current set — including full builds that add lighting and engine sounds on top of a drivetrain. Lessons named `*Demo` are there to exercise the Neopixel and audio interfaces on their own; they are for checking hardware rather than examples to build a vehicle from.
 
 Because every shape of the board runs the same firmware, the lessons form one continuous sequence — you work through them in order rather than switching courses when you fit an accessory.
-
-| Lesson | What it builds | `AUDIO_ON_SM1_SM2` | `NEO_ON_SM3` |
-|---|---|---|---|
-| [`00-Default`](https://meshmass.y77.cc/#/courses/12136090/lessons/00-Default) | The default program above, with a full walkthrough of channels, `centered()` and the deadzone | `0` | `0` |
-| [`01-OnDisconnect`](https://meshmass.y77.cc/#/courses/12136090/lessons/01-OnDisconnect) | Adds the failsafe handler to the default program | `0` | `0` |
-| [`02-MiniTank`](https://meshmass.y77.cc/#/courses/12136090/lessons/02-MiniTank) | Tracked vehicle with three drive modes and arcade mixing; knobs select mode and cap speed | `0` | `0` |
-| [`03-Combo`](https://meshmass.y77.cc/#/courses/12136090/lessons/03-Combo) | Single-stick car — throttle and steering combined on one stick | `0` | `0` |
-| [`04-forklift`](https://meshmass.y77.cc/#/courses/12136090/lessons/04-forklift) | Forklift: the `03-Combo` drivetrain plus mast tilt and lift | `0` | `0` |
-| [`05-Excavator`](https://meshmass.y77.cc/#/courses/12136090/lessons/05-Excavator) | Excavator with a four-motor arm; tracks and attachments on servos | `0` | `0` |
-| [`10-NeoDemo`](https://meshmass.y77.cc/#/courses/12136090/lessons/10-NeoDemo) | Driving a WS2812 strip on SM3 | `0` | `1` |
-| [`20-AudioDemo`](https://meshmass.y77.cc/#/courses/12136090/lessons/20-AudioDemo) | Driving the MY1690 MP3 module on SM1 + SM2 | `1` | `0` |
-| [`30-AudioNeoDemo`](https://meshmass.y77.cc/#/courses/12136090/lessons/30-AudioNeoDemo) | Audio and lights together — one servo (SM0) remains | `1` | `1` |
-| [`31-forklift`](https://meshmass.y77.cc/#/courses/12136090/lessons/31-forklift) | `04-forklift` with a full lighting set and engine sounds | `1` | `1` |
-| [`32-dumptruck`](https://meshmass.y77.cc/#/courses/12136090/lessons/32-dumptruck) | Dump truck — `31-forklift` with a tipping bed in place of the mast | `1` | `1` |
 
 ### Quick Reference
 
