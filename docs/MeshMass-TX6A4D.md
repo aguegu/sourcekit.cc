@@ -141,7 +141,9 @@ MeshMass adopts a code-based programming approach that combines open hardware fl
 ::: tip Hardware model vs. firmware name
 **TX6A4D** is the hardware model — the board you bought. On the MeshMass platform the firmware for it is published as the **TX6AX** course, *"TX6A4D Raw Firmware — broadcasting the raw inputs"*.
 
-It pairs with **RX4MX** (*"RX4M4S Fusion Firmware"*) on the receiver side. That pairing is what your boards ship with and what all current lessons are written against.
+It pairs with **RX4MX** (*"RX4M4S Fusion Firmware"*) on the receiver side, and that pairing is what all current lessons are written against. Modules bought on their own ship with it.
+
+If you bought a finished kit from a model designer, it arrived pre-flashed with whatever that particular kit needs, which may be an earlier firmware — it will simply work as sold. Check what is on the boards before re-flashing, and if you do move to the current firmware, flash both ends together.
 :::
 
 ## Firmware Architecture
