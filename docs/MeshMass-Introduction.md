@@ -237,7 +237,7 @@ To pair a MeshMass transmitter with a receiver:
 
 We recommend running **TX6AX** on the transmitter and **RX4MX** on the receiver. These are the current firmwares, and every lesson and example is written for them.
 
-Flash both ends to the same generation. An earlier firmware carried a *signed* `-127`-`127` channel value and did its centring and mixing on the transmitter; mixing generations gives you a link that connects but behaves wrongly.
+Flash both ends to the same generation. An earlier firmware carried a *signed* `-127`-`127` channel value and did its centring and mixing on the transmitter; mixing generations gives you a link that connects but behaves wrongly. That earlier firmware is still supported for boards already running it, but it is deprecated — new lessons and examples target TX6AX and RX4MX only.
 
 **Pairing survives the upgrade.** The pairing is held in EEPROM and stays valid across a re-flash, so a paired set keeps working — there is no need to pair the boards again.
 
