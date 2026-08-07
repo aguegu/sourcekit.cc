@@ -23,8 +23,8 @@
 
 - **给两块电池充满电**（TX6A4D 用的 1S LiPo 和 RX4M4S 用的 2S LiPo）。新出厂的电池通常不是满电，套件里的充电器把电池充满所需的时间比 3 小时的课堂还长。
 - **确认两块板子已烧录正确的固件**（套件出厂时已经预烧；如需重烧，请通过 MeshMass 平台）：
-  - **RX4M4S** —— *RX4MX* 课程，第 [`02-MiniTank`](https://meshmass.y77.cc/#/courses/12136090/lessons/02-MiniTank) 课。这就是真正驱动坦克的程序：它把摇杆位置换算成左右履带的速度。
-  - **TX6A4D** —— *TX6AX* 课程，第 [`00-Default`](https://meshmass.y77.cc/#/courses/12132971/lessons/00-Default) 课。遥控器只有这一个程序，它只是把每个摇杆和按键的读数转发出去。
+  - **RX4M4S** —— **RX4MX** 课程，第 **`02-MiniTank`** 课（[源码](https://gitee.com/aGuegu/chrc-courses/tree/main/rx4mx/lessons/02-MiniTank)）。这就是真正驱动坦克的程序：它把摇杆位置换算成左右履带的速度。
+  - **TX6A4D** —— **TX6AX** 课程，第 **`00-Default`** 课（[源码](https://gitee.com/aGuegu/chrc-courses/tree/main/tx6ax/lessons/00-Default)）。遥控器只有这一个程序，它只是把每个摇杆和按键的读数转发出去。
 - **完成一次两块板子的配对** — 这一步同时也验证了固件。给两块板子通电，分别长按 **PAIR** 按钮 5 秒以上；OLED 屏会显示配对成功。
   - **建议：** 如果同时给多套套件做准备，请一对一对地配对 — 否则板子可能会和错误的伙伴配对上。
   - 配对信息断电后保留，所以重新烧录之后只需配对一次。

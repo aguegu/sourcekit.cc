@@ -366,14 +366,14 @@ void onDisconnect() {
 
 #### 参考示例
 
-完整且经过验证的程序，作为课程发布在 MeshMass 平台的 [**RX4MX** 课程](https://meshmass.y77.cc/#/courses/12136090)中，可以直接编译并烧录到板子上。每一课都附带 `README`，说明它的操作方式和背后的运算。源码同时镜像在 GitHub 的 [chrc-courses](https://github.com/aguegu/chrc-courses)。
+完整且经过验证的程序，作为 **RX4MX** 课程发布在 [MeshMass 平台](https://meshmass.y77.cc)上，可以直接编译并烧录到板子上。每一课都附带 `README`，说明它的操作方式和背后的运算；完整源码可在 [chrc-courses](https://gitee.com/aGuegu/chrc-courses) 浏览。
 
 值得细读的是整车类的课程，可以从这几课开始：
 
-- [`02-MiniTank`](https://meshmass.y77.cc/#/courses/12136090/lessons/02-MiniTank) —— 双履带底盘，arcade 混控，三种可切换的驾驶模式；两个旋钮分别选模式和限速。
-- [`03-Combo`](https://meshmass.y77.cc/#/courses/12136090/lessons/03-Combo) —— 单摇杆小车，油门与转向合并到一根摇杆上。
-- [`04-forklift`](https://meshmass.y77.cc/#/courses/12136090/lessons/04-forklift) —— 叉车，在 `03-Combo` 的行驶基础上加入俯仰与举升。
-- [`05-Excavator`](https://meshmass.y77.cc/#/courses/12136090/lessons/05-Excavator) —— 挖掘机，4 路电机驱动机械臂，履带与附件用舵机。
+- [`02-MiniTank`](https://gitee.com/aGuegu/chrc-courses/tree/main/rx4mx/lessons/02-MiniTank) —— 双履带底盘，arcade 混控，三种可切换的驾驶模式；两个旋钮分别选模式和限速。
+- [`03-Combo`](https://gitee.com/aGuegu/chrc-courses/tree/main/rx4mx/lessons/03-Combo) —— 单摇杆小车，油门与转向合并到一根摇杆上。
+- [`04-forklift`](https://gitee.com/aGuegu/chrc-courses/tree/main/rx4mx/lessons/04-forklift) —— 叉车，在 `03-Combo` 的行驶基础上加入俯仰与举升。
+- [`05-Excavator`](https://gitee.com/aGuegu/chrc-courses/tree/main/rx4mx/lessons/05-Excavator) —— 挖掘机，4 路电机驱动机械臂，履带与附件用舵机。
 
 课程仍在持续增加，最新的一套请直接在课程里浏览——其中也包括在行驶基础上加上灯光与引擎声的整车演示。名字里带 `*Demo` 的课程是用来单独验证灯带和音频接口的，属于硬件自检，而不是用来照着做整车的范例。
 
