@@ -41,7 +41,7 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 - **Programmable Channel Mapping**: Map any of the 16 wireless channels to any output
 - **Mixing Support**: Combine multiple channels for complex behaviors (tank steering, crane controls)
 - **OLED Display Interface**: 6-pin SH1.0 connector for 128x64 SPI OLED (sold separately)
-- **WS2812 Neopixel Interface**: 4-pin SH1.0 connector for addressable RGB LED strips (vehicle head/turning/tail lights). **Shares signal pin with SM3** (not included, requires special firmware)
+- **WS2812 Neopixel Interface**: 4-pin SH1.0 connector for addressable RGB LED strips (vehicle head/turning/tail lights). **Shares signal pin with SM3** (not included, enabled by a switch in the firmware)
 - **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module (MP3 playback for engine start sound effects). **Shares pins with SM1, SM2** (sold separately, under development)
 - **Low Latency**: 2.4GHz proprietary protocol optimized for real-time control
 - **External Antenna Option**: IPEX-1 connector for external 2.4GHz antenna
@@ -73,7 +73,7 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 |------|-------|-----------|-------------|
 | DC Motor | 4 | PH2.0 | Brushed DC motor driver outputs with ~220Hz PWM (DM0-DM3) |
 | Servo | 4 | 2.54mm servo header (3-pin) | 50Hz PWM servo outputs (5V) |
-| WS2812 Neopixels | 1 (shared) | 4-pin SH1.0 | Addressable RGB LED strips for vehicle lights (head/turning/tail). **Shares signal pin with SM3** (not included, requires special firmware) |
+| WS2812 Neopixels | 1 (shared) | 4-pin SH1.0 | Addressable RGB LED strips for vehicle lights (head/turning/tail). **Shares signal pin with SM3** (not included, enabled by a switch in the firmware) |
 | Audio Module | 1 (optional) | 4-pin SH1.0 | MP3 playback for sound effects (engine start, horns). **Shares pins with SM1, SM2** (sold separately, under development) |
 
 **Motor Outputs (DM0-DM3):**
@@ -104,17 +104,31 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 - Compatible with 9g servos and standard analog/digital servos
 - PWM signal: 50Hz (20ms frame), programmable pulse width (typically 1000-2000μs, supports 500-2500μs for extended range servos)
 
-**Pin Sharing & Firmware Variants:** The RX4M4S has configurable pin functions determined by firmware variant selection. Pins are shared between servo outputs and accessory interfaces, with specific firmware variants enabling different feature combinations. The WS2812 Neopixel interface (for vehicle head/turning/tail lights) **shares the signal pin with servo SM3**. The audio module interface (for MP3 sound effects like engine start) **shares pins with servos SM1 and SM2**. This creates three firmware variants with different capability trade-offs:
+**Pin Sharing & Board Configuration:** The four servo headers are shared with the accessory interfaces. The WS2812 Neopixel interface (for vehicle head/turning/tail lights) **uses the SM3 signal pin**. The audio module interface (for MP3 sound effects like engine start) **uses the SM1 and SM2 pins**. A header can serve one purpose at a time, so fitting an accessory costs you the servo channels it occupies.
 
-| Firmware Variant | DC Motors | Servos | WS2812 Neopixels | Audio Module | Availability |
-|------------------|-----------|--------|------------------|--------------|--------------|
-| **RX4M4S** | 4 | 4 (SM0-SM3) | Not enabled | Not enabled | Currently available |
-| **RX4M3S1N** | 4 | 3 (SM0-SM2) | Enabled (uses SM3 pin) | Not enabled | Not released yet |
-| **RX4M1S1N1A** | 4 | 1 (SM0 only) | Enabled (uses SM3 pin) | Enabled (uses SM1, SM2 pins) | Not released yet, audio module under development |
+You do not pick a different firmware for each combination. The `rx4mx` receiver firmware is **config-driven**: you declare which accessories are fitted with two switches at the top of `Project/inc/app.h`, and everything else is derived from them.
 
-**Important:** When using WS2812 Neopixels, servo SM3 is unavailable. When using the audio module, servos SM1 and SM2 are unavailable. Choose the firmware variant that matches your project needs.
+```c
+#define AUDIO_ON_SM1_SM2 0   // 1 = MP3 audio module on SM1 + SM2
+#define NEO_ON_SM3       0   // 1 = WS2812 neopixel strip on SM3
+```
 
-Contact Sourcekit for special firmware configurations based on your application needs.
+The two switches give four board shapes:
+
+| `AUDIO_ON_SM1_SM2` | `NEO_ON_SM3` | DC Motors | Servo headers available | Neopixel | Audio |
+|---|---|---|---|---|---|
+| `0` | `0` | 4 | SM0 SM1 SM2 SM3 (4) | — | — |
+| `0` | `1` | 4 | SM0 SM1 SM2 (3) | SM3 | — |
+| `1` | `0` | 4 | SM0 SM3 (2, **sparse**) | — | SM1 + SM2 |
+| `1` | `1` | 4 | SM0 (1) | SM3 | SM1 + SM2 |
+
+All four DC motor outputs are always available — the switches only affect the servo headers.
+
+::: warning Servo indices are header labels, not a sequence
+`setServo(index, …)` addresses the header by its **silkscreen label**, not by its position among the remaining servos. In the sparse row above (audio fitted, no neopixel) the valid indices are **0 and 3** — there is no servo 1 or 2. Calls to a header that isn't a servo on your configuration are silently ignored.
+:::
+
+Earlier firmware shipped these combinations as separate named builds (`RX4M4S`, `RX4M3S1N`, `RX4M1S1N1A`). Those names now describe *configurations of one firmware*, not different downloads.
 
 ### Power
 
@@ -141,9 +155,13 @@ Contact Sourcekit for special firmware configurations based on your application 
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately), also provides serial console output |
-| Display Shows | Debugging values: channel values, 4 motor outputs, and 4 servo outputs displayed as signed 3-digit integers on 4-line OLED |
+| Display Shows | Debugging values on a 4-line OLED: received channel values (unsigned `0`-`255`), the 4 motor outputs (signed, with sign), and the 4 servo headers |
 
-**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. The 4-line OLED displays debugging information as signed 3-digit integers, including channel values, motor outputs, and servo outputs. This allows students to debug mapping and math operations from channels to outputs. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
+**Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. Channel values appear as received — unsigned `0`-`255`, resting near `128` for a centred stick — while motor outputs are shown signed so direction is visible at a glance. This lets students watch a stick's raw number on one line and the recentred, mixed, scaled motor value on another, debugging the maths between them.
+
+Servo headers that a module has claimed show the module instead of a number: SM1 and SM2 read `MP3 ---` when the audio module is enabled, and SM3 reads `RGB` when the neopixel output is enabled — a quick way to confirm the firmware switches match the hardware actually fitted.
+
+The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
 
 ### Connectivity
 
@@ -190,10 +208,10 @@ The MeshMass system is built on a code-based programming approach that combines 
 - Brake capability for precise control
 - Supports wide range: N20 micro motors to 370 series medium motors
 
-**Pin Sharing & Firmware Variants**
-- Pin functions defined by firmware variant selection
-- WS2812 Neopixels share signal pin with SM3 (use either lights or servo SM3 based on firmware)
-- Audio module shares pins with SM1, SM2 (use either sound effects or servos SM1, SM2 based on firmware)
+**Pin Sharing & Board Configuration**
+- One firmware (`rx4mx`) covers every accessory combination — two switches in `app.h`, no separate builds
+- WS2812 Neopixels use the SM3 signal pin (lights or servo SM3, not both)
+- Audio module uses the SM1 and SM2 pins (sound effects or servos SM1/SM2, not both)
 
 **Scaffold Programming Approach**
 - Low-level RF, timing, and driver code pre-built
@@ -221,9 +239,11 @@ The RX4M4S runs a pre-built firmware scaffold that handles low-level hardware op
 
 ### Channel System
 
-The firmware receives 16 signed bytes (-128 to 127) as wireless channels from the paired TX6A4D transmitter. These channels form the communication bridge between transmitter and receiver. Application code interprets these channel values and maps them to motor, servo, and RGB LED outputs based on the specific vehicle's requirements.
+The firmware receives 16 raw bytes as wireless channels from the paired transmitter, read with `getChannel(index)` for `index` `0`–`15`. Application code interprets these channel values and maps them to motor, servo, and RGB LED outputs based on the specific vehicle's requirements.
 
-**Note:** The channel values received on RX4M4S are exactly what the TX6A4D transmitter sends. The TX6A4D only controls the mapping from physical inputs to channels. How these channel values are interpreted and converted to motor, servo, and RGB LED outputs is determined by the application code running on the RX4M4S.
+**Channels carry raw, uncentred readings.** `getChannel()` returns an **unsigned** value `0`–`255`. Stick and knob channels carry the transmitter's raw ADC position, with roughly `128` at centre; button channels carry `0` or `1`. The transmitter does no centring, deadzone, scaling, or mixing — **the receiver owns all of it**. Feeding a stick channel straight into `setMotor()` would read the resting centre as a large positive value and drive the motor at speed, so stick channels are almost always passed through a centring helper first (see [Centring a stick channel](#centring-a-stick-channel) below).
+
+**Note:** The channel values received are exactly the bytes the transmitter sends. The transmitter only controls the mapping from physical inputs to channels. How those values become motor, servo, and RGB LED outputs is determined entirely by the application code running on the receiver.
 
 ```mermaid
 venn-beta
@@ -235,207 +255,159 @@ venn-beta
   union TX,RX["channels"]
 ```
 
-### Application Code Examples
+#### Default channel map
 
-The scaffold provides a simple API for reading channels and controlling outputs. Here's an example showing various output control techniques:
+What each channel carries is decided by the transmitter's program. The stock TX6A4D program forwards its inputs unchanged, giving this layout:
+
+| Channel | Source | Value |
+|---|---|---|
+| `0` | Right joystick X (horizontal) | `0`–`255`, ~`128` centred |
+| `1` | Right joystick Y (vertical) | `0`–`255`, ~`128` centred |
+| `2` | Left joystick Y (vertical) | `0`–`255`, ~`128` centred |
+| `3` | Left joystick X (horizontal) | `0`–`255`, ~`128` centred |
+| `4` | Left knob | `0`–`255` |
+| `5` | Right knob | `0`–`255` |
+| `6` | Button 0 | `0` / `1` |
+| `7` | Button 1 | `0` / `1` |
+| `8` | Button 2 | `0` / `1` |
+| `9` | Button 3 | `0` / `1` |
+| `10`–`15` | Unused | `0` |
+
+The physical direction each end of the range corresponds to:
+
+| Input | At `0` | At `255` |
+|---|---|---|
+| Joystick horizontal (X) | Right | Left |
+| Joystick vertical (Y) | Down | Up |
+| Knob | Fully anticlockwise | Fully clockwise |
+
+So once a stick channel is recentred, **positive means left or up**, negative means right or down.
+
+### Centring a stick channel
+
+Because stick channels arrive raw (`0`–`255`, centre near `128`) and `setMotor()` expects a signed `-127`–`127`, every receiver program needs to recentre them. The reference firmware ships a small `centered()` helper for exactly this, and the lessons all reuse it:
+
+```c
+// Center a raw 0..255 stick to a signed -127..+127 swing. The base is a 1:1
+// map (0..126 -> -127..-1, 129..255 -> 1..127, center codes 127/128 -> 0),
+// bounded to ±127 by construction. The deadzone widens the neutral band and
+// rescales the remaining travel so a full-throw stick still reaches ±127;
+// deadzone 0 leaves the pure 1:1 map.
+static int8_t centered(uint8_t index, uint8_t deadzone) {
+  int16_t r = getChannel(index);
+  int16_t s = r <= 127 ? r - 127 : r - 128;
+  if (s > deadzone) return (s - deadzone) * 127 / (127 - deadzone);
+  if (s < -deadzone) return (s + deadzone) * 127 / (127 - deadzone);
+  return 0;
+}
+```
+
+The mapping it produces:
+
+| Raw channel value | `centered()` output |
+|---|---|
+| `0` – `126` | `-127` – `-1` |
+| `127` / `128` | `0` |
+| `129` – `255` | `+1` – `+127` |
+
+The `deadzone` argument widens the neutral band around centre, then rescales the remaining travel so a full-throw stick still reaches the extremes:
+
+| `deadzone` | Raw values that output exactly `0` | Full-throw output |
+|---|---|---|
+| `0` | `127` / `128` (centre only) | `±127` |
+| `8` | `119` – `136` | `±127` |
+| `20` | `107` – `148` | `±127` |
+
+Use a small deadzone (around `8`) on motor channels so a slightly off-centre stick doesn't creep, and `centered(index, 0)` for servo channels where you want the output to park at an exact centre value.
+
+### Application Code Examples
 
 **Timing Note:** The `loop()` function is called by the firmware scaffold after each successfully received and verified wireless payload from the paired transmitter. Since the transmitter broadcasts at 50Hz (every 20ms), the receiver typically calls `loop()` at 50Hz under normal connection conditions. This matches the typical update frequency of analog servos and ESCs, ensuring smooth control updates.
 
-**Firmware Cycle Details:** After each `loop()` call completes, the motor and servo outputs are updated with the new values. Motor outputs use ~220Hz PWM for speed control, while servo outputs use 50Hz PWM signal (center ~150, range approximately 100-200) for position control. **Safety Feature:** If wireless connection is lost or a payload fails verification, `loop()` is not called, and all outputs maintain their last valid values. This prevents unpredictable behavior during brief signal interruptions.
+**Firmware Cycle Details:** After each `loop()` call completes, the motor and servo outputs are updated with the new values. Motor outputs use ~220Hz PWM for speed control, while servo outputs use 50Hz PWM signal (center ~150, range approximately 100-200) for position control.
 
 **Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
+
+#### The default program
+
+Out of the box, the receiver runs the four stick channels through `centered()` with a deadzone of `8` to drive the four motors, and drives two mirrored servo pairs from the knob channels. `centered()` is the helper shown [above](#centring-a-stick-channel).
 
 ```c
 #include "app.h"
 
-// Variables that persist between loop() calls should be declared globally
-// or as static inside loop() (using 'static' keyword)
-static uint8_t servo_center = 150;  // Servo center point (~150)
-
-// One-time initialization function
-void setup() {
-  // Initialize Neopixel LED strip with 8 LEDs (for RX4M3S1N or RX4M1S1N1A variants)
-  neoInit(8);
-
-  // Other initialization tasks can be added here
-  // (motor/servo defaults, variable initialization, etc.)
-}
-
-// Audio module ready callback (for RX4M1S1N1A variant)
-void onPlayerReady() {
-  // Set default audio volume when audio module is ready
-  mpVolume(20);  // Volume level 20 out of 30 (0 = silent, 30 = maximum)
-
-  // Optional: Play startup sound
-  // mpPlay(1, true);  // Play file 0001 with force
-}
-
 void loop() {
-  // --- Default Configuration (from app.c) ---
-  // Direct channel to motor mapping for motors 0-3
-  setMotor(0, getChannel(0));
-  setMotor(1, getChannel(1));
-  setMotor(2, getChannel(2));
-  setMotor(3, getChannel(3));
+  setMotor(0, centered(0, 8));
+  setMotor(1, centered(1, 8));
+  setMotor(2, centered(2, 8));
+  setMotor(3, centered(3, 8));
 
-  // Servo control with center offset and scaled travel
-  // Channel values (-127 to 127) converted to servo range (~100-200)
-  // Formula: 150 (center = 1.5ms) + channel * 2/5 (scaling factor 0.4)
-  // This gives approximately ±50 units (±0.5ms) from center for full channel range
-  setServo(0, 150 + getChannel(4) * 2 / 5);
-  setServo(1, 150 + getChannel(5) * 2 / 5);
-  setServo(2, 150 + getChannel(6) * 2 / 5);
-  setServo(3, 150 + getChannel(7) * 2 / 5);
+  // Knob channels 4 and 5 each drive a mirrored servo pair around center
+  // (150 = 1.5 ms): SM0/SM1 follow the knob, SM2/SM3 mirror it. Reusing
+  // centered(…, 0) parks both at exactly 150 when the knob is centered.
+  setServo(0, 150 + centered(4, 0) * 2 / 5);
+  setServo(1, 150 + centered(5, 0) * 2 / 5);
 
-  // --- Basic Motor Control Examples ---
-
-  // Example 1: Inverted motor direction
-  // Useful for motors that need opposite rotation
-  setMotor(1, -getChannel(1));
-
-  // Example 2: Scaled motor speed
-  // Reduce sensitivity for fine control
-  setMotor(2, getChannel(2) / 2);
-
-  // Example 3: Motor with deadzone
-  // Ignore small channel values to prevent motor creep
-  int8_t motor_val = getChannel(3);
-  if (abs(motor_val) > 10) {
-    setMotor(3, motor_val);
-  } else {
-    setMotor(3, 0);  // Stop motor when near center
-  }
-
-  // --- Basic Servo Control Examples ---
-
-  // Example 4: Servo direction inversion
-  // Use subtraction instead of addition to invert servo movement direction
-  // Without changing transmitter configuration
-  setServo(0, 150 - getChannel(4) * 2 / 5);
-
-  // Example 5: Direct channel to servo mapping with custom center
-  // Channel values (-127 to 127) scaled to servo range
-  // Formula: center + channel * 2 / 5 gives range ~100-200
-  setServo(1, servo_center + getChannel(5) * 2 / 5);
-
-  // Example 6: Servo with adjustable center point
-  // Change servo_center variable to adjust mechanical alignment
-  setServo(2, servo_center + getChannel(6) * 2 / 5);
-
-  // Example 7: Servo with travel limit
-  // Restrict servo movement range
-  int8_t servo_val = getChannel(7);
-  if (servo_val > 100) servo_val = 100;
-  if (servo_val < -100) servo_val = -100;
-  setServo(3, 150 + servo_val * 2 / 5);
-
-  // --- Mixing Examples ---
-
-  // Example 8: Tank steering (differential drive)
-  // Combine two channels for throttle and steering
-  int8_t throttle = getChannel(0);
-  int8_t steering = getChannel(1);
-  setMotor(0, throttle + steering);  // Left motor
-  setMotor(1, throttle - steering);  // Right motor
-
-  // Example 9: Crane articulation
-  // Multiple servos working together
-  int8_t crane_base = getChannel(2);
-  int8_t crane_arm = getChannel(3);
-  setServo(0, 150 + crane_base * 2 / 5);  // Base rotation
-  setServo(1, 150 + crane_arm * 2 / 5);   // Arm articulation
-
-  // Example 10: Three-way mixing for excavator
-  // Swing, boom, and arm control
-  setServo(0, 150 + getChannel(0) * 2 / 5);  // Swing
-  setServo(1, 150 + getChannel(1) * 2 / 5);  // Boom
-  setServo(2, 150 + getChannel(2) * 2 / 5);  // Arm
-
-  // --- Neopixel and Audio Integration Examples ---
-
-  // Example 11: Vehicle lights based on motor speed (for RX4M3S1N or RX4M1S1N1A)
-  // Set LED brightness proportional to motor speed
-  // Assume 8 LEDs: 0-3 for front, 4-7 for rear
-  int8_t speed = abs(getChannel(0));  // Use throttle channel for speed
-  uint8_t brightness = speed * 2;     // Scale to 0-254 range
-  if (brightness > 255) brightness = 255;
-
-  // Front lights (white)
-  neoSetColor(0, COLOR_WHITE, brightness);
-  neoSetColor(1, COLOR_WHITE, brightness);
-
-  // Rear lights (red)
-  neoSetColor(4, COLOR_RED, brightness / 3);  // Dimmer red lights
-  neoSetColor(5, COLOR_RED, brightness / 3);
-
-  // Example 12: Direction indicator lights
-  // Green for forward, red for reverse, yellow for stopped
-  if (getChannel(0) > 20) {
-    // Moving forward - green front lights
-    neoSetColor(2, COLOR_GREEN, 200);
-    neoSetColor(3, COLOR_GREEN, 200);
-  } else if (getChannel(0) < -20) {
-    // Moving backward - red front lights
-    neoSetColor(2, COLOR_RED, 200);
-    neoSetColor(3, COLOR_RED, 200);
-  } else {
-    // Stopped - yellow front lights
-    neoSetColor(2, COLOR_YELLOW, 100);
-    neoSetColor(3, COLOR_YELLOW, 100);
-  }
-
-  // Example 13: Audio feedback for engine sounds (for RX4M1S1N1A)
-  // Play engine sound when throttle exceeds threshold
-  static bool engine_playing = false;
-  int8_t throttle = getChannel(0);
-
-  if (abs(throttle) > 30) {
-    // Engine running - play engine sound (file 0001)
-    if (!engine_playing) {
-      mpPlay(1, true);  // Force play engine sound
-      engine_playing = true;
-    }
-  } else {
-    // Engine idle or stopped
-    if (engine_playing) {
-      // Could play idle sound here (file 0002)
-      engine_playing = false;
-    }
-  }
-
-  // Example 14: Beep sound for button press
-  // Play beep when button is pressed (channel 8 as button)
-  static bool button_was_pressed = false;
-  bool button_pressed = (getChannel(8) > 0);
-
-  if (button_pressed && !button_was_pressed) {
-    // Button just pressed - play beep sound (file 0003)
-    mpPlay(3, false);  // Don't force - skip if already playing
-  }
-  button_was_pressed = button_pressed;
+  setServo(2, 150 - centered(4, 0) * 2 / 5);
+  setServo(3, 150 - centered(5, 0) * 2 / 5);
 }
 ```
+
+#### Failsafe on signal loss
+
+If the radio link drops, `loop()` stops being called and every output **holds its last value** — a vehicle at speed keeps going. To fail safe, implement `onDisconnect()`. The firmware calls it once the link has been quiet for about 400 ms, and cancels the pending call if the link recovers first, so brief interference doesn't trigger it.
+
+```c
+// Called when the RF link drops (no packet for ~400 ms). Put the vehicle in a
+// safe state: stop all motors and center every servo.
+void onDisconnect() {
+  for (uint8_t i = 0; i < 4; i++) setMotor(i, 0);
+  for (uint8_t i = 0; i < 4; i++) setServo(i, 150);
+}
+```
+
+`onDisconnect()` is optional — the firmware supplies an empty default — but any vehicle that can drive away from you should define it.
+
+#### Worked examples
+
+Complete, tested programs live in the [chrc-courses](https://github.com/aguegu/chrc-courses) repository, and can be compiled and flashed directly from the MeshMass platform. Each lesson includes a `README` explaining the control scheme and the maths behind it.
+
+| Lesson | What it builds | `AUDIO_ON_SM1_SM2` | `NEO_ON_SM3` |
+|---|---|---|---|
+| [`00-Default`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/00-Default) | The default program above, with a full walkthrough of channels, `centered()` and the deadzone | `0` | `0` |
+| [`01-OnDisconnect`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/01-OnDisconnect) | Adds the failsafe handler to the default program | `0` | `0` |
+| [`02-MiniTank`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/02-MiniTank) | Tracked vehicle with three drive modes and arcade mixing; knobs select mode and cap speed | `0` | `0` |
+| [`03-Combo`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/03-Combo) | Single-stick car — throttle and steering combined on one stick | `0` | `0` |
+| [`04-forklift`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/04-forklift) | Forklift: the `03-Combo` drivetrain plus mast tilt and lift | `0` | `0` |
+| [`05-Excavator`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/05-Excavator) | Excavator with a four-motor arm; tracks and attachments on servos | `0` | `0` |
+| [`10-NeoDemo`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/10-NeoDemo) | Driving a WS2812 strip on SM3 | `0` | `1` |
+| [`20-AudioDemo`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/20-AudioDemo) | Driving the MY1690 MP3 module on SM1 + SM2 | `1` | `0` |
+| [`30-AudioNeoDemo`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/30-AudioNeoDemo) | Audio and lights together — one servo (SM0) remains | `1` | `1` |
+| [`31-forklift`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/31-forklift) | `04-forklift` with a full lighting set and engine sounds | `1` | `1` |
+| [`32-dumptruck`](https://github.com/aguegu/chrc-courses/tree/main/rx4mx/lessons/32-dumptruck) | Dump truck — `31-forklift` with a tipping bed in place of the mast | `1` | `1` |
 
 ### Quick Reference
 
 **Core Functions:**
-- `getChannel(n)` - Read wireless channel value (-128 to 127)
+- `getChannel(n)` - Read wireless channel value (**unsigned 0-255**, raw as sent by the transmitter)
 - `setMotor(n, value)` - Set motor speed and direction (127: 100% PWM one direction, -127: 100% PWM opposite direction, 0: stop, -128: brake)
 - `getMotor(n)` - Get current motor output value
-- `setServo(n, value)` - Set servo position (0.01ms units, 150 = 1.5ms center)
+- `setServo(n, value)` - Set servo position (0.01ms units, 150 = 1.5ms center); `n` is the SM header label
 - `getServo(n)` - Get current servo output value
 - `setup()` - One-time initialization function
 - `loop()` - Main application function called after each received payload
+- `onDisconnect()` - Called ~400ms after the radio link drops; implement to fail safe
 
-**RGB LED (Neopixel) Functions:** (available to RX4M3S1N and RX4M1S1N1A)
+**RGB LED (Neopixel) Functions:** (when `NEO_ON_SM3` is `1`)
 - `neo()` - LED animation function called every 125ms
-- `neoInit(pixelCount)` - Initialize Neopixel LED strip (1-16 LEDs)
+- `neoSetup(pixelCount)` - Initialize Neopixel LED strip (1-32 LEDs)
 - `neoSetHSL(n, hue, saturation, lightness)` - Set LED color using HSL color model
 - `neoSetColor(index, color, lightness)` - Set LED color using simplified color value
 
-**Audio Functions:** (available to RX4M1S1N1A)
-- `mpPlay(filesn, force)` - Play audio file from MY1690 audio module (filesn: 1-9999, force: playback behavior control)
+**Audio Functions:** (when `AUDIO_ON_SM1_SM2` is `1`)
+- `mpPlay(filesn, force)` - Play audio file from MY1690 audio module (filesn: 1-65535, force: re-trigger the same file while it is already playing)
+- `mpStop()` - Stop playback immediately
 - `mpVolume(value)` - Set audio playback volume level (0-30, 0 = silent, 30 = maximum)
+- `mpLoop(isLoop)` - Loop the current file, or play it once and stop
 - `onPlayerReady()` - Callback function called when audio module initialization completes
 
 *For complete function documentation with parameters, return values, and usage notes, see the [API Reference](#api-reference) section below.*
@@ -446,16 +418,8 @@ void loop() {
 
 ### API Reference
 
-::: details RX4M4S Standard Firmware Header File
-<<< @/code/en/MeshMass-RX4M4S/RX4M4S/app.h{c}
-:::
-
-::: details RX4M3S1N Neopixel Variant Firmware Header File
-<<< @/code/en/MeshMass-RX4M4S/RX4M3S1N/app.h{c}
-:::
-
-::: details RX4M1S1N1A Neopixel + Audio Variant Firmware Header File
-<<< @/code/en/MeshMass-RX4M4S/RX4M1S1N1A/app.h{c}
+::: details rx4mx Firmware Header File
+<<< @/code/en/MeshMass-RX4M4S/rx4mx/app.h{c}
 :::
 
 ### Firmware-Managed Features

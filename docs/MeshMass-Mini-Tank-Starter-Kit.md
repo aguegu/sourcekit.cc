@@ -501,29 +501,46 @@ Learn programming with hands-on tank control!
 Computers speak in 1s and 0s:
 - ON = 1, OFF = 0
 - 8 bits = 1 byte
-- Signed numbers: -128 to 127
+- One byte counts from 0 to 255
+- The same byte can be read as a signed number instead, -128 to 127
 
 ### Step 2: Channels and Communication
 
-Transmitter talks to receiver:
-- 16 channels = 16 bytes
-- Left stick = Channel 0
-- Right stick = Channel 1
+The transmitter sends 16 bytes, 50 times a second. Each byte is one channel:
+
+| Channel | Input |
+|---|---|
+| `0` | Right stick, left/right |
+| `1` | Right stick, up/down |
+| `2` | Left stick, up/down |
+| `3` | Left stick, left/right |
+| `4` | Left knob |
+| `5` | Right knob |
+| `6`-`9` | The four buttons |
+
+A stick sits near **128** when it is not being touched, drops toward **0** one way and climbs toward **255** the other. The transmitter sends what it measures and nothing more — every decision about what those numbers *mean* happens in the tank's own program.
 
 ### Step 3: Your First Program
 
+A motor wants a signed number: negative for one direction, `0` for stop, positive for the other. A stick gives an unsigned one resting at 128. So the first job of any program is to move the resting point to zero — subtract the centre:
+
 ```c
-// Tank steering: left stick controls both tracks
-setMotor(0, getChannel(0));  // Left track
-setMotor(1, getChannel(0));  // Right track
+// Left stick, up/down (channel 2), recentred: 128 becomes 0
+int8_t drive = getChannel(2) - 128;
+
+setMotor(0, drive);  // Left track
+setMotor(1, drive);  // Right track
 ```
+
+Both tracks get the same number, so the tank drives straight forward and back. Steering comes next.
 
 ### Step 4: Customize Your Tank
 
-Try different mixing formulas:
-- Speed control
-- Steering sensitivity
-- Dead zone
+Once both tracks move together, the interesting question is how to make them move *differently*:
+- Driving each track from its own stick
+- Combining forward and turning into one stick
+- Capping the top speed with a knob
+- Widening the dead zone so a resting stick really means stop
 
 ## Learning Path
 
@@ -552,7 +569,7 @@ This starter kit guides you through fundamental MeshMass concepts through hands-
 **Binary and Bytes**
 - Computers use ON/OFF (1/0)
 - 8 bits = 1 byte = 256 possible values
-- Signed vs unsigned numbers (-128 to 127)
+- Signed vs unsigned numbers (0 to 255, or -128 to 127)
 
 **Communication Protocol**
 - Sender → Channel → Receiver
@@ -647,7 +664,7 @@ Once students have driven their Mini Tank, several branches open up.
 
 **4. Migrate MeshMass to LEGO Technic.** Bring wireless remote control to existing LEGO Technic builds using hobby motors that mount onto Technic systems. A static LEGO excavator or truck can become a fully RC version.
 
-**5. Add MeshMass accessories.** The RX4M4S has hardware support for **WS2812 RGB LED strips** (head/turning/tail lights, ambient glow) and an **MP3 audio module** (engine sounds, horns, custom effects). These require alternate firmware variants - see the [RX4M4S product page](/MeshMass-RX4M4S) for details on the RX4M3S1N and RX4M1S1N1A variants.
+**5. Add MeshMass accessories.** The RX4M4S has hardware support for **WS2812 RGB LED strips** (head/turning/tail lights, ambient glow) and an **MP3 audio module** (engine sounds, horns, custom effects). Both are switched on in the receiver's own program, trading away the servo headers they occupy - see [Pin Sharing & Board Configuration](/MeshMass-RX4M4S#specification) on the RX4M4S product page.
 
 ## Discussion
 

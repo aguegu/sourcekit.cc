@@ -98,7 +98,7 @@ The CH571F's RISC-V architecture provides efficient processing while the integra
 |-----------|-------------|
 | Display Interface | 6-pin SH1.0 connector, SPI interface for 128x64 OLED (sold separately with cable) |
 | Programming Interface | 6-pin SH1.0 connector for MeshMass USB Flashing Dongle (sold separately with cable), also provides serial console output (OLED display recommended for visual debugging) |
-| Display Shows | Battery voltage, Wireless signal strength, Raw input values (6 analog: -127 to 127, 4 digital: 0/1) on TX6A4D; Debugging values including channel values, motor outputs, and servo outputs on RX4M4S |
+| Display Shows | Battery voltage, wireless signal strength (both ends), and raw input values (6 analog: `0`-`255`, 4 digital: `0`/`1`) |
 | Buzzer | Lost connection alarm |
 
 **Display Note:** MeshMass shows raw decimal values (not scroll bars or progress indicators) for precise verification. Students can directly see how their code translates physical inputs to numerical outputs. The transmitter OLED displays system status (battery voltage, signal strength) since the user holds it in hand, while the receiver OLED focuses on output debugging. The OLED screen is sold separately, making it optional for fixed installations and friendly to budget-conscious builders.
@@ -138,12 +138,20 @@ MeshMass adopts a code-based programming approach that combines open hardware fl
 
 **What you program:** On TX6A4D, you define how physical inputs (joysticks, knobs, buttons) map to 16 wireless channels. How these channels control motors and servos is determined by the receiver (RX) firmware.
 
+::: tip Firmware names on the MeshMass platform
+TX6A4D is the hardware. On meshmass.com the transmitter firmware appears as **`tx6ax`**, which sends raw unsigned readings and pairs with the **`rx4mx`** receiver firmware — this is what your boards ship with and what the current lessons are written against.
+
+An older **`tx6a4d`** firmware still exists for boards paired using the earlier signed protocol. It runs on the same hardware; the two protocols simply aren't interoperable, so a `tx6ax` transmitter needs an `rx4mx` receiver. If you are starting fresh, use `tx6ax`.
+:::
+
 ## Firmware Architecture
 
 The TX6A4D runs a pre-built firmware scaffold that handles low-level hardware operations while exposing a simple API for application programming. This architecture separates hardware complexity from application logic, allowing users to focus on channel mapping.
 
 ### Channel System
-The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These channels form the communication bridge between transmitter and receiver. Applications map physical inputs (joysticks, knobs, buttons) to these channels, which are then transmitted wirelessly to paired receivers.
+The firmware defines 16 single-byte wireless channels. These channels form the communication bridge between transmitter and receiver. Applications map physical inputs (joysticks, knobs, buttons) to these channels, which are then transmitted wirelessly to paired receivers.
+
+Analog inputs are read as **raw unsigned values (`0`-`255`)** straight from each input's own ADC channel, compensated for battery droop, with roughly `128` at the centre or neutral position. The transmitter applies no centring, deadzone, scaling or mixing of its own — it forwards what it measures, and the receiver decides what it means.
 
 **PCB Labels:** The PCB is labeled with STK0-STK5 for analog inputs and BTN0-BTN3 for digital buttons, corresponding directly to API indices.
 
@@ -174,119 +182,62 @@ The firmware defines 16 signed bytes (-128 to 127) as wireless channels. These c
 
 **Execution Model:** The `loop()` function is called every 20ms (50Hz) by the firmware scaffold. This matches the typical update frequency of analog servos, ensuring smooth control updates.
 
-**Firmware Cycle Details:** Before each `loop()` call, the firmware automatically refreshes all analog inputs (joysticks, knobs) and digital inputs (buttons), storing their latest values in memory. The `getStick()` and `getButton()` functions return these pre-fetched values. During `loop()`, `setChannel()` updates values in a 16-byte transmission frame buffer. Channels not explicitly set retain their previous values. After `loop()` completes, the entire frame buffer (all 16 int8_t channel values) is broadcast wirelessly.
+**Firmware Cycle Details:** Before each `loop()` call, the firmware automatically refreshes all analog inputs (joysticks, knobs) and digital inputs (buttons), storing their latest values in memory. The `getStick()` and `getButton()` functions return these pre-fetched values. During `loop()`, `setChannel()` updates values in a 16-byte transmission frame buffer. Channels not explicitly set retain their previous values. After `loop()` completes, the entire 16-byte frame buffer is broadcast wirelessly.
 
 **Important:** Avoid using busy-waiting or delay functions inside `loop()`. The firmware runs a Real-Time Operating System (RTOS) in the background. Blocking operations can prevent critical system tasks from running, potentially causing system failures or unpredictable behavior.
 
 ### Application Code Examples
 
-The scaffold provides a simple API for reading inputs and setting channels. Users have complete flexibility in mapping inputs to channels, enabling complex control behaviors. Here's an example showing various mapping techniques using proper stdint.h types:
-
-**Architecture Note:** The code on TX6A4D only controls the mapping from physical inputs (joysticks, knobs, buttons) to wireless channels. How these channel values are interpreted and reflected on the receiver module (RX) or vehicle is determined by the application code running on the RX modules.
+**Architecture Note:** The code on the transmitter only controls the mapping from physical inputs (joysticks, knobs, buttons) to wireless channels. How those channel values become motor and servo movement is determined by the application code running on the receiver.
 
 **Note:** The `app.h` header file already includes `<stdbool.h>` and `<stdint.h>` headers, so you don't need to include them in your application code. On meshmass.com, you can view the `app.h` file for reference, but it's not recommended to edit it.
+
+The stock program forwards every input unchanged — six analog inputs to channels `0`-`5`, four buttons to channels `6`-`9`:
 
 ```c
 #include "app.h"
 
-// Variables that persist between loop() calls should be declared globally
-// or as static inside loop() (using 'static' keyword)
-static bool button2_was_pressed = false;  // Tracks button 2 press state
-
 void loop() {
-  // --- Basic Input Mapping Examples ---
-
-  // Example 1: Direct mapping - stick 0 controls channel 0
-  // Stick values range from -127 (full left/down) to 127 (full right/up)
   setChannel(0, getStick(0));
-
-  // Example 2: Reversed mapping - stick 1 controls channel 1 with inverted direction
-  // Useful for motors that need opposite rotation direction
-  setChannel(1, -getStick(1));
-
-  // Example 3: Scaled mapping - stick 2 controls channel 2 with halved sensitivity
-  // Divide by 2 to reduce sensitivity for fine control applications
-  setChannel(2, getStick(2) / 2);
-
-  // Example 4: Mixed control - use stick 3 for auxiliary control
+  setChannel(1, getStick(1));
+  setChannel(2, getStick(2));
   setChannel(3, getStick(3));
+  setChannel(4, getStick(4));
+  setChannel(5, getStick(5));
 
-  // Example 5: Deadzone handling - ignore small stick movements near center
-  // Prevents unintended movements from joystick drift
-  if (abs(getStick(4)) > 10) {
-    setChannel(4, getStick(4));
-  } else {
-    setChannel(4, 0);  // Center position when stick is near middle
-  }
-
-  // --- Button Control Examples ---
-
-  // Example 6: Button-controlled increment/decrement
-  // Button 0 increases channel 6, Button 1 decreases it (range-limited)
-  if (getButton(0) && getChannel(6) < 127) {
-    setChannel(6, getChannel(6) + 1);
-  }
-  if (getButton(1) && getChannel(6) > -127) {
-    setChannel(6, getChannel(6) - 1);
-  }
-
-  // Example 7: Button latch - toggle channel 7 on button press
-  // Pressing button 2 toggles channel 7 between positive and negative values
-  if (getButton(2) && !button2_was_pressed) {
-    setChannel(7, -getChannel(7));  // Toggle between positive and negative
-    button2_was_pressed = true;     // Mark button as pressed
-  }
-  if (!getButton(2)) {
-    button2_was_pressed = false;    // Reset when button released
-  }
-
-  // --- Advanced Mixing Examples ---
-
-  // Example 8: Complex mixing - combine multiple inputs for tank steering
-  // Right and left vertical stick averaging for differential drive vehicles
-  setChannel(8, (getStick(1) + getStick(2)) / 2);
-
-  // Example 9: Exponential response for fine control
-  // Square the stick value (preserving sign) for non-linear response
-  int8_t stick_val = getStick(5);
-  int8_t sign = (stick_val > 0) ? 1 : ((stick_val < 0) ? -1 : 0);
-  setChannel(9, (stick_val * stick_val * sign) / 127);
-
-  // Example 10: Dual-button safety latch - requires two buttons pressed
-  // Button 3 acts as safety, must be held while button 2 triggers action
-  if (getButton(3) && getButton(2)) {
-    setChannel(10, 127);  // Full speed in one direction when safety + trigger pressed
-  } else {
-    setChannel(10, 0);    // Stop otherwise
-  }
+  setChannel(6, getButton(0));
+  setChannel(7, getButton(1));
+  setChannel(8, getButton(2));
+  setChannel(9, getButton(3));
 }
 ```
+
+That is deliberately the whole program. Centring, deadzone, scaling, reversing and mixing all belong on the **receiver**, which knows what the outputs are wired to — see [Centring a stick channel](/MeshMass-RX4M4S#centring-a-stick-channel) on the RX4M4S page.
+
+::: tip Why shape the signal on the receiver?
+A transmitter that has already centred and mixed its sticks has thrown away information the receiver cannot recover. Sending the raw reading keeps one transmitter program usable across every vehicle: a tank mixes the same two sticks differently from an excavator, and each receiver decides for itself. It also means you reprogram the vehicle you are changing, not the controller you share between all of them.
+:::
+
+You can still do work here when it genuinely belongs to the controller — for instance, using a button to select a mode and sending that mode on a spare channel, so the vehicle switches behaviour without you reflashing it. Channels `10`-`15` are unused by the stock program and free for this.
 
 ### Quick Reference
 
 **Core Functions:**
-- `getStick(n)` - Read analog input (joystick/knob) value (-127 to 127)
+- `getStick(n)` - Read analog input (joystick/knob) as a **raw unsigned `0`-`255`** reading, ~`128` at centre
 - `getButton(n)` - Read digital button state (true/false)
-- `setChannel(n, value)` - Set wireless channel value (-128 to 127)
+- `setChannel(n, value)` - Set wireless channel value
 - `getChannel(n)` - Get current channel value
 - `loop()` - Main application function called every 20ms
+
+::: warning Channels carry a raw byte
+`setChannel()` is declared as taking a signed `int8_t`, but a channel is really just **one byte on the wire**. Passing `getStick()` straight into it is correct and is what the stock program does: values above `127` wrap to negative on the transmitter side, and the receiver reads the byte back unchanged as `0`-`255` via `getChannel()`. Don't try to "fix" the sign here — recentre on the receiver instead.
+:::
 
 *For complete function documentation with parameters, return values, and usage notes, see the [API Reference](#api-reference) section below.*
 
 **State Persistence**: Variables that need to retain values between `loop()` calls should be declared as `static` inside `loop()` or as global variables outside functions.
 
 **Standard Library**: Common C standard library functions like `abs()` are available for mathematical operations.
-
-The API enables flexible mappings:
-- **Direct mapping**: `setChannel(0, getStick(0))`
-- **Reversed direction**: `setChannel(1, -getStick(1))`
-- **Scaled sensitivity**: `setChannel(2, getStick(2) / 2)`
-- **Deadzone handling**: Conditionally set channels based on input thresholds
-- **Button latch**: Toggle channels on button presses using state variables
-- **Button increment/decrement**: Adjust channel values with button presses
-- **Exponential response**: Non-linear mapping for fine control (e.g., `(stick*stick)/127`)
-- **Dual-button safety**: Require multiple buttons pressed simultaneously for safety-critical functions
-- **Complex mixing**: Combine multiple inputs with mathematical operations
 
 ### API Reference
 ::: details TX6A4D Application Header File
@@ -295,7 +246,7 @@ The API enables flexible mappings:
 
 ### Firmware-Managed Features
 The scaffold handles several system functions automatically:
-- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength, and all input values (6 analog: -127 to 127, 4 digital: 0/1). RX4M4S displays debugging values including channel values, motor outputs, and servo outputs for system inspection and mapping verification. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
+- **OLED Display**: Real-time debugging display showing battery voltage, wireless signal strength for both ends of the link, and all input values (6 analog: `0`-`255`, 4 digital: `0`/`1`). Because the analog readings are shown exactly as they are transmitted, you can compare the number on the transmitter against the channel value on the receiver's own display and confirm the link end to end. Displays raw decimal values (not simplified visualizations) for precise code verification. The OLED is sold separately, making it optional for fixed installations while maintaining budget-friendly flexibility.
 - **Buzzer**: Provides lost connection alarms and system feedback
 - **Wireless Communication**: Manages 2.4GHz packet transmission with auto-hopping
 - **Battery Management**: Monitors voltage and provides low-battery warnings

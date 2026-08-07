@@ -1,6 +1,6 @@
 {
   "name": "sourcekit.cc",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Static documentation site for sourcekit.cc built with VitePress",
   "homepage": "https://github.com/aguegu/sourcekit.cc#readme",
   "bugs": {

@@ -51,7 +51,7 @@ Traditional RC control solutions fall into two categories with significant drawb
 - **Benefit**: Professional-grade control at hobbyist price point
 
 ### Programming Accessibility
-- **Text-based C**: Reveals underlying math (e.g., `150 + getChannel(4) * 2 / 5`)
+- **Text-based C**: Reveals underlying math (e.g., `150 + centered(4, 0) * 2 / 5`)
 - **Educational value**: Users see formulas controlling physical movement
 - **vs. Visual programming**: Blocks obscure math, take more screen space for simple logic
 - **Scaffold approach**: Low-level code (RTOS, RF, drivers) pre-built; users only write mapping logic
@@ -59,7 +59,7 @@ Traditional RC control solutions fall into two categories with significant drawb
 ### Reusability & Flexibility
 - **Easy re-flashing**: Modules can move between different prints
 - **Traditional RC**: Complex menu navigation or physical rewiring required
-- **Firmware variants**: RX4M4S (4 motors + 4 servos), RX4M3S1N (4 motors + 3 servos + Neopixel), RX4M1S1N1A (4 motors + 1 servo + Neopixel + audio)
+- **One firmware, configurable board**: Two switches in the receiver's program decide whether the shared headers drive servos, a Neopixel strip, or an audio module — 4 motors + 4 servos by default, down to 4 motors + 1 servo with both accessories fitted
 
 ### Easy Visual Debugging
 - **Firmware verification without executors**: Verify code without plugging in oscilloscopes or logic analyzers (which can be powerful but dangerous)
@@ -80,7 +80,8 @@ The MeshMass system separates responsibilities between transmitter and receiver:
 This abstraction allows users to focus on what matters for their specific build without worrying about RF protocol details.
 
 ### Channel-Based Communication
-- **16 Wireless Channels**: Signed bytes (-128 to 127) transmitted between devices
+- **16 Wireless Channels**: Single bytes transmitted between devices
+- **Raw readings on the wire**: The transmitter sends each analog input as an unsigned `0`-`255` reading (~`128` at centre); centring, deadzone, scaling and mixing are the receiver's job
 - **Flexible Routing**: Any input can map to any output through simple code
 - **Real-time Performance**: 50Hz update rate matches servo refresh, minimum latency wireless
 
@@ -128,11 +129,12 @@ Users only write the code that matters for their specific vehicle:
 ## Educational Value
 
 ### Math Comes Alive
-- **Variables & Functions**: Students see how `getStick(0)` reads physical joystick position
-- **Coordinate Systems**: X/Y axes map directly to joystick movements (-127 to 127 range)
-- **Algebraic Operations**: Mix inputs with `(getStick(1) + getStick(2)) / 2` for tank steering
-- **Conditional Logic**: Implement safety features with `if (getButton(0)) { setChannel(0, 0); }`
-- **Scaling & Transformation**: Apply `getStick(0) / 2` for reduced sensitivity
+- **Variables & Functions**: Students see how `getChannel(0)` reads the joystick position the transmitter sent
+- **Number Ranges & Signs**: A stick arrives as an unsigned `0`-`255` reading; subtracting the centre turns it into a signed `-127`-`127` value where the sign *is* the direction
+- **Coordinate Systems**: X and Y axes of a stick become two independent numbers to combine
+- **Algebraic Operations**: Arcade steering falls out of two lines — `left = Y - X`, `right = Y + X` — and students can reason about why one track speeds up as the other slows
+- **Conditional Logic**: Implement safety features with `if (getChannel(6)) { setMotor(0, 0); }`
+- **Scaling & Transformation**: Divide to cap top speed, or normalise a mixed result so full stick throw doesn't clip
 
 ### Immediate Physical Feedback
 - Code changes → Immediate vehicle response
@@ -172,7 +174,7 @@ Users only write the code that matters for their specific vehicle:
 - Business model: Grow together with 3D printing community creators
 
 ### Future Expansion
-1. **Additional firmware variants** for specialized applications
+1. **Additional board configurations** for specialized applications
 2. **Expanded accessory ecosystem** (audio modules, LED effects)
 3. **Educational partnerships** with STEM programs
 4. **Integration with 3D modeling software** for automatic firmware generation
