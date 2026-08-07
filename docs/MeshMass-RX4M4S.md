@@ -42,7 +42,7 @@ The RX4M4S provides 4 DC motor outputs and 4 servo outputs, making it ideal for 
 - **Mixing Support**: Combine multiple channels for complex behaviors (tank steering, crane controls)
 - **OLED Display Interface**: 6-pin SH1.0 connector for 128x64 SPI OLED (sold separately)
 - **WS2812 Neopixel Interface**: 4-pin SH1.0 connector for addressable RGB LED strips (vehicle head/turning/tail lights). **Shares signal pin with SM3** (not included, enabled by a switch in the firmware)
-- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module (MP3 playback for engine start sound effects). **Shares pins with SM1, SM2** (sold separately, under development)
+- **Audio Module Interface**: 4-pin SH1.0 connector for optional audio module (MP3 playback for engine start sound effects). **Shares pins with SM1, SM2** (sold separately)
 - **Low Latency**: 2.4GHz proprietary protocol optimized for real-time control
 - **External Antenna Option**: IPEX-1 connector for external 2.4GHz antenna
 - **Compact Design**: Easy to integrate into custom builds
@@ -74,7 +74,7 @@ The CH571F's advanced timer capabilities are particularly important for the RX4M
 | DC Motor | 4 | PH2.0 | Brushed DC motor driver outputs with ~220Hz PWM (DM0-DM3) |
 | Servo | 4 | 2.54mm servo header (3-pin) | 50Hz PWM servo outputs (5V) |
 | WS2812 Neopixels | 1 (shared) | 4-pin SH1.0 | Addressable RGB LED strips for vehicle lights (head/turning/tail). **Shares signal pin with SM3** (not included, enabled by a switch in the firmware) |
-| Audio Module | 1 (optional) | 4-pin SH1.0 | MP3 playback for sound effects (engine start, horns). **Shares pins with SM1, SM2** (sold separately, under development) |
+| Audio Module | 1 (optional) | 4-pin SH1.0 | MP3 playback for sound effects (engine start, horns). **Shares pins with SM1, SM2** (sold separately) |
 
 **Motor Outputs (DM0-DM3):**
 - 4x PH2.0 connectors for brushed DC motors
