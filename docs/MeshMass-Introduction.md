@@ -188,10 +188,14 @@ Users only write the code that matters for their specific vehicle:
 
 ## Ecosystem Strategy
 
-### Kit Designer Support
-- Designers like CDHCHAOREN pre-flash firmware for specific models
-- Community integration: Designers get columns on meshmass.com linking to their stores, Makerworld pages, video channels
-- Business model: Grow together with 3D printing community creators
+### For Kit Designers and Teachers
+
+The MeshMass platform is run as a hosted service for anyone building products or lessons on these boards.
+
+- **Designers** keep the firmware for their own kits there, ship boards pre-flashed, and hand customers a link instead of a toolchain. Designers also get a column on meshmass.com linking to their store, MakerWorld page and video channel.
+- **Teachers** keep the material a class works from, so students open a page and start.
+
+Publishing your own courses is a membership feature. To get set up, contact our sales at <weihong.guan@gmail.com>.
 
 ### Future Expansion
 1. **Additional board configurations** for specialized applications
