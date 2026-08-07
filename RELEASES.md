@@ -22,7 +22,9 @@ MeshMass documentation rebuilt for the **raw protocol** firmware generation (ups
 
 - **Chinese pages mirrored.** All four zh MeshMass pages carry the same corrections, reusing the terminology already established in the `chrc-courses` lesson READMEs (原始无符号读数, 居中, 死区, 混控, 配置驱动) so the docs and the lessons read consistently for the same reader. `docs/code/zh/` re-vendored the same way: three variant headers replaced by one translated `rx4mx/app.h`, and the TX header's `getStick` updated (the only function that changed upstream). Cross-page CJK anchors verified against the built HTML.
 
-**Known gaps after this release:** Only the `meshmass.y77.cc` course keys are verified — `meshmass.com` currently 301s to `dev.meshmass.com` and returns 403, so if the international instance uses different keys, the lesson links need a second set. The RX4M4S page still describes the audio module as *"sold separately, under development"*, which may be stale now that the firmware ships a complete MP3 API and four audio lessons.
+- **Lesson links follow the locale.** English pages link to `meshmass.com`, Chinese pages to `meshmass.y77.cc`, matching how the rest of the docs already present the two instances. Both share one backend, so the course keys are identical (verified against each instance's `/api/courses`). Note `meshmass.com` 301s to `dev.meshmass.com`; browsers carry the `#/courses/…` fragment across the redirect.
+
+**Known gaps after this release:** The RX4M4S page still describes the audio module as *"sold separately, under development"* in both locales, which may be stale now that the firmware ships a complete MP3 API and four audio lessons.
 
 ## 0.1.2 — 2026-05-31
 

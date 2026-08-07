@@ -369,14 +369,14 @@ void onDisconnect() {
 
 #### Worked examples
 
-Complete, tested programs ship as lessons in the [**RX4MX** course](https://meshmass.y77.cc/#/courses/12136090) on the MeshMass platform, where they can be compiled and flashed straight to the board. Each one includes a `README` explaining its control scheme and the maths behind it. The source is also mirrored on GitHub in [chrc-courses](https://github.com/aguegu/chrc-courses).
+Complete, tested programs ship as lessons in the [**RX4MX** course](https://meshmass.com/#/courses/12136090) on the MeshMass platform, where they can be compiled and flashed straight to the board. Each one includes a `README` explaining its control scheme and the maths behind it. The source is also mirrored on GitHub in [chrc-courses](https://github.com/aguegu/chrc-courses).
 
 The vehicle lessons are the ones to read. A few to start with:
 
-- [`02-MiniTank`](https://meshmass.y77.cc/#/courses/12136090/lessons/02-MiniTank) — a tracked chassis with arcade mixing and three selectable drive modes; the knobs pick the mode and cap the speed.
-- [`03-Combo`](https://meshmass.y77.cc/#/courses/12136090/lessons/03-Combo) — a car with throttle and steering combined on a single stick.
-- [`04-forklift`](https://meshmass.y77.cc/#/courses/12136090/lessons/04-forklift) — the `03-Combo` drivetrain plus mast tilt and lift.
-- [`05-Excavator`](https://meshmass.y77.cc/#/courses/12136090/lessons/05-Excavator) — a four-motor arm, with tracks and attachments on servos.
+- [`02-MiniTank`](https://meshmass.com/#/courses/12136090/lessons/02-MiniTank) — a tracked chassis with arcade mixing and three selectable drive modes; the knobs pick the mode and cap the speed.
+- [`03-Combo`](https://meshmass.com/#/courses/12136090/lessons/03-Combo) — a car with throttle and steering combined on a single stick.
+- [`04-forklift`](https://meshmass.com/#/courses/12136090/lessons/04-forklift) — the `03-Combo` drivetrain plus mast tilt and lift.
+- [`05-Excavator`](https://meshmass.com/#/courses/12136090/lessons/05-Excavator) — a four-motor arm, with tracks and attachments on servos.
 
 The course is actively growing, so browse it for the current set — including full builds that add lighting and engine sounds on top of a drivetrain. Lessons named `*Demo` are there to exercise the Neopixel and audio interfaces on their own; they are for checking hardware rather than examples to build a vehicle from.
 
