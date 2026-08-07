@@ -496,6 +496,8 @@ In Session 2, students go inside the MCU's program and change how the tank respo
 
 Learn programming with hands-on tank control!
 
+> **💡 Tip for Teachers:** The platform compiles whatever code is in the editor but does not save it — a reload loses the student's work. Plan for students to keep their own copy of anything worth carrying into the next session, and expect to re-paste a starting point rather than reopen one.
+
 ### Step 1: Binary and Bytes
 
 Computers speak in 1s and 0s:

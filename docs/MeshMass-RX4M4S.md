@@ -187,6 +187,12 @@ For complete pairing instructions including EEPROM storage, one-to-one exclusive
 
 The RX4M4S is programmable via the MeshMass online platform at [meshmass.com](https://meshmass.com) (global access) or [meshmass.y77.cc](https://meshmass.y77.cc) (China mainland) using a web browser and the MeshMass USB flashing dongle (sold separately). The CH571F runs pre-built firmware scaffolds that handle low-level RF communication and hardware drivers, while users focus on application-level output mapping logic.
 
+Open a lesson, edit the code in the browser, build it, and flash the result — **no account required**. The toolchain and the firmware core live on the server, so there is nothing to install.
+
+::: warning Your edits are not saved
+The platform builds whatever source you submit, but it does not store it. Edits you make in the browser are lost when you leave the page or reload it — **keep your own copy of any code you want to keep.** For a classroom, that means having students paste their work somewhere durable before the session ends.
+:::
+
 > **Note**: The RX4M4S does not have a built-in charging circuit. Programming and power are supplied through separate connectors.
 
 **What you program:** On RX4M4S, you define how received wireless channels map to motor, servo, and RGB LED outputs. How these channels are generated is determined by the transmitter (TX) firmware.
@@ -380,7 +386,7 @@ The vehicle lessons are the ones to read. A few to start with:
 
 The course is actively growing, so browse it for the current set — including full builds that add lighting and engine sounds on top of a drivetrain. Lessons named `*Demo` are there to exercise the Neopixel and audio interfaces on their own; they are for checking hardware rather than examples to build a vehicle from.
 
-The lessons are open source (Apache-2.0) and contributions are welcome — if you build something worth sharing, a lesson and the 3D models that go with it are both at home in the repository.
+The lessons are open source (Apache-2.0) and contributions are welcome — if you build something worth sharing, a lesson and the 3D models that go with it are both at home in the repository. Submitting to the repository is free, and the platform syncs its courses from it. Publishing a course of your own on the platform is a membership feature.
 
 Because every shape of the board runs the same firmware, the lessons form one continuous sequence — you work through them in order rather than switching courses when you fit an accessory.
 
