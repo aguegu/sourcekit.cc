@@ -134,14 +134,14 @@ MeshMass adopts a code-based programming approach that combines open hardware fl
 **Key advantages for TX6A4D:**
 - Simple C API for mapping physical inputs to wireless channels
 - Web-based programming with immediate visual feedback via OLED
-- Comprehensive library of examples for common RC scenarios
+- One stock program that works with every vehicle you build
 
-**What you program:** On TX6A4D, you define how physical inputs (joysticks, knobs, buttons) map to 16 wireless channels. How these channels control motors and servos is determined by the receiver (RX) firmware.
+**What you program:** In practice, most people program the TX6A4D **once**. The stock program forwards all six analog inputs and four buttons onto channels, and that is all a controller needs to do — the vehicle's behaviour is written on the receiver. You would come back here only to do something that genuinely belongs to the controller, such as sending a mode selection on a spare channel.
 
-::: tip Firmware names on the MeshMass platform
-TX6A4D is the hardware. On meshmass.com the transmitter firmware appears as **`tx6ax`**, which sends raw unsigned readings and pairs with the **`rx4mx`** receiver firmware — this is what your boards ship with and what the current lessons are written against.
+::: tip Hardware model vs. firmware name
+**TX6A4D** is the hardware model — the board you bought. On the MeshMass platform the firmware for it is published as the **TX6AX** course, *"TX6A4D Raw Firmware — broadcasting the raw inputs"*.
 
-An older **`tx6a4d`** firmware still exists for boards paired using the earlier signed protocol. It runs on the same hardware; the two protocols simply aren't interoperable, so a `tx6ax` transmitter needs an `rx4mx` receiver. If you are starting fresh, use `tx6ax`.
+It pairs with **RX4MX** (*"RX4M4S Fusion Firmware"*) on the receiver side. That pairing is what your boards ship with and what all current lessons are written against.
 :::
 
 ## Firmware Architecture
@@ -215,7 +215,9 @@ void loop() {
 That is deliberately the whole program. Centring, deadzone, scaling, reversing and mixing all belong on the **receiver**, which knows what the outputs are wired to — see [Centring a stick channel](/MeshMass-RX4M4S#centring-a-stick-channel) on the RX4M4S page.
 
 ::: tip Why shape the signal on the receiver?
-A transmitter that has already centred and mixed its sticks has thrown away information the receiver cannot recover. Sending the raw reading keeps one transmitter program usable across every vehicle: a tank mixes the same two sticks differently from an excavator, and each receiver decides for itself. It also means you reprogram the vehicle you are changing, not the controller you share between all of them.
+A transmitter that has already centred and mixed its sticks has thrown away information the receiver cannot recover. More importantly, the two ends of the link are not symmetrical: your controller always looks the same, while the receiver ends up bolted into a tank one week and an excavator the next. A tank mixes the same two sticks quite differently from an excavator — and with Neopixel lights and an audio module also on the receiver, that end decides when brake lights come on and when the engine note changes.
+
+Keeping all of it on the receiver means one controller program serves every vehicle, and changing a vehicle means editing one program on one board instead of two.
 :::
 
 You can still do work here when it genuinely belongs to the controller — for instance, using a button to select a mode and sending that mode on a spare channel, so the vehicle switches behaviour without you reflashing it. Channels `10`-`15` are unused by the stock program and free for this.

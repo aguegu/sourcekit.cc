@@ -23,8 +23,8 @@ Before delivering Session 1, the teacher should:
 
 - **Charge both batteries** (the 1S LiPo for the TX6A4D and the 2S LiPo for the RX4M4S). New packs ship partially charged, and the kit's chargers take longer than a 3-hour class to fill them.
 - **Confirm the right firmware is on each board** (the kit ships pre-flashed; re-flash from the MeshMass platform if needed):
-  - **RX4M4S**: [`05-OnDisconnect`](https://meshmass.y77.cc/#/courses/3057237/lessons/05-OnDisconnect)
-  - **TX6A4D**: [`20-MiniTank`](https://meshmass.y77.cc/#/courses/2979972/lessons/20-MiniTank)
+  - **RX4M4S** — *RX4MX* course, lesson [`02-MiniTank`](https://meshmass.y77.cc/#/courses/12136090/lessons/02-MiniTank). This is the program that actually drives the tank: it turns stick positions into left and right track speeds.
+  - **TX6A4D** — *TX6AX* course, lesson [`00-Default`](https://meshmass.y77.cc/#/courses/12132971/lessons/00-Default). The controller has only this one program; it simply forwards every stick and button reading.
 - **Pair both boards once** — this also verifies the firmware. Power both on and hold each board's **PAIR** button for 5+ seconds; the OLEDs confirm the link.
   - **Recommendation:** pair one kit at a time if multiple are being set up — otherwise boards can accidentally pair with the wrong partner.
   - Pairing is sticky across power cycles, so it only needs doing once after re-flashing.

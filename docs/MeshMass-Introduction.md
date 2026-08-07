@@ -72,12 +72,16 @@ Traditional RC control solutions fall into two categories with significant drawb
 ## System Architecture
 
 ### Separation of Concerns
-The MeshMass system separates responsibilities between transmitter and receiver:
+The MeshMass system splits responsibilities between transmitter and receiver, but **not evenly** — and the imbalance is deliberate:
 
-- **TX6A4D (Transmitter)**: Maps physical inputs (joysticks, knobs, buttons) to 16 wireless channels
-- **RX4M4S (Receiver)**: Maps received channels to physical outputs (motors, servos)
+- **TX6A4D (Transmitter)**: Reads the physical inputs and forwards them raw onto 16 wireless channels. One program, the same on every controller.
+- **RX4M4S (Receiver)**: Interprets those channels and drives everything physical — motors, servos, lights, sound. This is where a build's behaviour lives.
 
-This abstraction allows users to focus on what matters for their specific build without worrying about RF protocol details.
+The reason is simply what the two ends *are*. A controller always looks the same: two sticks, two knobs, four buttons, held in your hands. A receiver gets bolted into a different machine every time — a tank, an excavator, a forklift, a dump truck — each wanting its own mixing, its own limits, its own lights and engine sounds.
+
+The Neopixel and audio interfaces sharpen the point. The receiver decides not only how a stick becomes track speed, but when the brake lights come on and when the engine note changes. Splitting that behaviour across both ends would mean editing two programs, on two boards, to change one vehicle.
+
+So the transmitter makes no decisions. It measures and forwards; the receiver owns the interpretation. Flash a controller once and it works with every vehicle you go on to build — and when you change a vehicle, you reprogram that vehicle.
 
 ### Channel-Based Communication
 - **16 Wireless Channels**: Single bytes transmitted between devices
@@ -228,6 +232,27 @@ To pair a MeshMass transmitter with a receiver:
 3. **Get the USB flashing dongle**: Required for programming (sold separately)
 4. **Explore examples**: Start with pre-built code for common vehicle types
 5. **Join the community**: [Forum discussions](https://github.com/aguegu/sourcekit.cc/discussions) and [show cases](https://space.bilibili.com/24674093/lists/6826437)
+
+## Upgrading the Firmware
+
+We recommend running **TX6AX** on the transmitter and **RX4MX** on the receiver. These are the current firmwares, and every lesson and example is written for them.
+
+Flash both ends to the same generation. An earlier firmware carried a *signed* `-127`-`127` channel value and did its centring and mixing on the transmitter; mixing generations gives you a link that connects but behaves wrongly.
+
+**Pairing survives the upgrade.** The pairing is held in EEPROM and stays valid across a re-flash, so a paired set keeps working — there is no need to pair the boards again.
+
+If you wrote your own code against the earlier API, port it as follows.
+
+**Porting a receiver program:**
+
+| Then | Now |
+|---|---|
+| Pick a firmware build per accessory combination (`RX4M3S1N`, `RX4M1S1N1A`, …) | One firmware; set `AUDIO_ON_SM1_SM2` and `NEO_ON_SM3` at the top of `app.h` |
+| `getChannel()` returned a centred, signed `-127`-`127` | Returns a raw unsigned `0`-`255`; wrap stick reads in [`centered()`](/MeshMass-RX4M4S#centring-a-stick-channel) |
+| `setServo()` indexed the servos that existed in that build | Indexes the **SM header label**, so a config with audio fitted has servos `0` and `3` |
+| `neoInit(count)` | `neoSetup(count)` |
+
+**Porting a transmitter program:** in most cases, don't. Mixing, deadzone and scaling now belong on the receiver, so the stock TX6AX program is usually all you need — the logic you wrote on the transmitter moves to the vehicle instead.
 
 ---
 
