@@ -26,10 +26,11 @@ bool getButton(uint8_t index);
  *              - 3: 左摇杆 X轴 (STK3)
  *              - 4: 左旋钮 (STK4)
  *              - 5: 右旋钮 (STK5)
- * @return 有符号8位值 (-127 到 127)。固件避免使用-128值以支持方向反转。
- *         值0表示中心/中立位置。
+ * @return 原始无符号8位读数 (0 到 255)，来自该输入自己的 ADC 通道，
+ *         并针对电池电压下降做了补偿。约 128 为中心/中立位置；
+ *         0 和 255 为行程的两个极端。
  */
-int8_t getStick(uint8_t index);
+uint8_t getStick(uint8_t index);
 
 /**
  * 设置无线通道值。

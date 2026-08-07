@@ -4,7 +4,7 @@ Internal change log for the sourcekit.cc docs site. Not published to the website
 
 ## 0.2.0 — unreleased
 
-MeshMass documentation rebuilt for the **raw protocol** firmware generation (upstream MeshMass 0.7.0). Boards now ship with `tx6ax` + `rx4mx`, so every code example on the site was describing a protocol customers no longer have. **English pages only** — `docs/zh/` still documents the old signed protocol and is a follow-up.
+MeshMass documentation rebuilt for the **raw protocol** firmware generation (upstream MeshMass 0.7.0). Boards now ship with `tx6ax` + `rx4mx`, so every code example on the site was describing a protocol customers no longer have. Applied to **both locales**.
 
 **What changed in the firmware, for reference:** `getChannel()` returns an unsigned `0`-`255` raw reading (~`128` centred) instead of a signed `-127`-`127` value; the transmitter no longer centres, scales or mixes anything, and the receiver owns all of it. Separately, the `rx4m4s` / `rx4m3s1n` / `rx4m1s1n1a` firmware variants collapsed into one config-driven `rx4mx` scaffold selected by two `#define` switches. Sources: `chrc` (scaffolds) and `chrc-courses` (lessons).
 
@@ -20,7 +20,9 @@ MeshMass documentation rebuilt for the **raw protocol** firmware generation (ups
 - **Lesson links point at the platform.** The RX4M4S lesson links, and the Mini Tank *Pre-class Preparation* links, now use real course keys (`RX4MX` = `12136090`, `TX6AX` = `12132971`) verified against `meshmass.y77.cc/api/courses`. Mini Tank's pre-flash lessons changed meaning with the architecture: the receiver now needs `02-MiniTank` (it holds the driving logic), and the transmitter takes `00-Default`.
 - **New `## Upgrading the Firmware` section** in the Introduction: a plain recommendation to run TX6AX + RX4MX, a warning not to mix firmware generations across the link, a note that **pairing survives a re-flash** (held in EEPROM — no need to pair again), and a *Then / Now* porting table for anyone with code written against the earlier API.
 
-**Known gaps after this release:** `docs/zh/` MeshMass pages (including `docs/code/zh/`) still describe the signed protocol and the three variants. Only the `meshmass.y77.cc` course keys are verified — `meshmass.com` currently 301s to `dev.meshmass.com` and returns 403, so if the international instance uses different keys, the lesson links need a second set. The RX4M4S page still describes the audio module as *"sold separately, under development"*, which may be stale now that the firmware ships a complete MP3 API and four audio lessons.
+- **Chinese pages mirrored.** All four zh MeshMass pages carry the same corrections, reusing the terminology already established in the `chrc-courses` lesson READMEs (原始无符号读数, 居中, 死区, 混控, 配置驱动) so the docs and the lessons read consistently for the same reader. `docs/code/zh/` re-vendored the same way: three variant headers replaced by one translated `rx4mx/app.h`, and the TX header's `getStick` updated (the only function that changed upstream). Cross-page CJK anchors verified against the built HTML.
+
+**Known gaps after this release:** Only the `meshmass.y77.cc` course keys are verified — `meshmass.com` currently 301s to `dev.meshmass.com` and returns 403, so if the international instance uses different keys, the lesson links need a second set. The RX4M4S page still describes the audio module as *"sold separately, under development"*, which may be stale now that the firmware ships a complete MP3 API and four audio lessons.
 
 ## 0.1.2 — 2026-05-31
 
