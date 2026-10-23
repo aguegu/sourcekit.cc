@@ -1,11 +1,10 @@
 import { defineConfig } from 'vitepress';
 import lightbox from 'vitepress-plugin-lightbox';
-import { withMermaid } from "vitepress-plugin-mermaid";
 
 const tagId = 'G-TK6CPWVPRE';
 
 // https://vitepress.dev/reference/site-config
-export default withMermaid({
+export default defineConfig({
   srcDir: "docs",
   base: '/',
   lastUpdated: true,
@@ -124,9 +123,16 @@ export default withMermaid({
     config: (md) => {
       // Use lightbox plugin
       md.use(lightbox, {});
+
+      // ```mermaid fences render client-side via the <Mermaid> theme component
+      const fence = md.renderer.rules.fence;
+      md.renderer.rules.fence = (tokens, idx, ...rest) => {
+        const { info, content } = tokens[idx];
+        if (info.trim() === 'mermaid') return `<Mermaid code="${encodeURIComponent(content)}" />`;
+        return fence(tokens, idx, ...rest);
+      };
     },
   },
-  mermaid: {},
   sitemap: {
     hostname: 'https://sourcekit.cc',
   },

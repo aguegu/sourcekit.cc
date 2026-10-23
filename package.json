@@ -1,6 +1,6 @@
 {
   "name": "sourcekit.cc",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Static documentation site for sourcekit.cc built with VitePress",
   "homepage": "https://github.com/aguegu/sourcekit.cc#readme",
   "bugs": {
@@ -19,10 +19,9 @@
     "preview": "vitepress preview"
   },
   "devDependencies": {
-    "mermaid": "^11.16.1",
+    "mermaid": "^12.2.0",
     "vitepress": "^1.6.4",
-    "vitepress-plugin-lightbox": "^1.0.3",
-    "vitepress-plugin-mermaid": "^2.0.17"
+    "vitepress-plugin-lightbox": "^1.0.3"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47"

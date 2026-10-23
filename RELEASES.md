@@ -2,6 +2,12 @@
 
 Internal change log for the sourcekit.cc docs site. Not published to the website (lives outside `docs/`).
 
+## 0.2.1 — unreleased
+
+- **Mermaid without the plugin.** Dropped `vitepress-plugin-mermaid`, which capped mermaid at 11. A markdown-it fence hook in `.vitepress/config.js` turns ` ```mermaid ` blocks into a `<Mermaid>` theme component (`.vitepress/theme/Mermaid.vue`). The component loads mermaid on demand, so only pages with a diagram fetch it, and it re-renders when the light/dark theme changes. Markdown sources are unchanged.
+- **mermaid 11 → 12.2.** The site has a single diagram, the `venn-beta` channel overview on the RX4M4S page (both locales), and 12's flowchart layout and colour changes don't affect it. mermaid 12 needs Safari 17.4+; on older browsers only that diagram fails to render.
+- **Audit:** `npm audit fix` cleared the `dompurify`, `vue` SSR, `nanoid` and `source-map-js` advisories, and mermaid 12 clears the `katex` one. The remaining `vite` / `esbuild` advisories affect the dev server only and need VitePress 2 (still alpha).
+
 ## 0.2.0 — unreleased
 
 MeshMass documentation rebuilt for the **raw protocol** firmware generation (upstream MeshMass 0.7.0). Boards now ship with `tx6ax` + `rx4mx`, so every code example on the site was describing a protocol customers no longer have. Applied to **both locales**.

@@ -18,7 +18,7 @@ There are no test or lint commands.
 
 ## Architecture
 
-**Stack:** VitePress 1.6.4 + Vue 3, with `@mdi/font` for Material Design Icons, `vitepress-plugin-lightbox` for image lightboxes, and `vitepress-plugin-mermaid` for Mermaid diagrams.
+**Stack:** VitePress 1.6.4 + Vue 3, with `@mdi/font` for Material Design Icons, `vitepress-plugin-lightbox` for image lightboxes, and `mermaid` (no plugin — loaded on demand by a theme component) for Mermaid diagrams.
 
 **Content lives in `docs/`:**
 - `docs/*.md` — English product pages
@@ -27,8 +27,9 @@ There are no test or lint commands.
 - `docs/public/` — Static assets (images organized under `images/`, PDFs, favicons)
 
 **Configuration in `.vitepress/`:**
-- `config.js` — Site metadata, i18n locales (en root `/`, zh at `/zh/`), nav, sidebar, Google Analytics (`G-TK6CPWVPRE`), lightbox + Mermaid wiring, sitemap
-- `theme/index.js` — Re-exports the default VitePress theme; imports MDI font CSS and `style.css`
+- `config.js` — Site metadata, i18n locales (en root `/`, zh at `/zh/`), nav, sidebar, Google Analytics (`G-TK6CPWVPRE`), lightbox, a markdown-it fence hook that turns ```` ```mermaid ```` blocks into `<Mermaid>`, sitemap
+- `theme/index.js` — Extends the default VitePress theme, registers `<Mermaid>`; imports MDI font CSS and `style.css`
+- `theme/Mermaid.vue` — Renders a mermaid diagram client-side (dynamic `import('mermaid')`), re-rendering on light/dark switch
 - `theme/style.css` — CSS variable overrides for brand colors, dark mode
 
 **Deployment:** GitHub Actions (`.github/workflows/deploy.yml`) auto-deploys to GitHub Pages on push to `main`.
